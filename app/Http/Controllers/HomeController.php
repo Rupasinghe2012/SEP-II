@@ -1,21 +1,18 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\ExceptionsLog;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * Show the application dashboard.
@@ -24,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         return view('home');
     }
 }

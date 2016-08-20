@@ -1,66 +1,52 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+@include('includes.header')
+    <div class="row" style="margin-top: 10%; text-align: center;">
+        <h1 class=""> Profiler.NET</h1>
+        <h4 class=""> (Prof.NET)</h4>
+        <!--    <p style="margin-bottom: 20px; margin-top: 20px;" class="">Please login to continue. <a href="/auth/reset-password">Click here</a> if you cannot remember your password.</p>-->
+        <p style="margin-bottom: 20px; margin-top: 20px;" class="">Please login to continue.</p>
+        <!--  Check if any messages are being passed into the view  -->
+        @if(session('message'))
+            <div class="alert alert-info">
+                {{ session('message') }}
             </div>
-        </div>
+            @endif
+                    <!--  Check if any warnings are being passed into the view  -->
+            @if(session('warning'))
+                <div class="alert alert-warning">
+                    {{ session('warning') }}
+                </div>
+                @endif
+                        <!--  Check if any errors are being passed into the view  -->
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+                            <!--  Check if any validation errors are being passed into the view  -->
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif
+                    <hr/>
+                    <div class="row col-md-4 col-md-offset-4">
+                        <form method="POST" action="/auth/login" class="form-horizontal" id="login-form" role="form">
+                            {!! csrf_field() !!}
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" required="" autofocus="" placeholder="Email Address">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember"> Remember Me
+                                </label>
+                            </div>
+                            <button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
+                        </form>
+
+                    </div>
     </div>
-</div>
-@endsection
+@include('includes.footer')
