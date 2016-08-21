@@ -11,6 +11,24 @@
 <script src="/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+    <script src="{{ asset('/dist/sweetalert.min.js')}}"></script>
+
+    <script src="{{ asset('/js/alert.js')}}"></script>
+
+    <script src="{{ asset('/js/notification.js')}}"></script>
+
+    <script>
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+
+
+
+    @yield('scripts')
 </footer>
 </body>
 </html>

@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'support@laracasts.com', 'name' => 'Iruka'],
+    'from' => ['address' => 'castilahadies@gmail.com', 'name' => 'Iruka'],
 
     /*
     |--------------------------------------------------------------------------

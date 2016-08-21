@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function() {
-    return redirect('/auth/login');
-});
+//Route::get('/', function() {
+//    return redirect('/auth/login');
+//});
 
 /**
  * Use the space below to test controller methods
@@ -27,8 +27,11 @@ Route::get('/', function() {
  */
 
 Route::group(['middleware' => 'web'], function() {
+    Route::get('/', 'MainController@index');
+    Route::post('/templates/mail', 'MainController@store_mail');
     // Authentication routes...
     // Authentication routes...
+
     Route::get('auth/login', 'CustomAuthenticationController@show');
     Route::post('auth/login', 'CustomAuthenticationController@loginUser');
     Route::get('auth/logout', 'CustomAuthenticationController@logoutUser');
@@ -57,6 +60,24 @@ Route::group(['middleware' => 'web'], function() {
 */
 Route::group(['middleware' => ['web', 'requireAuth']], function() {
 
+    //user profile routes
+    Route::get ('profile', 'ProfileController@index');
+
+    Route::post('user', 'ProfileController@update');
+    Route::post('userLINK', 'ProfileController@link');
+
+    Route::post('user/{pic}', 'ProfileController@picture');
+
+    Route::post('userpw', 'ProfileController@changePwd');
+    Route::post('/twitter', 'ProfileController@widget');
+
+    //notification routes
+    Route::get('/notifications','NotificationController@show');
+    Route::get('/notificationsC','NotificationController@count');
+    Route::patch('/notifications','NotificationController@update');
+    Route::get('/notificationsView','NotificationController@index');
+
+
 });
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +89,42 @@ Route::group(['middleware' => ['web', 'requireAuth']], function() {
 |
 */
 Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/templates/new', 'AdminController@index');
+    Route::get('/templates/edit', 'AdminController@view');
+    Route::get('/landing', 'AdminController@admin_view');
+    Route::post('/update' , 'AdminController@update');
+    Route::get('/admin/home' , 'AdminController@admin_view');
+
+    Route::get('/templates/{temp}/edit' , 'AdminController@edit');
+    Route::get('/templates/show/{temp}' , 'AdminController@show');
+    Route::get('/templates/{temp}/delete' , 'AdminController@delete');
+    Route::post('/templates/{temp}/update' , 'AdminController@update');
+    Route::post('/templates/store', 'AdminController@store');
+
+    Route::get('/templates/slide', 'AdminController@slide_view');
+    //Route::get('/templates/slide', 'AdminController@slide_view');
+
+    Route::post('/templates/slide/new', 'AdminController@store_image');
+    Route::post('/templates/slide/select', 'AdminController@add_to_album');
+    Route::post('/templates/slide/delete', 'AdminController@remove_from_album');
+    Route::get('/templates/slide/{slide}/change1' , 'AdminController@change1');
+    Route::get('/templates/slide/{slide}/change2' , 'AdminController@change2');
+    Route::get('/templates/slide/{slide}/change3' , 'AdminController@change3');
+
+    Route::get('/templates/mail/view', 'MainController@view_mail');
+    Route::get('/templates/{mail}/ignor' , 'MainController@ignor_mail');
+    Route::post('templates/{mail}/reply' , 'MainController@reply_mail');
+    Route::get('templates/{mail}/show' , 'MainController@show_mail');
+
+
+    Route::get('/admin/user/manage', 'AdminController@user_view');
+    Route::get('user/{user}/promote' , 'AdminController@promote');
+    Route::get('user/{user}/pro_super_admin' , 'AdminController@pro_super_admin');
+    Route::post('user/{user}/demote' , 'AdminController@demote');
+    Route::post('user/{user}/kick-out' , 'AdminController@kickout');
+    Route::get('/admin/user/removed', 'AdminController@re_user_view');
+
+
 });
 
 /*
@@ -81,5 +137,13 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
 |
 */
 Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
-    Route::get('/client', 'HomeController@index');
+
+
+    //galary routes
+    Route::get('gallery/list','GalleryController@viewGalleryList');
+    Route::post('gallery/save','GalleryController@saveGallery');
+    Route::post('gallery/edit/{id}','GalleryController@editGallery');
+    Route::post('gallery/delete/{id}','GalleryController@deleteGallery');
+    Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
+    Route::post('image/do-upload','GalleryController@doImageUpload');
 });

@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Session;
  */
 class CustomAuthenticationController extends Controller
 {
-    private $clientLoginRedirect = "/client";
-    private $adminLoginRedirect = "/admin";
+    private $clientLoginRedirect = "profile";
+    private $adminLoginRedirect = "/landing";
     private $logoutRedirect = "/auth/login";
 
     /**

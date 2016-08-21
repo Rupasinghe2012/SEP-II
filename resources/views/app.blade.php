@@ -1,7 +1,8 @@
 @include('includes.header')
 <div id="wrapper">
-    @include('includes.sidebar')
     @include('includes.logout')
+    @include('includes.sidebar')
+
             <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Main content -->
