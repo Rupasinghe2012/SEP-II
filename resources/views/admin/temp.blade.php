@@ -43,7 +43,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background:url({{url('/img/trans-black-50.jpg')}});
+            background:url({{url('resources/assets/img/trans-black-50.jpg')}});
             width: 100%;
             height: 100%;
         }
@@ -83,7 +83,7 @@
                 <p><a href="{{url('/demo')}}" target="_blank" class="learn-more">Demo</a></p>
                 <p><a href="{{url('/edit')}}" class="learn-more">Edit</a></p>
             </div>
-            <img src="{{url('/img/2.jpg')}}" style="width:600px;height:300px;"/>
+            <img src="{{url('resources/assets/img/2.jpg')}}" style="width:600px;height:300px;"/>
         </div>
     </div>
 </div> -->

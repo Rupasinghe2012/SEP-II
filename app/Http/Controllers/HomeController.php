@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Post;
+use App\Notification;
 use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
@@ -21,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('home');
+        $count['not'] = Notification::where('id','<>',Auth::user()->id)->count();
+        $count['post'] = Post::all()->count();
+        return view('home',compact('count'));
     }
 }

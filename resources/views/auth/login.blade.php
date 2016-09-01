@@ -1,6 +1,5 @@
-
 @include('includes.header')
-    <div class="row" style="margin-top: 10%; text-align: center;">
+<div class="row" style="margin-top: 10%; text-align: center;">
         <h1 class=""> Profiler.NET</h1>
         <h4 class=""> (Prof.NET)</h4>
         <!--    <p style="margin-bottom: 20px; margin-top: 20px;" class="">Please login to continue. <a href="/auth/reset-password">Click here</a> if you cannot remember your password.</p>-->
@@ -44,9 +43,15 @@
                                     <input type="checkbox" name="remember"> Remember Me
                                 </label>
                             </div>
+                            <a class="btn btn-link" href="{{ url('/auth/reset-password') }}">Forgot Your Password?</a>
+                            </br></br>
                             <button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
                         </form>
-
+                        </br></br>
+<span>Looking to
+                                 <a href="{{ url('auth/register') }}">create an account</a>
+                            ?</span>
                     </div>
+
     </div>
 @include('includes.footer')

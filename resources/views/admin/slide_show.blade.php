@@ -7,33 +7,24 @@
     <script language="javascript" type="text/javascript">
         function validation(){
 
-            var a=document.reg.name.value;
-            var b=document.reg.description.value;
-            var c=document.reg.slide_pic.value;
 
-
-            if ((a == null||a == "") ) {
-                alert("Enter SLIDE IMAGE NAME...!.");
-                return false;
-            }
-            if(a.match(/[^A-Za-z]/))
+            var image=document.reg.slide_pic.value;
+            var extention2 = image.substring(image.lastIndexOf('.') + 1).toLowerCase();
+            if(extention2 != "gif" && extention2 != "png" && extention2 != "bmp" && extention2 != "jpg" && extention2 != "jpeg")
             {
-                alert("Enter alphbatical characters for TEMPLATE NAME! (Allowed input:A-Z/a-z)");
+                alert("template picture not in valid extention (use only gif,png,bmp,jpg,jpeg extentions...!."+extention2);
                 return false;
             }
-            if (b==null||b=="") {
-                alert("Enter DESCRIPTION of slide image...!");
-                return false;
+            else
+            {
+                var image_size=document.reg.slide_pic.files[0].size;
+                if(image_size>1024*1024*0.5)
+                {
+                    alert("template picture size is too large!");
+                    return false;
+                }
             }
-//            if(b.match(/[^A-Za-z]/))
-//            {
-//                alert("Enter alphbatical characters for COLOUR! (Allowed input:A-Z/a-z)");
-//                return false;
-//            }
-            if (c == null||c == "" ) {
-                alert("Insert IMAGE for slide...!.");
-                return false;
-            }
+
 
             return confirm("Are you sure to INSERT this record?");
         }
@@ -56,19 +47,19 @@
                 <div class="form-group">
                     <label for="Name" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="name" required="">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="name" required data-parsley-type="alphanum" data-parsley-maxlength="10" data-parsley-maxlength-message="Name should be less than 10 characters" >
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Description" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="description" name="description" placeholder="description" required="">
+                        <input type="text" class="form-control" id="description" name="description" placeholder="description" required data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="40" data-parsley-minlength-message="description should be atleast 20 characters"  data-parsley-maxlength-message="description should be less than 40 characters">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="slide picture" class="col-sm-2 control-label">Slide picture</label>
                     <div class="col-sm-10">
-                        <input type="file" class="form-control" id="slide_pic" name="slide_pic" placeholder="slide_pic" required="">
+                        <input type="file" class="form-control" id="slide_pic" name="slide_pic" placeholder="slide_pic" required accept="image/*">
                     </div>
                 </div>
                 <div class="form-group">
@@ -91,16 +82,16 @@
                     <!-- /.box-header -->
                 </div>
                 <div class="box-body">
-                    <form data-parsley-validate="" class="form-horizontal" name="remove" action="{{ url('templates/slide/delete')  }}" method="post" enctype="multipart/form-data">
+                    <form data-parsley-validate="" class="form-horizontal" name="remove" action="{{ url('templates/slide/delete')  }}" method="post" enctype="multipart/form-data" novalidate>
                         @if($slide_album_count<8)
                             <button style="float: left;" title="click here to add image to slide show" type="button" class="btn btn-warning" data-toggle="modal" data-target="#replyModal">Add to Slide Show</button>
                         @endif
 
-                        <button style="float: right;" title="click here to remove selected image from slide show" type="submit" name="submit1" class="btn btn-danger"><i class="fa fa-check-square-o" aria-hidden="true"></i><i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i></button>
+                        <button style="float: right;" title="click here to remove selected image from slide show" type="submit" name="submit1" class="btn btn-danger" onclick="return confirm('Are sure to remove selected imsges from the slide show?')" ><i class="fa fa-check-square-o" aria-hidden="true"></i><i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i></button>
 
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                             <div class="row"><div class="col-sm-12">
-                                    <input hidden="hidden" required title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="" >
+                                    <input hidden="hidden" required="required" data-parsley-required-message="There are no selected images to remove" title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="" >
                                     {{ csrf_field() }}
 
 
@@ -112,7 +103,7 @@
                                                         @endif
                                                         <input title="select image for slide show" style="zoom:1.5" type="checkbox" name="image_album[]" value="{{$image->id}}"> <i class="fa fa-times-circle" aria-hidden="true"></i>
                                                         <img src='{{asset("/img/preview/" . $image->slide_pic )  }}' alt="MountainView" style="width:200px;height:100px;"  >
-                                                        <a href={{url("templates/slide/". $image->id ."/change1") }}><button style="border-radius: 50%;" title="Set for first image" type="button" class="btn btn-default" value="1" name="first" ><i class="fa fa-heart" aria-hidden="true"></i></button></a>
+                                                        <a href={{url("templates/slide/". $image->id ."/change1") }}><button style="border-radius: 50%;" title="Set for first image" type="button" class="btn btn-default" value="1" name="first" onclick="return confirm('Are sure to set this image as front image of the slide show?')"><i class="fa fa-heart" aria-hidden="true"></i></button></a>
 
                                                     </div>
                                                     @endforeach
@@ -134,14 +125,14 @@
                 <div class="modal-dialog modal-lg">
 
                     <!-- Modal content-->
-                    <form data-parsley-validate="" class="form-horizontal" name="select" action="{{ url('templates/slide/select')  }}" method="post" enctype="multipart/form-data">
-                        <button type="submit" name="submit" id="submit" class="btn btn-danger"><i class="fa fa-check-square-o" aria-hidden="true"></i><span> </span>Add to Slide Show</button>
+                    <form data-parsley-validate="" class="form-horizontal" name="select" action="{{ url('templates/slide/select')  }}" method="post" enctype="multipart/form-data" novalidate>
+
 
                         <div class="modal-content">
                             <div class="modal-header">
                                 {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
                                 <h4 class="modal-title">Current Slide Show Album</h4>
-                                <input hidden="hidden" required data-parsley-maxcheck="{{8-$slide_album_count}}" title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="" >
+                                <input hidden="hidden" required="required" data-parsley-required-message="There are no selected images" data-parsley-maxcheck="{{8-$slide_album_count}}" title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="" >
 
 
                             </div>
@@ -153,27 +144,15 @@
                                 @foreach($slideimages as $slideimage)
                                     <div class="col-md-3"  >
 
-                                        {{--<tr role="row" class="">--}}
-
-                                        {{--<td>{{ $slideimage->id }}</td>--}}
-                                        {{--<td>{{ $slideimage->name }}</td>--}}
-                                        {{--<td>{{ $slideimage->description }}</td>--}}
                                         <a href="{{ url("templates/show/" .$slideimage->id) }}" target="_blank"><img src='{{asset("/img/preview/" . $slideimage->slide_pic )  }}' alt="MountainView" style="width:200px;height:100px;" title="id:{{ $slideimage->id }}&#13name:{{ $slideimage->name }}&#13description : {{ $slideimage->description }}" ></a>
-                                        {{--<td>{{ $slideimage->status }}</td>--}}
-                                        {{--<td style="text-align: center"><a href={{url("templates/slide/". $slideimage->id ."/change1") }}><button title="Set for first image" type="button" class="btn btn-warning" value="1" name="first" ><i class="fa fa-picture-o" aria-hidden="true"></i></button></a></td>--}}
-                                        {{--<td style="text-align: center"><a href={{url("templates/slide/". $slideimage->id ."/change2") }}><button title="Set for other image" type="button" class="btn btn-info" value="2" name="second" ><i class="fa fa-picture-o" aria-hidden="true"></i><i class="fa fa-picture-o" aria-hidden="true"></i></button></a></td>--}}
-                                        {{--<td style="text-align: center"><a href={{url("templates/slide/". $slideimage->id ."/change3") }}><button title="Remove image from slideshow" type="button" class="btn btn-danger" value="0" name="non" ><i class="fa fa-picture-o" aria-hidden="true"></i><span> </span><i class="fa fa-share-square-o" aria-hidden="true"></i></button></a></td>--}}
                                         <input  title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="{{$slideimage->id}}">
-                                        {{--</tr>--}}
-                                        {{--<input title="set as front image" style="zoom:2" type="radio" name="front_image" value="{{$slideimage->id}}">--}}
                                     </div>
                                 @endforeach
 
 
                             </div>
                             <div class="modal-footer">
-
-                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+                                <button onclick="return confirm('Are sure to add selected images to the slide show?')" type="submit" name="submit" id="submit" class="btn btn-danger"><i class="fa fa-check-square-o" aria-hidden="true"></i><span> </span>Add to Slide Show</button>
                             </div>
                         </div>
                     </form>

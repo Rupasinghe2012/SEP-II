@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('google');
             $table->string('youtube');
             $table->string('profile_pic');
-            $table->string('type');
+            $table->string('type')->default('client');
             $table->rememberToken();
             $table->timestamps();
         });

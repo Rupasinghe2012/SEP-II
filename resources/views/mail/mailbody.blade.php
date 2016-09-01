@@ -1,4 +1,3 @@
-
 {{--@foreach($data['name'] as $value=>$key)--}}
 <h2><?php echo "Hello,". $data['name'] ?></h2>
 <h3>Thank you for your e-mail.</h3>

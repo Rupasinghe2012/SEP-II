@@ -124,6 +124,9 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::post('user/{user}/kick-out' , 'AdminController@kickout');
     Route::get('/admin/user/removed', 'AdminController@re_user_view');
 
+    Route::any('/calender/view', 'AdminController@calender_view');
+    Route::any('/calender/add_event', 'AdminController@calender_add_event');
+
 
 });
 
@@ -138,12 +141,13 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
 */
 Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
-
+    Route::get('/home', 'HomeController@index');
     //galary routes
     Route::get('gallery/list','GalleryController@viewGalleryList');
     Route::post('gallery/save','GalleryController@saveGallery');
     Route::post('gallery/edit/{id}','GalleryController@editGallery');
     Route::post('gallery/delete/{id}','GalleryController@deleteGallery');
+    Route::post('gallery/deleteImg/{id}','GalleryController@deleteImage');
     Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
     Route::post('image/do-upload','GalleryController@doImageUpload');
 });

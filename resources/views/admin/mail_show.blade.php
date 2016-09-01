@@ -20,10 +20,11 @@
 
                                     <tbody>
 
-                                    <button title="click here to create mail" type="button" class="btn btn-warning" data-toggle="modal" data-target="#replyModal"><i class="fa fa-reply" aria-hidden="true"></i></button>
+                                    {{--<button title="click here to create mail" type="button" class="btn btn-warning" data-toggle="modal" data-target="#replyModal"><i class="fa fa-reply" aria-hidden="true"></i></button>--}}
                                     @foreach($visitormails as $mail)
+
                                         <tr>
-                                            <td><p><i>< {{ $mail->created_at }} ></i></p><h3><b><u>{{ $mail->subject }}</u></b></h3><b><p style="color: #0c0c0c"> -{{ $mail->description }}</p></b></td>
+                                            <td><button title="click here to create mail" type="button" class="btn btn-warning" data-toggle="modal" data-target="#replyModal{{$mail->id}}"><i class="fa fa-reply" aria-hidden="true"></i></button><p><i>< {{ $mail->created_at }} ></i></p><h3><b><u>{{ $mail->subject }}</u></b></h3><b><p style="color: #0c0c0c"> -{{ $mail->description }}</p></b></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -44,7 +45,7 @@
                                                 @if($mail->reply!="not yet reply")<p style="text-align: right"><i>< {{ $mail->updated_at }} - {{ $mail->reply_by }} ></i></p>@endif</td>
                                         </tr>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="replyModal" role="dialog">
+                                        <div class="modal fade" id="replyModal{{$mail->id}}" role="dialog">
                                             <div class="modal-dialog">
 
                                                 <!-- Modal content-->
@@ -57,7 +58,7 @@
                                                         <form class="form-horizontal" action="{{ url("templates/". $mail->id ."/reply")  }}" method="post" enctype="multipart/form-data">
                                                             {{ csrf_field() }}
                                                             <textarea name="reply_message" id="reply_message" class="form-control" rows="4" cols="60" placeholder="Enter your message" required="required"></textarea>
-                                                            <input title="click here to reply" type="submit" class="btn btn-warning" value="Send" onsubmit="return confirm('Are you sure to SEND this mail?');">
+                                                            <input title="click here to reply" type="submit" class="btn btn-warning" value="Send" onclick="return confirm('Are you sure to SEND this mail?');">
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">

@@ -32,12 +32,15 @@
             padding-right: 10px;
         }
     </style>
+
+
+
     <div class="row">
         <div class="col-md-6">
             <h1>{{$gallery->name}}</h1>
         </div>
         <div class="col-md-6">
-            <a  href="{{url('gallery/list')}}" class="btn  pull-right btn-danger delete" ><i class="fa fa-fw fa-backward"></i>Back to Albums.</a>
+            <a  href="{{url('gallery/list')}}" class="btn  pull-right btn-info" ><i class="fa fa-fw fa-backward"></i>Back to Albums.</a>
         </div>
     </div>
 
@@ -52,36 +55,25 @@
                         <ul>
                             @foreach($gallery->images as $image)
                                 <li>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
                                     <a href="{{url($image->file_path)}}" data-lightbox="mygallery">
                                         <img src="{{url('/gallery/images/thumbs/'.$image->file_name)}}">
                                     </a>
+                                    <form method="post" action="{{url('gallery/deleteImg/' . $image->id)}}" class="delete_form2">
+                                        {{ csrf_field() }}
+                                        {{--<a  id="delete-btn" class="btn  btn-danger delete" ><i class="fa fa-fw fa-trash"></i> Delete</a>--}}
+                                        <a id="delete-btn2"><button style="border-radius: 50%;"  type="button" class="btn btn-default" ><i class="fa fa-fw fa-trash" ></i></button></a>
+                                    </form>
+                                    </div>
+                                </div>
                                 </li>
 
                             @endforeach
                         </ul>
                     </div>
 
-                    {{--<div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:900px;margin:100px auto 0px;">--}}
-                    {{--<div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">--}}
-                    {{--<div id="gallery-images">--}}
-                    {{--@foreach($gallery->images as $image)--}}
-                    {{--<ul class="amazingslider-slides" style="display:none;">--}}
-                    {{--<li><img src="{{url($image->file_path)}}" />--}}
-                    {{--</li>--}}
 
-                    {{--@endforeach--}}
-                    {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div id="gallery-images">--}}
-                    {{--@foreach($gallery->images as $image)--}}
-                    {{--<ul class="amazingslider-thumbnails" style="display:none;">--}}
-                    {{--<li><img src="{{url('/gallery/images/thumbs/'.$image->file_name)}}"  /></li>--}}
-                    {{--@endforeach--}}
-                    {{--</ul>--}}
-                    {{--</div>--}}
-
-                    {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>
@@ -111,8 +103,8 @@
     <script src="{{ asset('/js/lightbox.js')}}"></script>
 
     <!-- get fancybox -->
-    <link rel="stylesheet" type="text/css" itemprop="javascript" href="{{ asset('js/fancybox/jquery.fancybox.css')}}" media="all">
-    <script src="{{ asset('js/fancybox/jquery.easing.1.3.js')}}"></script>
-    <script src="{{ asset('js/fancybox/jquery.fancybox-1.2.1.js')}}"></script>
+    <link rel="stylesheet" type="text/css" itemprop="javascript" href="{{ asset('/js/fancybox/jquery.fancybox.css')}}" media="all">
+    <script src="{{ asset('/js/fancybox/jquery.easing.1.3.js')}}"></script>
+    <script src="{{ asset('/js/fancybox/jquery.fancybox-1.2.1.js')}}"></script>
 @stop
 @endsection

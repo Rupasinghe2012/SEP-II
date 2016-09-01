@@ -1,38 +1,50 @@
-@extends('app')
-
-@section('links')
-        <!--<link href="/css/auth/reset-pass.css" rel="stylesheet">-->
-@stop
-
-@section('content')
-    <h1> Agile Project Management Tool </h1>
-    <p>Password Reset</p>
+@include('includes.header')
+<div class="row" style="margin-top: 10%; text-align: center;">
+    <h1> Profiler.NET</h1>
+    <h3>Password Reset</h3>
+    @if(session('message'))
+        <div class="alert alert-info">
+            {{ session('message') }}
+        </div>
+        @endif
+                <!--  Check if any warnings are being passed into the view  -->
+        @if(session('warning'))
+            <div class="alert alert-warning">
+                {{ session('warning') }}
+            </div>
+            @endif
+                    <!--  Check if any errors are being passed into the view  -->
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+                @endif
+                        <!--  Check if any validation errors are being passed into the view  -->
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
+                <hr/>
 
     <form method="POST" action="/auth/reset-password" class="form-horizontal" id="reset-password-form">
         {!! csrf_field() !!}
-        @if(isset($error)) {{ $error }} @endif
-        @if(Session::get('error'))
-            <div class="alert alert-danger">
-                {{ Session::get('error') }}
-            </div>
-        @endif
 
-        @if(session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
 
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label for="email" class="col-md-2 control-label">Email</label>
             <div class="col-md-10">
-                <input type="email" name="email" value="" class="col-md-10">
+                <input type="email" name="email" value="{{ old('email') }}" class="form-control col-md-6" required="" autofocus="" placeholder="Email Address">
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-2 col-sm-2">
                 <button type="submit" class="btn btn-sm btn-danger">Reset Password</button>
             </div>
         </div>
     </form>
-@stop
+    </div>
+
+@include('includes.footer')

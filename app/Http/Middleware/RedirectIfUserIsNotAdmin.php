@@ -22,10 +22,13 @@ class RedirectIfUserIsNotAdmin
         }
         else {
             if(Auth::user()->type != 'admin') {
-                Auth::logout();
-                return redirect('/auth/login')
-                        ->with("warning", "You don't have enough permissions to view this page.");;
+                if ((Auth::user()->type != 'moderator')){
+                    Auth::logout();
+                    return redirect('/auth/login')
+                        ->with("warning", "You don't have enough permissions to view this page.");
+                }
             }
+            
         }
 
         return $next($request);

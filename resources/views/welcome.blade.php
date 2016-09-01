@@ -14,7 +14,7 @@
     <!-- Bootstrap Core CSS -->
 
     <link  href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
-    <link  href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link  href="{{ asset('/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link  href="{{ asset('/css/login-register.css') }}" rel="stylesheet">
@@ -60,9 +60,6 @@
                 <div class="box">
                     <div class="content">
                         <div class="social">
-                            <a class="circle github" href="/auth/github">
-                                <i class="fa fa-github fa-fw"></i>
-                            </a>
                             <a id="google_login" class="circle google" href="/auth/google_oauth2">
                                 <i class="fa fa-google-plus fa-fw"></i>
                             </a>
@@ -76,35 +73,46 @@
                             <div class="line r"></div>
                         </div>
                         <div class="error"></div>
+                        @if(session('message'))
+                            <div class="alert alert-info">
+                                {{ session('message') }}
+                            </div>
+                            @endif
+                                    <!--  Check if any warnings are being passed into the view  -->
+                            @if(session('warning'))
+                                <div class="alert alert-warning">
+                                    {{ session('warning') }}
+                                </div>
+                                @endif
+                                        <!--  Check if any errors are being passed into the view  -->
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                    @endif
+                                            <!--  Check if any validation errors are being passed into the view  -->
+                                    @if($errors->any())
+                                        @foreach($errors->all() as $error)
+                                            <div class="alert alert-danger">
+                                                {{ $error }}
+                                            </div>
+                                        @endforeach
+                                    @endif
                         <div class="form loginBox">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('auth/login') }}">
                                 {!! csrf_field() !!}
-
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <div class="form-group">
                                     <label class="control-label col-sm-4">E-Mail Address</label>
-
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter E-mail Address">
-
-                                        @if ($errors->has('email'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                        @endif
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" required="" autofocus="" placeholder="Email Address">
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <div class="form-group">
                                     <label class="col-sm-4 control-label">Password</label>
 
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
-
-                                        @if ($errors->has('password'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                        @endif
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
                                     </div>
                                 </div>
 
@@ -122,7 +130,7 @@
                                     <div class="col-sm-12 ">
                                         <input class="btn btn-default btn-login" type="submit" value="Login">
 
-                                        <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                                        <a class="btn btn-link" href="{{ url('/auth/reset-password') }}">Forgot Your Password?</a>
                                     </div>
                                 </div>
                             </form>
@@ -132,7 +140,7 @@
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('auth/register') }}">
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -259,7 +267,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li><a href="{{ url('auth/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
                     @endif
@@ -296,7 +304,7 @@
         @foreach($imagefirst as $first)
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url({{ url("resources/assets/img/" . $first->slide_pic) }})"></div>
+                <div class="fill" style="background-image:url({{ url("/img/" . $first->slide_pic) }})"></div>
                 <div class="carousel-caption">
                     <h2><?php echo $first->description ?></h2>
                 </div>
@@ -306,7 +314,7 @@
         @foreach($image as $img)
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url({{ url("resources/assets/img/" . $img->slide_pic) }}"></div>
+                <div class="fill" style="background-image:url({{ url("/img/" . $img->slide_pic) }}"></div>
                 <div class="carousel-caption">
                     <h2><?php echo $img->description ?></h2>
                 </div>

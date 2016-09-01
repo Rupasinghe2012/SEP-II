@@ -20,7 +20,7 @@ $(function() {
         handleSuccess:function(response){
             var imageList= $('#gallery-images ul');
             var imageSrc= baseUrl + '/gallery/images/thumbs/' + response.file_name;
-            $(imageList).append('<li><a href="' + imageSrc + '"><img src="' + imageSrc + '"></a></li> ');
+            $(imageList).append('<li><div class="panel panel-default"> <div class="panel-body"><a href="' + imageSrc + '"><img src="' + imageSrc + '"></a><a id="delete-btn"><button style="border-radius: 50%;"  type="button" class="btn btn-default" ><i class="fa fa-fw fa-trash" ></i></button></a></div></div></li> ');
 
         }
     };

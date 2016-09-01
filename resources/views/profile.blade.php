@@ -108,7 +108,10 @@
             var adress=document.pro.address.value;
             var job=document.pro.job.value;
 
-            if ((name == null||name == "") ) {
+
+
+
+            if ((name == null) ) {
                 swal("Error !!!!", "Enter a your name Please.")
                 return false;
             }
@@ -132,12 +135,18 @@
                 swal("Error !!!!", "Enter a valid Date of Birth.")
                 return false;
             }
-            else if (adress==null||adress=="") {
+
+            else if (adress==null) {
                 swal("Error !!!!", "Enter a your Address Please.")
                 return false;
             }
-            else if (job==null||job=="") {
+            else if (job==null) {
                 swal("Error !!!!", "Please fill your Employment field.")
+                return false;
+            }
+            else if(job.match(/[^A-Za-z]/))
+            {
+                swal("Error !!!!", "Enter a valid job.")
                 return false;
             }
             else {
@@ -231,7 +240,7 @@
                                 <h4 class="modal-title">Change Password.</h4>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="{{ url('/userpw') }}" name="pwd"  onsubmit="return validation1()">
+                                <form method="post" action="{{ url('/userpw') }}" name="pwd"  onsubmit="return validation1()" >
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="id" value="{{Auth::user()->id}}" />
 
@@ -276,7 +285,7 @@
 
 
 
-            <!-- Modal for password-->
+            <!-- Modal for Tweter-->
             <div class=" modal-default">
                 <div id="twiter" class="modal fade" role="dialog">
 
@@ -399,14 +408,27 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#settings" data-toggle="tab">Edit Profile</a></li>
-
+                    {{--<li ><a href="#changePwd" data-toggle="tab">Change Password</a></li>--}}
 
 
 
                 </ul>
                 <div class="tab-content">
 
-                    <div class="active tab-pane" id="settings">
+                    <div class="tab-pane fade in active" id="settings">
+                        @if(count($errors)>0)
+                            <div class="alert alert-error">
+                                @foreach($errors->all() as $error)
+                                    {{$error}}
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(Session::has('succes'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('succes') }}
+                                </div>
+                            @endif
 
                         <form class="form-horizontal" id="pro" name="pro" role="form" method="post" action="{{ url('/user') }}" onsubmit="return validation()">
 
@@ -520,7 +542,7 @@
                                             <div>
                                                                             <span class="btn default btn-file">
                                                                                 <button class="btn btn-dark" for="profile_pic">Choose an Image</button>
-                                                                                <input id="profile_pic" name="profile_pic" type="file">
+                                                                                <input id="profile_pic" name="profile_pic" type="file" accept="image/*" >
                                                                             </span>
                                             </div>
                                         </div>
@@ -558,15 +580,49 @@
 
                     </div><!-- /.tab-pane -->
 
+                {{--<div class=" tab-pane fade " id="changePwd">--}}
+                    {{--<form method="post" action="{{ url('/userpw') }}" name="pwd" >--}}
+                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}" />--}}
+                        {{--<input type="hidden" name="id" value="{{Auth::user()->id}}" />--}}
+
+                        {{--@if(Session::has('pwmessage'))--}}
+                            {{--<div class="alert alert-success">--}}
+                                {{--{{ Session::get('pwmessage') }}--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+
+                        {{--@if(Session::has('wmessage'))--}}
+                            {{--<div class="alert alert-danger">--}}
+                                {{--{{ Session::get('wmessage') }}--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+
+                        {{--<div class="form-group">--}}
+                            {{--<label class="control-label">Current Password</label>--}}
+                            {{--<input type="password" id="currentp" class="form-control" name="currentp" placeholder="Type Current Password"/> </div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label class="control-label">New Password</label>--}}
+                            {{--<input type="password" id="newp" class="form-control" name="newp" placeholder="Type New Password"/> </div>--}}
 
 
+                        {{--<div class="form-group">--}}
+                            {{--<label class="control-label">Re-type New Password</label>--}}
+                            {{--<input type="password" id="rep" class="form-control" name="rep" placeholder="ReType New Password"/> </div>--}}
+
+
+                    {{--<button type="submit" class="btn btn-success" id="btnChange" >Change Password--}}
+                    {{--</button>--}}
+                    {{--</form>--}}
+                    {{--</div>--}}
                 </div><!-- /.tab-content -->
+
 
 
 
             </div><!-- /.nav-tabs-custom -->
         </div><!-- /.col -->
     </div><!-- /.row -->
+
 
 
 
@@ -609,6 +665,12 @@
                 return false;
             }
         })
+    </script>
+
+    <script type="text/javascript">
+        @if (count($errors) > 0)
+            $('#pwd').modal('show');
+        @endif
     </script>
 @stop
 

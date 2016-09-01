@@ -46,8 +46,54 @@ function dataHandler(type, msg){
                     case 'self-Social'://iruka
                         generateNotification(data['id'], data['diff'], 'You have Changed Your Social Profile Links', green);
                         break;
-                    case 'album-create'://iruka
+                    case 'add_album'://iruka
                         generateNotification(data['id'], data['diff'], 'You have Created a new Album.', green);
+                        break;
+                    case 'edit_album'://iruka
+                        generateNotification(data['id'], data['diff'], 'You have Updated the Album Details.', green);
+                        break;
+                    case 'add_image'://iruka
+                        generateNotification(data['id'], data['diff'], 'You have added Photos to the Album.', green);
+                        break;
+                    case 'delete_album'://iruka
+                        generateNotification(data['id'], data['diff'], 'You have Deleted a whole Album.', green);
+                        break;
+                    case 'delete_image'://iruka
+                        generateNotification(data['id'], data['diff'], 'You have Deleted a Photo form a Album.', green);
+                        break;
+                    //Admin
+                    case 'add_temp'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Added a new Template.', green);
+                        break;
+                    case 'update_temp'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Updated Template details.', green);
+                        break;
+                    case 'delete_temp'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Deleted a Template.', green);
+                        break;
+                    case 'add_slide'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have added a Slideshow image.', green);
+                        break;
+                    case 'remove_slide'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Removed a image from the SlideShow.', green);
+                        break;
+                    case 'promote_mod'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Promoted a user to Moderator.', green);
+                        break;
+                    case 'promote_admin'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Pormoted a user to Admin.', green);
+                        break;
+                    case 'demote'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Demoted a user.', green);
+                        break;
+                    case 'kicked'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Kicked Out a user', green);
+                        break;
+                    case 'ignore_mail'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have ignored a mail', green);
+                        break;
+                    case 'reply_mail'://tharidu
+                        generateNotification(data['id'], data['diff'], 'You have Replyed a mail', green);
                         break;
                     default:
                         console.log(type + ':' + msg);

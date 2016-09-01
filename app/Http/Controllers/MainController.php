@@ -8,20 +8,25 @@ use Illuminate\Http\Request;
 use App\slideimage;
 use App\visitormail;
 use App\Template;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
-
+use Carbon\Carbon;
+use App\ExceptionsLog;
 class MainController extends Controller
 {
+    private $notification;
+    private $userId;
+    private $mail;
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     *MainController constructor.
      */
-    public function __construct()
-    {
-
-    }
+//    public function __construct()
+//    {
+//        $this->userId=Auth::user()->id;
+//        $this->mail=Auth::user()->email;
+//        $this->notification = new NotificationController();
+//    }
 
     /**
      * Show the application dashboard.
@@ -58,7 +63,6 @@ class MainController extends Controller
     }
 
     public function store_mail(Request $request){
-
         $mail = new visitormail();
         $mail->sender_name = Input::get('name');
         $mail->sender_email = Input::get('email');
@@ -72,41 +76,59 @@ class MainController extends Controller
     }
 
     public function ignor_mail(Request $request , visitormail $mail){
+        try {
+            $reply = "Ignore";
+            $mail->reply = $reply;
+            $mail->reply_by = Auth::user()->name;
+            if($mail->update()){
+                $this->notification->addNotification($this->userId,'ignore_mail');
+            }
+            return redirect("/templates/mail/view");
+        }
+        catch (\Exception $exception){
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
-        $reply = "Ignore";
-        $mail->reply = $reply;
-        $mail->reply_by = Auth::user()->name;
-        $mail->update();
-        return redirect("/templates/mail/view");
+            ExceptionsLog::create($exceptionData);
+        }
     }
 
     public function reply_mail(Request $request , visitormail $mail){
 
         $reply = Input::get('reply_message');
-        if(($mail->reply)!= "not yet reply")
-        {
-            $previous = $mail->reply;
-            $mail->reply=$previous."  -  updated  ->  ".$reply;
+        try {
+            if (($mail->reply) != "not yet reply") {
+                $previous = $mail->reply;
+                $mail->reply = $previous . "  -  updated  ->  " . $reply;
+            } else {
+                $mail->reply = $reply;
+            }
+
+            $mail->reply_by = Auth::user()->name;
+
+            $data['email'] = $mail->sender_email;
+            $data['name'] = $mail->sender_name;
+            $data['body'] = $reply;
+            $data['reply_by'] = Auth::user()->name;
+
+            //view('mailbody',compact($reply));
+            // var_dump($data);
+            Mail::send('mail.mailbody', ['data' => $data], function ($m) use ($data) {
+                $m->to($data['email'], $data['name'])->subject('Your Reminder!')->from('azinabcoc@gmail.com');
+            });
+            if($mail->update()){
+                $this->notification->addNotification($this->userId,'reply_mail');
+            }
+            return redirect("/templates/" . $mail->id . "/show");
         }
-        else
-        {
-            $mail->reply = $reply;
+        catch (\Exception $exception){
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
         }
-
-        $mail->reply_by = Auth::user()->name;
-
-        $data['email']=$mail->sender_email;
-        $data['name']=$mail->sender_name;
-        $data['body']=$reply;
-        $data['reply_by']=Auth::user()->name;
-
-        //view('mailbody',compact($reply));
-        // var_dump($data);
-        Mail::send('mail.mailbody', ['data' => $data], function ($m) use ($data){
-            $m->to($data['email'], $data['name'])->subject('Your Reminder!')->from('azinabcoc@gmail.com');
-        });
-        $mail->update();
-        return redirect("/templates/".$mail->id."/show");
 
     }
 
