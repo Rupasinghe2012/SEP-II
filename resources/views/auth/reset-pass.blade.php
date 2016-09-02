@@ -3,7 +3,7 @@
     <h1> Profiler.NET</h1>
     <h3>Password Reset</h3>
     @if(session('message'))
-        <div class="alert alert-info">
+        <div class="alert alert-success">
             {{ session('message') }}
         </div>
         @endif

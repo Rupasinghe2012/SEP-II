@@ -567,32 +567,108 @@ class AdminController extends Controller
         echo "<script>";
         $title = Input::get('title');
         $detail = Input::get('details');
-        $date = Input::get('date');
+        $s_date = Input::get('str_date');
         $s_time = Input::get('str_time');
         $e_time = Input::get('end_time');
+        $e_date = Input::get('end_date');
+        $type = Input::get('type');
         $venue = Input::get('venue');
 
         $current_date = date("Y-m-d");
-        if (strtotime($date) < strtotime($current_date)) {
-            echo "alert('Invalid date(can not use pass date)');";
+        if (strtotime($s_date) < strtotime($current_date) || strtotime($e_date) < strtotime($current_date) || strtotime($s_date) < strtotime($e_date)) {
+            echo "alert('Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
         }
         elseif(strtotime($s_time) > strtotime($e_time)){
             echo "alert('Invalid time(starting time can not be less than end time)');";
         }
         else {
-            $loged_user = Auth::user();
 
-            $event = new calenderevent();
-            $event->title = $title;
-            $event->description = $detail;
-            $event->event_date = $date;
-            $event->venue = $venue;
-            $event->s_time = $s_time;
-            $event->e_time = $e_time;
-            $event->user_name = $loged_user->name;
-            $event->user_id = $loged_user->id;
+            if($type=="Once")
+            {
+                $count=01;
+                while(strtotime($s_date) <= strtotime($e_date))
+                {
+                    $loged_user = Auth::user();
+                    $event = new calenderevent();
+                    $event->title = $title."( Event Day - ".$count." )";
+                    $event->description = $detail;
+                    $event->event_start_date = $s_date;
+//                    $event->event_end_date = $e_date;
+                    $event->venue = $venue;
+                    $event->type = $type;
+                    $event->s_time = $s_time;
+                    $event->e_time = $e_time;
+                    $event->user_name = $loged_user->name;
+                    $event->user_id = $loged_user->id;
 
-            $event->save();
+                    $event->save();
+                    $s_date = date ("Y-m-d", strtotime("+1 days", strtotime($s_date)));
+                    $count++;
+                }
+            }
+
+            if($type=="Weekly")
+            {
+                $count=01;
+                while(strtotime($s_date) <= strtotime($e_date))
+                {
+                    $loged_user = Auth::user();
+                    $event = new calenderevent();
+                    $event->title = $title."( Event Day - ".$count." )";
+                    $event->description = $detail;
+                    $event->event_start_date = $s_date;
+//                    $event->event_end_date = $e_date;
+                    $event->venue = $venue;
+                    $event->type = $type;
+                    $event->s_time = $s_time;
+                    $event->e_time = $e_time;
+                    $event->user_name = $loged_user->name;
+                    $event->user_id = $loged_user->id;
+
+                    $event->save();
+                    $s_date = date ("Y-m-d", strtotime("+7 days", strtotime($s_date)));
+                    $count++;
+                }
+            }
+
+            if($type=="Monthly")
+            {
+                $count=01;
+                while(strtotime($s_date) <= strtotime($e_date))
+                {
+                    $loged_user = Auth::user();
+                    $event = new calenderevent();
+                    $event->title = $title."( Event Day - ".$count." )";
+                    $event->description = $detail;
+                    $event->event_start_date = $s_date;
+//                    $event->event_end_date = $e_date;
+                    $event->venue = $venue;
+                    $event->type = $type;
+                    $event->s_time = $s_time;
+                    $event->e_time = $e_time;
+                    $event->user_name = $loged_user->name;
+                    $event->user_id = $loged_user->id;
+
+                    $event->save();
+                    $s_date = date ("Y-m-d", strtotime("+1 month", strtotime($s_date)));
+                    $count++;
+                }
+            }
+
+//            $loged_user = Auth::user();
+//            $event = new calenderevent();
+//            $event->title = $title;
+//            $event->description = $detail;
+//            $event->event_start_date = $s_date;
+//            $event->event_end_date = $e_date;
+//            $event->venue = $venue;
+//            $event->type = $type;
+//            $event->s_time = $s_time;
+//            $event->e_time = $e_time;
+//            $event->user_name = $loged_user->name;
+//            $event->user_id = $loged_user->id;
+//
+//            $event->save();
 //            return redirect("/calender/view");
         }
         echo "window.location.href='/calender/view'</script>";

@@ -19,13 +19,14 @@ class CreateCalendereventTable extends Migration
             $table->string('user_name');
             $table->string('title');
             $table->string('description');
-            $table->string('event_date');
+            $table->string('event_start_date');
+            $table->string('event_end_date');
             $table->string('venue');
             $table->time('s_time');
             $table->time('e_time');
             $table->string('type');
-            $table->integer('repeat_time');
-            $table->date('date_added');
+//            $table->integer('repeat_time');
+//            $table->date('date_added');
         });
     }
 

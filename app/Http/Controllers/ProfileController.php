@@ -58,15 +58,15 @@ class ProfileController extends Controller
      */
     public function update(Request $request){
 
-        //validate the information sent first
-        $this->validate($request, [
-            'name'=> 'required|min 8',
-            'email' => 'required|email',
-            'status' => 'required',
-            'BOD' => 'required',
-            'address' => 'required|max 255',
-            'job' => 'required|max 20'
-        ]);
+//        //validate the information sent first
+//        $this->validate($request, [
+//            'name'=> 'required|min 8',
+//            'email' => 'required|email',
+//            'status' => 'required',
+//            'BOD' => 'required',
+//            'address' => 'required|max 255',
+//            'job' => 'required|max 20'
+//        ]);
         
         try{
         $user = User::find(Input::get('id'));

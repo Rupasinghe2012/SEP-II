@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6a93813d-3ddb-48cf-8dc7-57498d3ebdb8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/footer.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/footer.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/header.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_09_01_161943_create_calenderevent_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_09_01_161943_create_calenderevent_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/reset-pass.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/reset-pass.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/calender.blade.php" afterPath="$PROJECT_DIR$/resources/views/calender.blade.php" />
     </list>
     <ignored path="SEP_II.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,13 +33,23 @@
       <file leaf-file-name="slide_show.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/slide_show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="-816">
               <caret line="93" column="193" selection-start-line="93" selection-start-column="193" selection-end-line="93" selection-end-column="193" />
               <folding>
                 <element signature="e#3876#3896#0#HTML" expanded="true" />
                 <element signature="e#4118#4139#0#HTML" expanded="true" />
                 <element signature="e#4823#4837#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reset-pass.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/auth/reset-pass.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -50,6 +64,30 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="674" column="5" selection-start-line="674" selection-start-column="5" selection-end-line="674" selection-end-column="5" />
+              <folding>
+                <element signature="e#40#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2016_09_01_161943_create_calenderevent_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2016_09_01_161943_create_calenderevent_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+              <folding>
+                <element signature="e#7#48#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="footer.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/includes/footer.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,12 +98,99 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="header.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/includes/header.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            <state relative-caret-position="257">
+              <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomAuthenticationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-432">
+              <caret line="196" column="39" selection-start-line="196" selection-start-column="39" selection-end-line="196" selection-end-column="39" />
+              <folding>
+                <element signature="e#39#61#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="94" column="68" selection-start-line="94" selection-start-column="68" selection-end-line="94" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calender.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/calender.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-276">
+              <caret line="191" column="9" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
+              <folding>
+                <element signature="e#47#73#0#HTML" expanded="true" />
+                <element signature="e#189#217#0#HTML" expanded="true" />
+                <element signature="e#362#395#0#HTML" expanded="true" />
+                <element signature="e#513#571#0#HTML" expanded="true" />
+                <element signature="e#597#630#0#HTML" expanded="true" />
+                <element signature="e#798#824#0#HTML" expanded="true" />
+                <element signature="e#889#915#0#HTML" expanded="true" />
+                <element signature="e#989#1015#0#HTML" expanded="true" />
+                <element signature="e#1233#1266#0#HTML" expanded="true" />
+                <element signature="e#1819#1839#0#HTML" expanded="true" />
+                <element signature="e#2282#2302#0#HTML" expanded="true" />
+                <element signature="e#2702#2724#0#HTML" expanded="true" />
+                <element signature="e#3413#3447#0#HTML" expanded="true" />
+                <element signature="e#3661#3695#0#HTML" expanded="true" />
+                <element signature="e#4147#4169#0#HTML" expanded="true" />
+                <element signature="e#5089#5121#0#HTML" expanded="true" />
+                <element signature="e#5206#5256#0#HTML" expanded="true" />
+                <element signature="e#5369#5389#0#HTML" expanded="true" />
+                <element signature="e#5551#5571#0#HTML" expanded="true" />
+                <element signature="e#5801#5852#0#HTML" expanded="true" />
+                <element signature="e#5963#5992#0#HTML" expanded="true" />
+                <element signature="e#6102#6131#0#HTML" expanded="true" />
+                <element signature="e#6259#6288#0#HTML" expanded="true" />
+                <element signature="e#6847#6869#0#HTML" expanded="true" />
+                <element signature="e#7794#7826#0#HTML" expanded="true" />
+                <element signature="e#7911#7961#0#HTML" expanded="true" />
+                <element signature="e#8075#8126#0#HTML" expanded="true" />
+                <element signature="e#8237#8266#0#HTML" expanded="true" />
+                <element signature="e#8376#8405#0#HTML" expanded="true" />
+                <element signature="e#8533#8562#0#HTML" expanded="true" />
+                <element signature="e#9103#9186#0#HTML" expanded="true" />
+                <element signature="e#9561#9583#0#HTML" expanded="true" />
+                <element signature="e#10272#10306#0#HTML" expanded="true" />
+                <element signature="e#10520#10554#0#HTML" expanded="true" />
+                <element signature="e#11006#11028#0#HTML" expanded="true" />
+                <element signature="e#11948#11980#0#HTML" expanded="true" />
+                <element signature="e#12065#12115#0#HTML" expanded="true" />
+                <element signature="e#12228#12248#0#HTML" expanded="true" />
+                <element signature="e#12410#12430#0#HTML" expanded="true" />
+                <element signature="e#12660#12711#0#HTML" expanded="true" />
+                <element signature="e#12822#12851#0#HTML" expanded="true" />
+                <element signature="e#12961#12990#0#HTML" expanded="true" />
+                <element signature="e#13118#13147#0#HTML" expanded="true" />
+                <element signature="e#13706#13728#0#HTML" expanded="true" />
+                <element signature="e#14653#14685#0#HTML" expanded="true" />
+                <element signature="e#14770#14820#0#HTML" expanded="true" />
+                <element signature="e#14934#14985#0#HTML" expanded="true" />
+                <element signature="e#15096#15125#0#HTML" expanded="true" />
+                <element signature="e#15235#15264#0#HTML" expanded="true" />
+                <element signature="e#15392#15421#0#HTML" expanded="true" />
+                <element signature="e#15962#16009#0#HTML" expanded="true" />
+                <element signature="e#16448#16505#0#HTML" expanded="true" />
+                <element signature="e#16777#16797#0#HTML" expanded="true" />
+                <element signature="e#17220#17240#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/mail/password.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/views/mail/reset-password.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
@@ -96,11 +220,9 @@
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/resources/views/includes/logout.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfUserIsNotAdmin.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/reset-pass.blade.php" />
         <option value="$PROJECT_DIR$/public/js/admin.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/GalleryController.php" />
         <option value="$PROJECT_DIR$/public/js/galery.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
         <option value="$PROJECT_DIR$/resources/views/profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/mail/kickout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/mail/demotion.blade.php" />
@@ -125,17 +247,20 @@
         <option value="$PROJECT_DIR$/resources/views/includes/partials/admin.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php" />
-        <option value="$PROJECT_DIR$/resources/views/calender.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/add_temp.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/gallery/gallery-view.blade.php" />
         <option value="$PROJECT_DIR$/public/js/alert.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/includes/footer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/includes/header.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/reset-pass.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
+        <option value="$PROJECT_DIR$/resources/views/calender.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_09_01_161943_create_calenderevent_table.php" />
       </list>
     </option>
   </component>
@@ -217,8 +342,18 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="SEP_II" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEP_II" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -232,51 +367,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -291,46 +386,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEP_II" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,7 +397,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;ale&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/alert.js&#10;admin&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/admin.js&#10;not&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/notification.js&#10;g&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/galery.js&#10;Notif&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/notification.js&#10;aler&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/alert.js&#10;ga&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/galery.js&#10;rou&#9;FILE&#9;file://C:/wamp64/www/SEP_II/app/Http/routes.php&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;jquery.ui.datepicker.validation.js&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/jquery.ui.datepicker.validation.js&#10;inputmask&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/plugins/input-mask/jquery.inputmask.date.extensions.js&#10;login-register.js&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/login-register.js&#10;StreamBuffer.php&#9;FILE&#9;file://C:/wamp64/www/SEP_II/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php&#10;smptp&#9;FILE&#9;file://C:/wamp64/www/SEP_II/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/PopBeforeSmtpPluginTest.php&#10;noti&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/notification.js&#10;style&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/css/style.css&#10;alert&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/alert.js" />
+    <property name="SearchEverywhereHistoryKey" value="ad&#9;FILE&#9;file://C:/wamp64/www/SEP_II/app/Http/Controllers/AdminController.php&#10;ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;ale&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/alert.js&#10;admin&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/admin.js&#10;not&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/notification.js&#10;g&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/galery.js&#10;Notif&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/notification.js&#10;aler&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/alert.js&#10;ga&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/galery.js&#10;rou&#9;FILE&#9;file://C:/wamp64/www/SEP_II/app/Http/routes.php&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;jquery.ui.datepicker.validation.js&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/jquery.ui.datepicker.validation.js&#10;inputmask&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/plugins/input-mask/jquery.inputmask.date.extensions.js&#10;login-register.js&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/login-register.js&#10;StreamBuffer.php&#9;FILE&#9;file://C:/wamp64/www/SEP_II/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php&#10;smptp&#9;FILE&#9;file://C:/wamp64/www/SEP_II/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/PopBeforeSmtpPluginTest.php&#10;noti&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/notification.js&#10;style&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/css/style.css&#10;alert&#9;FILE&#9;file://C:/wamp64/www/SEP_II/public/js/alert.js" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
@@ -407,12 +462,12 @@
       <workItem from="1471981466680" duration="10793000" />
       <workItem from="1472477007846" duration="932000" />
       <workItem from="1472702827462" duration="46186000" />
-      <workItem from="1472790018428" duration="1251000" />
+      <workItem from="1472790018428" duration="6293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119590000" />
+    <option name="totallyTimeSpent" value="124632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -478,20 +533,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/includes/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/mail/kickout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/mail/demotion.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -503,13 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="205" column="34" selection-start-line="205" selection-start-column="34" selection-end-line="205" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -552,6 +586,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -559,6 +594,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -566,6 +602,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -573,6 +610,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -580,6 +618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -594,6 +633,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -608,6 +648,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -618,24 +659,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/notification_log.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-463">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/calender.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="250" column="5" selection-start-line="250" selection-start-column="5" selection-end-line="250" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -773,17 +800,7 @@
         <state relative-caret-position="51">
           <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding>
-            <element signature="e#40#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="22" selection-end-column="22" />
-          <folding>
-            <element signature="e#40#62#0#PHP" expanded="true" />
+            <element signature="e#40#62#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -812,22 +829,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/slide_show.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/includes/header.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="93" column="193" selection-start-line="93" selection-start-column="193" selection-end-line="93" selection-end-column="193" />
-          <folding>
-            <element signature="e#3876#3896#0#HTML" expanded="true" />
-            <element signature="e#4118#4139#0#HTML" expanded="true" />
-            <element signature="e#4823#4837#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="257">
+          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -840,11 +845,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/includes/header.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/slide_show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="93" column="193" selection-start-line="93" selection-start-column="193" selection-end-line="93" selection-end-column="193" />
+          <folding>
+            <element signature="e#3876#3896#0#HTML" expanded="true" />
+            <element signature="e#4118#4139#0#HTML" expanded="true" />
+            <element signature="e#4823#4837#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/reset-pass.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CustomAuthenticationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-432">
+          <caret line="196" column="39" selection-start-line="196" selection-start-column="39" selection-end-line="196" selection-end-column="39" />
+          <folding>
+            <element signature="e#39#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <caret line="94" column="68" selection-start-line="94" selection-start-column="68" selection-end-line="94" selection-end-column="68" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/calender.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="191" column="9" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
+          <folding>
+            <element signature="e#47#73#0#HTML" expanded="true" />
+            <element signature="e#189#217#0#HTML" expanded="true" />
+            <element signature="e#362#395#0#HTML" expanded="true" />
+            <element signature="e#513#571#0#HTML" expanded="true" />
+            <element signature="e#597#630#0#HTML" expanded="true" />
+            <element signature="e#798#824#0#HTML" expanded="true" />
+            <element signature="e#889#915#0#HTML" expanded="true" />
+            <element signature="e#989#1015#0#HTML" expanded="true" />
+            <element signature="e#1233#1266#0#HTML" expanded="true" />
+            <element signature="e#1819#1839#0#HTML" expanded="true" />
+            <element signature="e#2282#2302#0#HTML" expanded="true" />
+            <element signature="e#2702#2724#0#HTML" expanded="true" />
+            <element signature="e#3413#3447#0#HTML" expanded="true" />
+            <element signature="e#3661#3695#0#HTML" expanded="true" />
+            <element signature="e#4147#4169#0#HTML" expanded="true" />
+            <element signature="e#5089#5121#0#HTML" expanded="true" />
+            <element signature="e#5206#5256#0#HTML" expanded="true" />
+            <element signature="e#5369#5389#0#HTML" expanded="true" />
+            <element signature="e#5551#5571#0#HTML" expanded="true" />
+            <element signature="e#5801#5852#0#HTML" expanded="true" />
+            <element signature="e#5963#5992#0#HTML" expanded="true" />
+            <element signature="e#6102#6131#0#HTML" expanded="true" />
+            <element signature="e#6259#6288#0#HTML" expanded="true" />
+            <element signature="e#6847#6869#0#HTML" expanded="true" />
+            <element signature="e#7794#7826#0#HTML" expanded="true" />
+            <element signature="e#7911#7961#0#HTML" expanded="true" />
+            <element signature="e#8075#8126#0#HTML" expanded="true" />
+            <element signature="e#8237#8266#0#HTML" expanded="true" />
+            <element signature="e#8376#8405#0#HTML" expanded="true" />
+            <element signature="e#8533#8562#0#HTML" expanded="true" />
+            <element signature="e#9103#9186#0#HTML" expanded="true" />
+            <element signature="e#9561#9583#0#HTML" expanded="true" />
+            <element signature="e#10272#10306#0#HTML" expanded="true" />
+            <element signature="e#10520#10554#0#HTML" expanded="true" />
+            <element signature="e#11006#11028#0#HTML" expanded="true" />
+            <element signature="e#11948#11980#0#HTML" expanded="true" />
+            <element signature="e#12065#12115#0#HTML" expanded="true" />
+            <element signature="e#12228#12248#0#HTML" expanded="true" />
+            <element signature="e#12410#12430#0#HTML" expanded="true" />
+            <element signature="e#12660#12711#0#HTML" expanded="true" />
+            <element signature="e#12822#12851#0#HTML" expanded="true" />
+            <element signature="e#12961#12990#0#HTML" expanded="true" />
+            <element signature="e#13118#13147#0#HTML" expanded="true" />
+            <element signature="e#13706#13728#0#HTML" expanded="true" />
+            <element signature="e#14653#14685#0#HTML" expanded="true" />
+            <element signature="e#14770#14820#0#HTML" expanded="true" />
+            <element signature="e#14934#14985#0#HTML" expanded="true" />
+            <element signature="e#15096#15125#0#HTML" expanded="true" />
+            <element signature="e#15235#15264#0#HTML" expanded="true" />
+            <element signature="e#15392#15421#0#HTML" expanded="true" />
+            <element signature="e#15962#16009#0#HTML" expanded="true" />
+            <element signature="e#16448#16505#0#HTML" expanded="true" />
+            <element signature="e#16777#16797#0#HTML" expanded="true" />
+            <element signature="e#17220#17240#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_09_01_161943_create_calenderevent_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding>
+            <element signature="e#7#48#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="674" column="5" selection-start-line="674" selection-start-column="5" selection-end-line="674" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#62#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

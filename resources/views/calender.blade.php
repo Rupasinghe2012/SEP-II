@@ -40,7 +40,7 @@
                         <?php $count=0;if($i<10){$i="0".$i;} ?>
 
                         @foreach($event_list as $event)
-                            @if($event->event_date == $year."-".$month."-".$i && $i==$c_day&&$year==$c_year&&$month==$c_month)
+                            @if($event->event_start_date == $year."-".$month."-".$i && $i==$c_day&&$year==$c_year&&$month==$c_month)
                                 <div id="replyModal{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1400;">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
@@ -50,14 +50,14 @@
                                                 <h4 class="modal-title"><b>EVENT LIST - </b>{{$year."-".$month."-".$i}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <button style=" background-color: #01ff70" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2">My Events</button>
-                                                <button style=" background-color: #00d8ff" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3">Others' Events</button>
+                                                <button style=" background-color: #01ff70" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2{{$year."-".$month."-".$i}}">My Events</button>
+                                                <button style=" background-color: #00d8ff" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3{{$year."-".$month."-".$i}}">Others' Events</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="test2" class="modal fade" role="dialog" style="z-index: 1600;">
+                                <div id="test2{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1600;">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 @foreach($event_list as $event)
-                                                    @if($event->event_date == $year."-".$month."-".$i && $event->user_id == $loged_user->id)
+                                                    @if($event->event_start_date == $year."-".$month."-".$i && $event->user_id == $loged_user->id)
                                                         <div style="background-color:#42dca3">
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
                                                             <button type="button" style="float: right" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
 
-                                <div id="test3" class="modal fade" role="dialog" style="z-index: 1600;">
+                                <div id="test3{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1600;">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -95,7 +95,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 @foreach($event_list as $event)
-                                                    @if($event->event_date == $year."-".$month."-".$i && $event->user_id != $loged_user->id)
+                                                    @if($event->event_start_date == $year."-".$month."-".$i && $event->user_id != $loged_user->id)
                                                         <div style="background-color:#7adddd">
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
                                                             Event Title       : <b style="font-size: large;text-transform: capitalize">{{$event->title}}</b> <br>
@@ -113,7 +113,7 @@
                                 </div>
                                 <?php $count++ ?><td width="100px" align="center"><button style="width: 100px;border: outset rgba(26, 255, 28, 1); background-color: #eac36e" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>@break;
 
-                            @elseif($event->event_date == $year."-".$month."-".$i)
+                            @elseif($event->event_start_date == $year."-".$month."-".$i)
                                 <div id="replyModal{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1400;">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
@@ -123,14 +123,14 @@
                                                 <h4 class="modal-title"><b>EVENT LIST - </b>{{$year."-".$month."-".$i}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <button style=" background-color: #01ff70" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2">My Events</button>
-                                                <button style=" background-color: #00d8ff" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3">Others' Events</button>
+                                                <button style=" background-color: #01ff70" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2{{$year."-".$month."-".$i}}">My Events</button>
+                                                <button style=" background-color: #00d8ff" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3{{$year."-".$month."-".$i}}">Others' Events</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="test2" class="modal fade" role="dialog" style="z-index: 1600;">
+                                <div id="test2{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1600;">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -140,7 +140,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 @foreach($event_list as $event)
-                                                    @if($event->event_date == $year."-".$month."-".$i && $event->user_id == $loged_user->id)
+                                                    @if($event->event_start_date == $year."-".$month."-".$i && $event->user_id == $loged_user->id)
                                                         <div style="background-color:#42dca3">
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
                                                             <button type="button" style="float: right" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
 
-                                <div id="test3" class="modal fade" role="dialog" style="z-index: 1600;">
+                                <div id="test3{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1600;">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -168,7 +168,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 @foreach($event_list as $event)
-                                                    @if($event->event_date == $year."-".$month."-".$i && $event->user_id != $loged_user->id)
+                                                    @if($event->event_start_date == $year."-".$month."-".$i && $event->user_id != $loged_user->id)
                                                         <div style="background-color:#7adddd">
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
                                                             Event Title       : <b style="font-size: large;text-transform: capitalize">{{$event->title}}</b> <br>
@@ -219,25 +219,19 @@
                                 {{ csrf_field() }}
                                 Event Title : <input type="text" name="title" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
                                 Event Details : <textarea name="details" id="details" class="form-control" rows="3" cols="20" placeholder="Enter your event details" required data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="75" data-parsley-minlength-message="description should be atleast 20 characters"  data-parsley-maxlength-message="description should be less than 75 characters"></textarea><br><br>
-                                Event Date : <input type="date" name="date" required ><br><br>
+                                Event Start Date : <input type="date" name="str_date" required ><span> </span> Event End Date : <input type="date" name="end_date" required ><br><br>
                                 Event Start Time : <input type="time" name="str_time" required><span> </span>Event End Time : <input type="time" name="end_time" required><br><br>
                                 Event Venue : <input type="text" name="venue" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                Event Repeat : <select>
-                                    <option>Once</option>
-                                    <option>Weekly</option>
-                                    <option>Monthly</option>
+                                Event Type : <select name="type">
+                                    <option value="Once">Once</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
                                 </select><br><br>
-                                No of Repeats : <select>
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                    <option>04</option>
-                                    <option>05</option>
-                                </select><br><br><br>
                                 <input title="click here to add event" type="submit" class="btn btn-warning" value="Add Event" onclick="return confirm('Are you sure to Add this event?');">
                             </form>
                         </div>
                         <div class="modal-footer">
+                            {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
                         </div>
                     </div>
 
@@ -246,7 +240,4 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-@section('notifications')
-    @include('includes.notification')
-@stop
 @endsection

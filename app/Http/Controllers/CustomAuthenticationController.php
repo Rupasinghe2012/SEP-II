@@ -191,7 +191,7 @@ class CustomAuthenticationController extends Controller
 
                     //error_log('success');
                     return Redirect::back()
-                        ->with('message', 'Your password was reset successfully. Please check your email. ');
+                        ->with('message' ,'Your password has been reset check your email.');
                 } else {
                    // error_log('else error..');
                     return Redirect::back()
