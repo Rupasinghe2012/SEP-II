@@ -22,6 +22,7 @@
 
     <script type="text/javascript"> var baseUrl = "{{url('/')}}";</script>
     <link rel="stylesheet" type="text/css" href="{{ asset('/dist/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
     @yield('links')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

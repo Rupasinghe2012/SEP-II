@@ -11,6 +11,8 @@
 <script src="/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+
+    <script src="{{ asset('/js/parsley.min.js')}}"></script>
     <script src="{{ asset('/dist/sweetalert.min.js')}}"></script>
 
     <script src="{{ asset('/js/alert.js')}}"></script>
