@@ -30,6 +30,7 @@
             <li><a href="{{url('/temp')}}"><i class="fa fa-television"></i> <span>My Templates</span></a></li>
             <li><a href="{{url('/profile')}}"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
             <li><a href="{{url('/gallery/list')}}"><i class="fa fa-photo"></i> <span>My galery</span></a></li>
+            <li><a href="{{url('/temp_store')}}"><i class="fa fa-shopping-cart"></i> <span>Template Store</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

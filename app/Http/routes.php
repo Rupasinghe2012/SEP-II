@@ -150,4 +150,5 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::post('gallery/deleteImg/{id}','GalleryController@deleteImage');
     Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
     Route::post('image/do-upload','GalleryController@doImageUpload');
+    Route::get('temp_store','StoreController@index');
 });
