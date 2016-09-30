@@ -484,7 +484,7 @@ class AdminController extends Controller
                if($user->delete()){
                    $this->notification->addNotification($this->userId,'kicked');
                }
-               
+
            }
            return redirect("/admin/user/manage");
        }
@@ -575,7 +575,8 @@ class AdminController extends Controller
         $venue = Input::get('venue');
 
         $current_date = date("Y-m-d");
-        if (strtotime($s_date) < strtotime($current_date) || strtotime($e_date) < strtotime($current_date) || strtotime($s_date) < strtotime($e_date)) {
+        //changed or gates to and
+        if (strtotime($s_date) < strtotime($current_date) && strtotime($e_date) < strtotime($current_date) && strtotime($s_date) < strtotime($e_date)) {
             echo "alert('Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
         }
         elseif(strtotime($s_time) > strtotime($e_time)){
