@@ -126,6 +126,8 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
 
     Route::any('/calender/view', 'AdminController@calender_view');
     Route::any('/calender/add_event', 'AdminController@calender_add_event');
+    Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
+    Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
 
 
 });
@@ -150,4 +152,23 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::post('gallery/deleteImg/{id}','GalleryController@deleteImage');
     Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
     Route::post('image/do-upload','GalleryController@doImageUpload');
+
+    //sameera
+    Route::get('/temp','Loaddemo_controller@index');
+    Route::get('/demo','Loaddemo_controller@demo');
+    Route::get('/edit/{id}','Loaddemo_controller@edit');
+    Route::resource('site','SiteController');
+    Route::resource('post','PostController');
+    Route::post('/store/{id}','SiteController@store');//sameera
+    //comments
+    Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
+    Route::get('comments/show/{post_id}',['uses'=>'CommentsController@show','as'=>'showcomments.show']);
+    Route::get('comments/all',['uses'=>'CommentsController@index','as'=>'showallcomments.show']);
+    Route::post('delete/{id}',['uses'=>'CommentsController@destroy','as'=>'delete.comment']);
+    Route::get('approve','CommentsController@approve');
+    Route::get('getapprovecomments','CommentsController@getApproveComments');
+    Route::get('getComments','CommentsController@getComments');
+    Route::get('getNewComments','CommentsController@getUnreadandUnapprovedcomments');
+
+
 });

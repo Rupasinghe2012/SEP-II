@@ -69,7 +69,7 @@ class AdminController extends Controller
             if($is_ex==0) {
                 $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
                 //$filename2 = Input::get('name') . '-source.' . $source->getClientOriginalExtension();
-                $destinationPath = 'C:/wamp64/www/SEP_II/resources/views/upload_temp/'; // upload path
+                $destinationPath = 'C:/xampp/htdocs/SEP-II/resources/views/upload_temp/'; // upload path
                 $extension = $source->getClientOriginalExtension(); // getting image extension
                 $filename2 = Input::get('name') . '-source.blade.' . $extension; // renameing image
                 $source->move($destinationPath, $filename2);
@@ -154,7 +154,7 @@ class AdminController extends Controller
                 }
 
                 if($source != null) {
-                    $destinationPath = 'C:/wamp64/www/SEP_II/resources/views/upload_temp/'; // upload path
+                    $destinationPath = 'C:/xampp/htdocs/SEP_II/resources/views/upload_temp/'; // upload path
                     $extension = $source->getClientOriginalExtension(); // getting image extension
                     $filename2 = Input::get('name') . '-source.blade.'.$extension; // renameing image
                     $source->move($destinationPath, $filename2);
@@ -218,7 +218,7 @@ class AdminController extends Controller
         $is_ex = 0;
         $name = Input::get('name');
         try {
-            $ex_file =slideimage::all();
+            $ex_file = slideimage::all();
             foreach ($ex_file as $ex)
             {
                 if($ex->name==$name)
@@ -229,12 +229,12 @@ class AdminController extends Controller
 
             echo "<script>";
             if($is_ex==0) {
-
+               // echo "**************";
                 $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
 
-                Image::make($image)->save('/img/' . $filename);
+                Image::make($image)->save('img/' . $filename);
 
-                Image::make($image)->resize(150, 150)->save('/img/preview/' . $filename);
+                Image::make($image)->resize(150, 150)->save('img/preview/' . $filename);
 
                 $slideimage = new slideimage;
                 $slideimage->name = Input::get('name');
@@ -245,6 +245,7 @@ class AdminController extends Controller
                 if($slideimage->save()){
                     $this->notification->addNotification($this->userId,'add_slide');
                 }
+//                echo "window.location.href='/templates/slide'</script>";
             }
             else{
                 echo "alert('Slide image name already used');";
@@ -358,6 +359,8 @@ class AdminController extends Controller
         $count['mail'] = visitormail::all()->count();
         $count['queue'] = visitormail::where('reply','not yet reply')->count();
         $count['replied']=$count['mail']-($count['ignor']+$count['queue']);
+        $count['image'] = slideimage::where('status', 2)->get();
+        $count['imagefirst'] = slideimage::where('status', 1)->get();
         return view('admin.admin_home',compact('count'));
     }
 
@@ -565,6 +568,7 @@ class AdminController extends Controller
     public function calender_add_event(){
 
         echo "<script>";
+        $cur_id = DB::table('calenderevents')->max('id');
         $title = Input::get('title');
         $detail = Input::get('details');
         $s_date = Input::get('str_date');
@@ -575,8 +579,8 @@ class AdminController extends Controller
         $venue = Input::get('venue');
 
         $current_date = date("Y-m-d");
-        if (strtotime($s_date) < strtotime($current_date) || strtotime($e_date) < strtotime($current_date) || strtotime($s_date) < strtotime($e_date)) {
-            echo "alert('Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
+        if (strtotime($s_date) < strtotime($current_date) || strtotime($e_date) < strtotime($current_date) || strtotime($s_date) > strtotime($e_date)) {
+            echo "alert('".strtotime($s_date).strtotime($current_date).strtotime($e_date)."Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
         }
         elseif(strtotime($s_time) > strtotime($e_time)){
             echo "alert('Invalid time(starting time can not be less than end time)');";
@@ -600,6 +604,7 @@ class AdminController extends Controller
                     $event->e_time = $e_time;
                     $event->user_name = $loged_user->name;
                     $event->user_id = $loged_user->id;
+                    $event->common_id = $cur_id+1;
 
                     $event->save();
                     $s_date = date ("Y-m-d", strtotime("+1 days", strtotime($s_date)));
@@ -624,6 +629,7 @@ class AdminController extends Controller
                     $event->e_time = $e_time;
                     $event->user_name = $loged_user->name;
                     $event->user_id = $loged_user->id;
+                    $event->common_id = $cur_id+1;
 
                     $event->save();
                     $s_date = date ("Y-m-d", strtotime("+7 days", strtotime($s_date)));
@@ -648,30 +654,29 @@ class AdminController extends Controller
                     $event->e_time = $e_time;
                     $event->user_name = $loged_user->name;
                     $event->user_id = $loged_user->id;
+                    $event->common_id = $cur_id+1;
 
                     $event->save();
                     $s_date = date ("Y-m-d", strtotime("+1 month", strtotime($s_date)));
                     $count++;
                 }
             }
-
-//            $loged_user = Auth::user();
-//            $event = new calenderevent();
-//            $event->title = $title;
-//            $event->description = $detail;
-//            $event->event_start_date = $s_date;
-//            $event->event_end_date = $e_date;
-//            $event->venue = $venue;
-//            $event->type = $type;
-//            $event->s_time = $s_time;
-//            $event->e_time = $e_time;
-//            $event->user_name = $loged_user->name;
-//            $event->user_id = $loged_user->id;
-//
-//            $event->save();
-//            return redirect("/calender/view");
         }
         echo "window.location.href='/calender/view'</script>";
     }
 
+    public function calender_delete_event(calenderevent $event){
+        $event->delete();
+        return back();
+    }
+
+    public function calender_delete_full_event(calenderevent $event){
+        $event_parts = calenderevent::where('common_id',$event->common_id)->get();
+        foreach ($event_parts as $parts)
+        {
+            $parts->delete();
+        }
+        return back();
+    }
 }
+    

@@ -24,7 +24,7 @@
                                             <td>{{ $template->id }}</td>
                                             <td>{{ $template->name }}</td>
                                             <td>{{ $template->description }}</td>
-                                            <td>{{ $template->colour }}</td>
+                                            <td><span style="color:{{ $template->colour }};zoom: 2.0">&#9733</span></td>
                                             <td>{{ $template->price }}</td>
                                             <td><a href="{{ url("templates/show/" .$template->id) }}" target="_blank"><img src='{{asset("/images/previews/" . $template->temp_pic )  }}' alt="MountainView" style="width:100px;height:50px;"></a></td>
                                             <td style="text-align: center"><a href={{url("templates/". $template->id ."/edit") }}><button title="click here to edit template" type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>

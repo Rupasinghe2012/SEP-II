@@ -53,7 +53,7 @@
             <div class="form-group">
                 <label for="Colour" class="col-sm-2 control-label">Colour</label>
                 <div class="col-sm-10">
-                    <input required data-parsley-type="alphanum" type="text" class="form-control" id="colour" name="colour" placeholder="colour" value="{{ $temp->colour }}">
+                    <input required  type="color" class="form-control" id="colour" name="colour" placeholder="colour" value="{{ $temp->colour }}">
                 </div>
             </div>
             <div class="form-group">

@@ -102,7 +102,7 @@
                                                     <div class="col-md-3" style="border: outset" title="id:{{ $image->id }}&#13name:{{ $image->name }}&#13description : {{ $image->description }}" >
                                                         @endif
                                                         <input title="select image for slide show" style="zoom:1.5" type="checkbox" name="image_album[]" value="{{$image->id}}"> <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                        <img src='{{asset("/img/preview/" . $image->slide_pic )  }}' alt="MountainView" style="width:200px;height:100px;"  >
+                                                        <img src='{{asset("img/preview/" . $image->slide_pic )  }}' alt="MountainView" style="width:200px;height:100px;"  >
                                                         <a href={{url("templates/slide/". $image->id ."/change1") }}><button style="border-radius: 50%;" title="Set for first image" type="button" class="btn btn-default" value="1" name="first" onclick="return confirm('Are sure to set this image as front image of the slide show?')"><i class="fa fa-heart" aria-hidden="true"></i></button></a>
 
                                                     </div>
