@@ -31,6 +31,7 @@
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu" id="sl">
                                 @yield('notifications')
+
                             </ul>
                         </li>
                         <li class="footer"><a href="{{ url('/notificationsView') }}">View all</a></li>

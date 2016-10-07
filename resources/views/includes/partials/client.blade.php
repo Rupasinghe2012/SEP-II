@@ -26,7 +26,17 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li ><a href="{{url('/home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
-            <li><a href="{{url('/site')}}"><i class="fa fa-desktop"></i> <span>MY Sites</span></a></li>
+            <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>Site Details</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu" style="display: block;">
+                            <li><a href="{{route('site.index')}}"><i class="fa fa-circle-o"></i>My Sites</a></li>
+                            <li><a href="{{url('post/create')}}"><i class="fa fa-circle-o"></i>Create Post</a></li>
+                            <li><a href="{{route('showallcomments.show')}}"><i class="fa fa-circle-o"></i>View Comments</a></li>
+                        </ul>
+            </li>
             <li><a href="{{url('/temp')}}"><i class="fa fa-television"></i> <span>My Templates</span></a></li>
             <li><a href="{{url('/profile')}}"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
             <li><a href="{{url('/gallery/list')}}"><i class="fa fa-photo"></i> <span>My galery</span></a></li>
