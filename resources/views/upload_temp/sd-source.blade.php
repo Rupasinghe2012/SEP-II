@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<body style="background-color: lightslategra">
+<body style="background-color:yellow">
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -38,7 +38,7 @@
     <div id="section1">
         <div class="container">
             <div class="jumbotron">
-                <img src="{{url('img/home-bg.jpg')}}" style="height:400px;width:900px;">
+                <img src="{{url('img/1.jpg')}}" style="height:400px;width:900px;">
                     <div class="row">
                         <div class="col-md-12">
                             <h1>About Me</h1>

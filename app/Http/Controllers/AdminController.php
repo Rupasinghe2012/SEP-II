@@ -69,7 +69,7 @@ class AdminController extends Controller
             if($is_ex==0) {
                 $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
                 //$filename2 = Input::get('name') . '-source.' . $source->getClientOriginalExtension();
-                $destinationPath = 'C:/wamp64/www/SEP_II/resources/views/upload_temp/'; // upload path
+                $destinationPath = '/Applications/MAMP/htdocs/SEP-II/resources/views/upload_temp/'; // upload path
                 $extension = $source->getClientOriginalExtension(); // getting image extension
                 $filename2 = Input::get('name') . '-source.blade.' . $extension; // renameing image
                 $source->move($destinationPath, $filename2);
@@ -217,7 +217,7 @@ class AdminController extends Controller
         $image = Input::file('slide_pic');
         $is_ex = 0;
         $name = Input::get('name');
-        try {
+        // try {
             $ex_file =slideimage::all();
             foreach ($ex_file as $ex)
             {
@@ -250,14 +250,15 @@ class AdminController extends Controller
                 echo "alert('Slide image name already used');";
             }
             echo "window.location.href='/templates/slide'</script>";
-        }
-        catch (\Exception $exception){
-            $exceptionData['user_id'] = $this->userId;
-            $exceptionData['exception'] = $exception->getMessage();
-            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+        // }
+        // catch (\Exception $exception){
+        //     $exceptionData['user_id'] = $this->userId;
+        //     $exceptionData['exception'] = $exception->getMessage();
+        //     $exceptionData['time'] = Carbon::now()->toDateTimeString();
+        //
+        //     ExceptionsLog::create($exceptionData);
+        // }
 
-            ExceptionsLog::create($exceptionData);
-        }
 
     }
 

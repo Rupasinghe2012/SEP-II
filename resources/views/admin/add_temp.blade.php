@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Price" class="col-sm-2 control-label">Price</label>
+                <label for="Price" class="col-sm-2 control-label">Price Rs:</label>
                 <div class="col-sm-10">
                     <input required data-parsley-maxlength="10" data-parsley-type="digits" type="text" class="form-control" id="price" name="price" placeholder="price">
                 </div>
