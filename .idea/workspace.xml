@@ -1,58 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a93813d-3ddb-48cf-8dc7-57498d3ebdb8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/New-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/jjjjj-image.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/previews/New-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/previews/jjjjj-image.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/previews/sameera-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/previews/sd-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/previews/sdss-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/sameera-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/sd-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/sdss-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/1474958389-png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/1474967073-png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postimages/ds-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postimages/sd-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postimages/sdds-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postimages/wqwq-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postpreviewimage/ds-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postpreviewimage/sd-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postpreviewimage/sdds-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/assets/img/postpreviewimage/wqwq-image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/resources/views/upload_temp/sameera-source.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/EditTemplate/Tem1/about.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/EditTemplate/Tem1/contact.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/EditTemplate/Tem1/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/EditTemplate/Tem1/post.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/Live_templates/Temp1/first.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/Template/Temp1/first.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/posts/addpost.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/posts/updatepost.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/sitecreation/createsite.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/sitecreation/test.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/sites/mysite.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/templates/temp.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/upload_temp/sd-source.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/viewcomments/comments.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.env.example" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Loaddemo_controller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Loaddemo_controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PreviewController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PreviewController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Post.php" afterPath="$PROJECT_DIR$/app/Post.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/alert.js" afterPath="$PROJECT_DIR$/public/js/alert.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/add_temp.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/add_temp.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/footer.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/footer.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/header.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/logout.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/logout.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/notification.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/notification.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/partials/client.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/partials/client.blade.php" />
-    </list>
+    <list default="true" id="6a93813d-3ddb-48cf-8dc7-57498d3ebdb8" name="Default" comment="" />
     <ignored path="SEP_II.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -118,8 +67,8 @@
       <file leaf-file-name="PreviewController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PreviewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1350">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="367">
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -526,15 +475,15 @@
       <workItem from="1472790018428" duration="7040000" />
       <workItem from="1474955541467" duration="6062000" />
       <workItem from="1475214133590" duration="1225000" />
-      <workItem from="1475820312008" duration="314000" />
+      <workItem from="1475820312008" duration="995000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132980000" />
+    <option name="totallyTimeSpent" value="133661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="754" extended-state="0" />
+    <frame x="-8" y="-8" width="1378" height="754" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -958,8 +907,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PreviewController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1350">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="367">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding />
         </state>
       </provider>
