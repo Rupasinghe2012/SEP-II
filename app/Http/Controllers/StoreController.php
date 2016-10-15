@@ -36,17 +36,14 @@ class StoreController extends Controller
         }
 
         if ($category) {
-//            $category_id = DB::table('tas')->where('name', $category)->pluck('id');
-//            //$category_id = category::where('name', $category)->pluck('id');
+
 //            $items = DB::table('inv_items')->where('department_id', $category_id)->get();
-//            //$items = item::where('department_id', $category_id)->get();
-//            //$items = DB::table('inv_categories')->where('name', $category)->get();
 //            return view('store')->withCategory($category)->withOrderitems($orderItems);
         }
         else {
             $category='All';
             $items = DB::table('templates')->get();
-            return view('store')->withCategory($category)->withOrderitems($orderItems);
+            return view('store')->withCategory($category)->withItems($items)->withOrderitems($orderItems);
         }
 
     }
