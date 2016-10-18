@@ -170,6 +170,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('getapprovecomments','CommentsController@getApproveComments');
     Route::get('getComments','CommentsController@getComments');
     Route::get('getNewComments','CommentsController@getUnreadandUnapprovedcomments');
+    Route::get('TemplateChange','SiteController@ChangeTemp');
 
 
 });

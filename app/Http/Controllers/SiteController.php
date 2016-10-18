@@ -143,4 +143,10 @@ class SiteController extends Controller
         // return view('sites.mysite')->with('sites',$sites)->with('temp',$template);
         return redirect()->route('site.index');
     }
+
+    public function ChangeTemp(Request $request)
+    {
+        // $name=$request->name;
+        return view('changetemplate.changeTemp');
+    }
 }

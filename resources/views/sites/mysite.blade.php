@@ -40,7 +40,10 @@
                               <input type="submit" value="delete" class="btn btn-sm btn-danger" id="sitedelete">
                             </form>
                           </td>
-                          <td><a class="demo01" href="#animatedModal">Change Template</a></td>
+                          <td>
+                            <!-- <a id="tempchange" val="{{$value->templatename}}">Change Template</a> -->
+                            <a href='{!!url('/TemplateChange')!!}}'>GGG</a>
+                          </td>
                       </tr>
                   @endforeach
                   </tbody>
@@ -54,5 +57,31 @@
   {!!$sites->links()!!}
 </div>
 
+<script>
+
+  $(document).ready(function(){
+
+    $('#tempchange').click(function(){
+
+      var url='{!!url('/TemplateChange')!!}';
+
+      var templatename=$(this).attr('val');
+
+      $.ajax({
+
+          url:url,
+
+          type:'GET',
+
+          data:{name:templatename}
+
+      });
+
+    });
+
+
+  });
+
+</script>
 
 @endsection
