@@ -142,6 +142,7 @@
 @stop
 
 @section('scripts')
+    <script src="{{ URL::asset('js/preorder_script.js') }}"></script>
     @stop
 
 @endsection
