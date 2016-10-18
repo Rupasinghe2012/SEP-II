@@ -174,7 +174,10 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('getapprovecomments','CommentsController@getApproveComments');
     Route::get('getComments','CommentsController@getComments');
     Route::get('getNewComments','CommentsController@getUnreadandUnapprovedcomments');
-    Route::get('TemplateChange','SiteController@ChangeTemp');
+    Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
+    Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
+    Route::get('showupdatedsites','SiteController@index');
+
 
 
 });

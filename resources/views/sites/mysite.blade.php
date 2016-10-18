@@ -42,7 +42,7 @@
                           </td>
                           <td>
                             <!-- <a id="tempchange" val="{{$value->templatename}}">Change Template</a> -->
-                            <a href='{!!url('/TemplateChange')!!}}'>GGG</a>
+                            <a href="{{route('viewtempchange.temp',[$value->templatename,$value->siteid])}}">Change Template</a>
                           </td>
                       </tr>
                   @endforeach
@@ -57,7 +57,7 @@
   {!!$sites->links()!!}
 </div>
 
-<script>
+<!-- <script>
 
   $(document).ready(function(){
 
@@ -82,6 +82,6 @@
 
   });
 
-</script>
+</script> -->
 
 @endsection
