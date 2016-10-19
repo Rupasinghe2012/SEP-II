@@ -118,9 +118,25 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         //
+=======
+    public function update(Request $request)
+    {
+        //
+        $oldtemp=$request->old;
+        $newtemp=$request->new;
+        $siteid=$request->siteid;
+        $site=Site::find($siteid);
+        $site->templatename=$newtemp;
+        $site->save();
+        return redirect('/showupdatedsites');
+
+
+
+>>>>>>> origin/master
     }
 
     /**
@@ -143,4 +159,18 @@ class SiteController extends Controller
         // return view('sites.mysite')->with('sites',$sites)->with('temp',$template);
         return redirect()->route('site.index');
     }
+<<<<<<< HEAD
+=======
+
+    public function ViewChangeTemp(Request $request)
+    {
+        // $name=$request->name;
+        $temp=$request->tempname;
+        $siteid=$request->siteid;
+        $template=template::all()->toArray();
+        return view('changetemplate.changeTemp')->with('temp',$temp)->with('template',$template)->with('siteid',$siteid);
+    }
+
+
+>>>>>>> origin/master
 }

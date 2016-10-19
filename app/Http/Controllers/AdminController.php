@@ -69,7 +69,11 @@ class AdminController extends Controller
             if($is_ex==0) {
                 $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
                 //$filename2 = Input::get('name') . '-source.' . $source->getClientOriginalExtension();
+<<<<<<< HEAD
                 $destinationPath = 'C:/xampp/htdocs/SEP-II/resources/views/upload_temp/'; // upload path
+=======
+                $destinationPath = '/Applications/MAMP/htdocs/SEP-II/resources/views/upload_temp/'; // upload path
+>>>>>>> origin/master
                 $extension = $source->getClientOriginalExtension(); // getting image extension
                 $filename2 = Input::get('name') . '-source.blade.' . $extension; // renameing image
                 $source->move($destinationPath, $filename2);
@@ -217,8 +221,13 @@ class AdminController extends Controller
         $image = Input::file('slide_pic');
         $is_ex = 0;
         $name = Input::get('name');
+<<<<<<< HEAD
         try {
             $ex_file = slideimage::all();
+=======
+        // try {
+            $ex_file =slideimage::all();
+>>>>>>> origin/master
             foreach ($ex_file as $ex)
             {
                 if($ex->name==$name)
@@ -251,14 +260,15 @@ class AdminController extends Controller
                 echo "alert('Slide image name already used');";
             }
             echo "window.location.href='/templates/slide'</script>";
-        }
-        catch (\Exception $exception){
-            $exceptionData['user_id'] = $this->userId;
-            $exceptionData['exception'] = $exception->getMessage();
-            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+        // }
+        // catch (\Exception $exception){
+        //     $exceptionData['user_id'] = $this->userId;
+        //     $exceptionData['exception'] = $exception->getMessage();
+        //     $exceptionData['time'] = Carbon::now()->toDateTimeString();
+        //
+        //     ExceptionsLog::create($exceptionData);
+        // }
 
-            ExceptionsLog::create($exceptionData);
-        }
 
     }
 
@@ -487,7 +497,7 @@ class AdminController extends Controller
                if($user->delete()){
                    $this->notification->addNotification($this->userId,'kicked');
                }
-               
+
            }
            return redirect("/admin/user/manage");
        }
@@ -579,8 +589,14 @@ class AdminController extends Controller
         $venue = Input::get('venue');
 
         $current_date = date("Y-m-d");
+<<<<<<< HEAD
         if (strtotime($s_date) < strtotime($current_date) || strtotime($e_date) < strtotime($current_date) || strtotime($s_date) > strtotime($e_date)) {
             echo "alert('".strtotime($s_date).strtotime($current_date).strtotime($e_date)."Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
+=======
+        //changed or gates to and
+        if (strtotime($s_date) < strtotime($current_date) && strtotime($e_date) < strtotime($current_date) && strtotime($s_date) < strtotime($e_date)) {
+            echo "alert('Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
+>>>>>>> origin/master
         }
         elseif(strtotime($s_time) > strtotime($e_time)){
             echo "alert('Invalid time(starting time can not be less than end time)');";
