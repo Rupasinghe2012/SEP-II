@@ -117,9 +117,8 @@ class MainController extends Controller
             Mail::send('mail.mailbody', ['data' => $data], function ($m) use ($data) {
                 $m->to($data['email'], $data['name'])->subject('Your Reminder!')->from('azinabcoc@gmail.com');
             });
-            if($mail->update()){
-                $this->notification->addNotification($this->userId,'reply_mail');
-            }
+            $mail->update();
+
             return redirect("/templates/" . $mail->id . "/show");
         }
         catch (\Exception $exception){

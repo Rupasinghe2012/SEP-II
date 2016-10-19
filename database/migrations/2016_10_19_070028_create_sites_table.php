@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateSitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('sites', function (Blueprint $table) {
+            $table->increments('siteid');
+            $table->string('hostname')->default('NULL');
             $table->integer('userid');
-            $table->integer('siteid');
-            $table->string('description');
-            $table->string('image');
+            $table->string('templatename');
+            $table->string('sitename');
+
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('posts');
+        Schema::drop('sites');
     }
 }
