@@ -79,7 +79,7 @@ class GalleryController extends Controller
 
     /**
      * @param \Illuminate\Http\Request|Request $request
-     * @param  $id 
+     * @param  $id
      * @description Editing the Album
      */
     public function editGallery(Request $request,$id)

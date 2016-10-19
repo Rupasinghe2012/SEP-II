@@ -16,7 +16,7 @@ class CreateSitesTable extends Migration
             $table->increments('siteid');
             $table->string('hostname')->default('NULL');
             $table->integer('userid');
-            $table->integer('templateid');
+            $table->string('templatename');
             $table->string('sitename');
             $table->timestamps();
         });

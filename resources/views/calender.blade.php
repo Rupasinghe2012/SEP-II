@@ -50,8 +50,8 @@
                                                 <h4 class="modal-title"><b>EVENT LIST - </b>{{$year."-".$month."-".$i}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <button style=" background-color: #01ff70" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2{{$year."-".$month."-".$i}}">My Events</button>
-                                                <button style=" background-color: #00d8ff" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3{{$year."-".$month."-".$i}}">Others' Events</button>
+                                                <button style=" background-color: #01ff70" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2{{$year."-".$month."-".$i}}">My Events</button>
+                                                <button style=" background-color: #00d8ff" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3{{$year."-".$month."-".$i}}">Others' Events</button>
                                             </div>
                                         </div>
                                     </div>
@@ -70,8 +70,9 @@
                                                     @if($event->event_start_date == $year."-".$month."-".$i && $event->user_id == $loged_user->id)
                                                         <div style="background-color:#42dca3">
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
-                                                            <button type="button" style="float: right" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                                            <button type="button" style="float: right" class="btn btn-warning"  data-toggle="modal" data-target="#test4{{$event->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                            <a href={{url("/calender/". $event->id ."/delete_all") }}><button onclick="return confirm('Are you sure to DELETE complete event of this selected event?');" type="button" style="float: right" class="btn btn-danger" ><i class="fa fa-list-ol" aria-hidden="true"></i><i class="fa fa-times-circle" aria-hidden="true"></i></button></a>
+                                                            <a href={{url("/calender/". $event->id ."/delete") }}><button onclick="return confirm('Are you sure to DELETE this selected event?');" type="button" style="float: right" class="btn btn-warning"><i class="fa fa-times" aria-hidden="true"></i></button></a>
+                                                            <button type="button" style="float: right" class="btn btn-default"  data-toggle="modal" data-target="#test4{{$event->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             Event Title       : <b style="font-size: large;text-transform: capitalize">{{$event->title}}</b> <br>
                                                             Event Description : <b style="word-wrap: break-word">{{$event->description}}</b><br>
                                                             Event Time :  <b style="word-wrap: break-word">{{$event->s_time}}H - {{$event->e_time}}H</b><br>
@@ -123,8 +124,8 @@
                                                 <h4 class="modal-title"><b>EVENT LIST - </b>{{$year."-".$month."-".$i}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <button style=" background-color: #01ff70" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2{{$year."-".$month."-".$i}}">My Events</button>
-                                                <button style=" background-color: #00d8ff" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3{{$year."-".$month."-".$i}}">Others' Events</button>
+                                                <button style=" background-color: #01ff70" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#test2{{$year."-".$month."-".$i}}">My Events</button>
+                                                <button style=" background-color: #00d8ff" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#test3{{$year."-".$month."-".$i}}">Others' Events</button>
                                             </div>
                                         </div>
                                     </div>
@@ -143,8 +144,9 @@
                                                     @if($event->event_start_date == $year."-".$month."-".$i && $event->user_id == $loged_user->id)
                                                         <div style="background-color:#42dca3">
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
-                                                            <button type="button" style="float: right" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                                            <button type="button" style="float: right" class="btn btn-warning"  data-toggle="modal" data-target="#test4{{$event->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                            <a href={{url("/calender/". $event->id ."/delete_all") }}><button onclick="return confirm('Are you sure to DELETE complete event of this selected event?');" type="button" style="float: right" class="btn btn-danger" ><i class="fa fa-list-ol" aria-hidden="true"></i><i class="fa fa-times-circle" aria-hidden="true"></i></button></a>
+                                                            <a href={{url("/calender/". $event->id ."/delete") }}><button onclick="return confirm('Are you sure to DELETE this selected event?');" type="button" style="float: right" class="btn btn-warning"><i class="fa fa-times" aria-hidden="true"></i></button></a>
+                                                            <button type="button" style="float: right" class="btn btn-default"  data-toggle="modal" data-target="#test4{{$event->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             Event Title       : <b style="font-size: large;text-transform: capitalize">{{$event->title}}</b> <br>
                                                             Event Description : <b style="word-wrap: break-word">{{$event->description}}</b><br>
                                                             Event Time :  <b style="word-wrap: break-word">{{$event->s_time}}H - {{$event->e_time}}H</b><br>
@@ -184,14 +186,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php $count++ ?><td width="100px" align="center"><button style="width: 100px; background-color: #eac36e" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>@break;
+                                <?php $count++ ?><td width="100px" align="center"><button style="width: 100px; background-color: #eac36e" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>@break;
                             @endif
                         @endforeach
                         @if($count==0)
                             @if($i == $c_day&&$year == $c_year&&$month == $c_month)
-                                <td width="100px" align="center"><button style="width: 100px; border: outset rgba(26, 255, 28, 1)" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>
+                                <td width="100px" align="center"><button style="width: 100px; border: outset rgba(26, 255, 28, 1)" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>
                             @else
-                                <td width="100px" align="center"><button style="width: 100px" title="click here to add event" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>
+                                <td width="100px" align="center"><button style="width: 100px" title="" type="button" class="btn btn-default" data-toggle="modal" data-target="#replyModal{{$year."-".$month."-".$i}}">{{$i}}</button></td>
                             @endif
                         @endif
                         @endfor

@@ -51,21 +51,6 @@
                     <!-- /.info-box-content -->
                 </div>
             </div>
-            <div class="col-lg-3 col-xs-6">
-                <div class="info-box bg-red">
-                    <span class="info-box-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Ignored Mails</span>
-                        <span class="info-box-number"><?php echo $count['ignor'] ?></span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: <?php if($count['mail']==0){$count['mail']=1;}else  echo ($count['ignor']/$count['mail'])*100 ?>%"></div>
-                        </div>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-            </div>
 
             <div class="col-lg-3 col-xs-6">
                 <div class="info-box bg-yellow">
@@ -83,6 +68,9 @@
                 </div>
             </div>
         </a>
+    </div>
+
+    <div class="col-md-12">
     </div>
 @section('notifications')
     @include('includes.notification')

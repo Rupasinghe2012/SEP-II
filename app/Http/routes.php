@@ -126,6 +126,8 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
 
     Route::any('/calender/view', 'AdminController@calender_view');
     Route::any('/calender/add_event', 'AdminController@calender_add_event');
+    Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
+    Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
 
 
 });
@@ -161,6 +163,16 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
     Route::post('image/do-upload','GalleryController@doImageUpload');
 
+
+
+    Route::get('temp_store','StoreController@index');
+    Route::get('preorder/show/{id}', 'StoreControllerr@show');
+    Route::resource('preorder', 'StoreController',
+        [ 'except' => [ 'show' ] ]
+    );
+    Route::controller('preorder', 'StoreController');
+
+
     //sameera
     Route::get('/temp','Loaddemo_controller@index');
     Route::get('/demo','Loaddemo_controller@demo');
@@ -177,6 +189,12 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('getapprovecomments','CommentsController@getApproveComments');
     Route::get('getComments','CommentsController@getComments');
     Route::get('getNewComments','CommentsController@getUnreadandUnapprovedcomments');
+
+    Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
+    Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
+    Route::get('showupdatedsites','SiteController@index');
+
+
 
 
 });

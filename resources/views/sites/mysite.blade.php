@@ -40,7 +40,12 @@
                               <input type="submit" value="delete" class="btn btn-sm btn-danger" id="sitedelete">
                             </form>
                           </td>
-                          <td><a class="demo01" href="#animatedModal">Change Template</a></td>
+
+                          <td>
+                            <!-- <a id="tempchange" val="{{$value->templatename}}">Change Template</a> -->
+                            <a href="{{route('viewtempchange.temp',[$value->templatename,$value->siteid])}}">Change Template</a>
+                          </td>
+
                       </tr>
                   @endforeach
                   </tbody>
