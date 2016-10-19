@@ -57,31 +57,5 @@
   {!!$sites->links()!!}
 </div>
 
-<!-- <script>
-
-  $(document).ready(function(){
-
-    $('#tempchange').click(function(){
-
-      var url='{!!url('/TemplateChange')!!}';
-
-      var templatename=$(this).attr('val');
-
-      $.ajax({
-
-          url:url,
-
-          type:'GET',
-
-          data:{name:templatename}
-
-      });
-
-    });
-
-
-  });
-
-</script> -->
 
 @endsection
