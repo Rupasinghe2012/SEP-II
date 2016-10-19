@@ -41,8 +41,6 @@
                             </form>
                           </td>
 
-                          <td><a class="demo01" href="#animatedModal">Change Template</a></td>
-
                           <td>
                             <!-- <a id="tempchange" val="{{$value->templatename}}">Change Template</a> -->
                             <a href="{{route('viewtempchange.temp',[$value->templatename,$value->siteid])}}">Change Template</a>
