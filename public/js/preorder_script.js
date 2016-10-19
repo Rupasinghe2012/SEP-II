@@ -28,11 +28,11 @@ function searchItem() {
 		 	result += '\
 		 	<div class="col-lg-3">\
 			    <div class="thumbnail">\
-			      <img src='+data[i].img_url+'>\
+			      <img src='+data[i].temp_pic+'>\
 			      <div class="caption">\
-			        <h3>'+data[i].description+'</h3>\
-			        <p>Quantity available:<span class="badge">'+data[i].qtyindisplay+'</span></p>\
-			        <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" data-id="'+data[i].itm_id+'">Order</button></p>\
+			        <h3>'+data[i].name+'</h3>\
+			        <p>Quantity available:<span class="badge">Unlimited</span></p>\
+			        <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" data-id="'+data[i].id+'">Order</button></p>\
 			      </div>\
 			    </div>\
 			  </div>';		
@@ -70,17 +70,17 @@ $('#modal').on('show.bs.modal', function (event) {
 
 		  $('#ModalHeading').text('Add '+ data[0].description +' to preorder');
 		  $('#qtyField').val(1);
-		  $('#unitCost').text(data[0].sellprice);
-		  $('#unitCost').data('price', data[0].sellprice);
+		  $('#unitCost').text(data[0].price);
+		  $('#unitCost').data('price', data[0].price);
 
-		  $('#totalCost').text(data[0].sellprice);
+		  $('#totalCost').text(data[0].price);
 		  $('#qtyField').data('max', data[0].qtyindisplay)
 
 		  $('#productImg').attr('src', '/images/img_placeholder.png');
 
 		  qty = document.getElementById('qtyField').value;
 
-		  $('#btnAddItem').data('id', data[0].itm_id);
+		  $('#btnAddItem').data('id', data[0].id);
 		  $('#btnAddItem').data('qty', 1);		  
 		  // Add item to order
 		  $("#btnAddItem").off('click');
@@ -146,10 +146,10 @@ $('#checkoutModal').on('show.bs.modal', function (event) {
 			body +='<tr>\
       				<td>'+data[i].description+'</td>\
 	      			<td>'+data[i].qty+'</td>\
-	      			<td>'+data[i].sellprice+'</td>\
-	      			<td>'+(parseInt(data[i].qty)*(data[i].sellprice))+'</td>\
+	      			<td>'+data[i].price+'</td>\
+	      			<td>'+(parseInt(data[i].qty)*(data[i].price))+'</td>\
 	      		</tr>';
-	      	subtotal += (parseInt(data[i].qty)*(data[i].sellprice));
+	      	subtotal += (parseInt(data[i].qty)*(data[i].price));
 	    }
 	    body +='<tr>\
       				<td> </td>\
@@ -190,11 +190,11 @@ function refresh(category) {
 		 	result += '\
 		 	<div class="col-lg-3">\
 			    <div class="thumbnail">\
-			      <img id="productImg" src="/images/'+data[i].itm_id+'.jpg" onerror=\'if (this.src != "/images/img_placeholder.png") this.src = "/images/img_placeholder.png";\' style="height:266px;width266px;">\
+			      <img id="productImg" src="/images/'+data[i].temp_pic+'" onerror=\'if (this.src != "/images/img_placeholder.png") this.src = "/images/img_placeholder.png";\' style="height:266px;width266px;">\
 			      <div class="caption">\
-			        <h3>'+data[i].description+'</h3>\
-			        <p>Quantity available:<span class="badge">'+data[i].qtyindisplay+'</span></p>\
-			        <p><button id="btnOrder" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" data-id="'+data[i].itm_id+'">Order</button></p>\
+			        <h3>'+data[i].name+'</h3>\
+			        <p>Price:<span class="badge"> $'+data[i].price+'</span></p>\
+			        <p><button id="btnOrder" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" data-id="'+data[i].id+'">Order</button></p>\
 			      </div>\
 			    </div>\
 			  </div>';		

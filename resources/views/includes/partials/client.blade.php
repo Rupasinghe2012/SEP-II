@@ -25,7 +25,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li ><a href="{{url('/home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+            <li class="active"><a href="{{url('/home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
             <li class="treeview">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Site Details</span>
