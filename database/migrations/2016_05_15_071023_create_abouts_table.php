@@ -14,7 +14,7 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('siteid');
+            $table->string('sitename');
             $table->integer('userid');
             $table->string('name');
             $table->integer('age');
