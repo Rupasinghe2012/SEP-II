@@ -63,11 +63,9 @@
                 </div>
             </div>
             <div class="form-group">
-<<<<<<< HEAD
-                <label for="Price" class="col-sm-2 control-label">Price (Rs:)</label>
-=======
+
                 <label for="Price" class="col-sm-2 control-label">Price Rs:</label>
->>>>>>> origin/master
+
                 <div class="col-sm-10">
                     <input required data-parsley-maxlength="10" data-parsley-type="digits" type="text" class="form-control" id="price" name="price" placeholder="price">
                 </div>

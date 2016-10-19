@@ -118,11 +118,8 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function update(Request $request, $id)
-    {
-        //
-=======
+
+
     public function update(Request $request)
     {
         //
@@ -136,7 +133,7 @@ class SiteController extends Controller
 
 
 
->>>>>>> origin/master
+
     }
 
     /**
@@ -159,8 +156,6 @@ class SiteController extends Controller
         // return view('sites.mysite')->with('sites',$sites)->with('temp',$template);
         return redirect()->route('site.index');
     }
-<<<<<<< HEAD
-=======
 
     public function ViewChangeTemp(Request $request)
     {
@@ -172,5 +167,4 @@ class SiteController extends Controller
     }
 
 
->>>>>>> origin/master
 }

@@ -40,14 +40,14 @@
                               <input type="submit" value="delete" class="btn btn-sm btn-danger" id="sitedelete">
                             </form>
                           </td>
-<<<<<<< HEAD
+
                           <td><a class="demo01" href="#animatedModal">Change Template</a></td>
-=======
+
                           <td>
                             <!-- <a id="tempchange" val="{{$value->templatename}}">Change Template</a> -->
                             <a href="{{route('viewtempchange.temp',[$value->templatename,$value->siteid])}}">Change Template</a>
                           </td>
->>>>>>> origin/master
+
                       </tr>
                   @endforeach
                   </tbody>
@@ -61,34 +61,5 @@
   {!!$sites->links()!!}
 </div>
 
-<<<<<<< HEAD
-=======
-<!-- <script>
-
-  $(document).ready(function(){
-
-    $('#tempchange').click(function(){
-
-      var url='{!!url('/TemplateChange')!!}';
-
-      var templatename=$(this).attr('val');
-
-      $.ajax({
-
-          url:url,
-
-          type:'GET',
-
-          data:{name:templatename}
-
-      });
-
-    });
-
-
-  });
-
-</script> -->
->>>>>>> origin/master
 
 @endsection
