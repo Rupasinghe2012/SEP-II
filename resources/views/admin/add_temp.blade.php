@@ -53,7 +53,7 @@
             <div class="form-group">
                 <label for="Colour" class="col-sm-2 control-label">Colour</label>
                 <div class="col-sm-10">
-                    <input required data-parsley-type="alphanum" type="text" class="form-control" id="colour" name="colour" placeholder="colour">
+                    <input required type="color" class="form-control" id="colour" name="colour" placeholder="colour">
                 </div>
             </div>
             <div class="form-group">
@@ -63,7 +63,9 @@
                 </div>
             </div>
             <div class="form-group">
+
                 <label for="Price" class="col-sm-2 control-label">Price Rs:</label>
+
                 <div class="col-sm-10">
                     <input required data-parsley-maxlength="10" data-parsley-type="digits" type="text" class="form-control" id="price" name="price" placeholder="price">
                 </div>

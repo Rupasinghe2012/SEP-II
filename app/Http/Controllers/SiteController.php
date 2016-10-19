@@ -118,6 +118,8 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request)
     {
         //
@@ -128,6 +130,7 @@ class SiteController extends Controller
         $site->templatename=$newtemp;
         $site->save();
         return redirect('/showupdatedsites');
+
 
 
 
