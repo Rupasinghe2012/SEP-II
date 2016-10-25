@@ -128,6 +128,13 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::any('/calender/add_event', 'AdminController@calender_add_event');
     Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
     Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
+    Route::any('/calender/{event}/edit_event', 'AdminController@calender_edit_event');
+    Route::get('pdf',function()
+    {
+        $data = DB::table('post')->all();
+        $pdf = PDF::loadView('admin/pdf',['data'=>$data]);
+        return $pdf->download('pdf.pdf');
+    });
 
 
 });
