@@ -28,11 +28,11 @@ class preorderItem extends Model
     {
     	$this->attributes['item_id'] = $value;
     	
-        $item = DB::table('inv_items')->where('itm_id', $value)->first();
+        $item = DB::table('templates')->where('id', $value)->first();
     	
-    	$this->attributes['item_name'] = $item->description;
-    	$this->attributes['uvalue'] = $item->sellprice;
-        $this->attributes['discount'] = $item->discount;
+    	$this->attributes['item_name'] = $item->name;
+    	$this->attributes['uvalue'] = $item->price;
+
     }
 
     // Get items for particular preorder

@@ -150,6 +150,16 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
 */
 Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
+
+    Route::get('temp_store','StoreController@index');
+
+        Route::get('preorder/show/{id}', 'StoreController@show');
+        Route::resource('preorder', 'StoreController',
+            ['except' => ['show']]
+        );
+        Route::controller('preorder', 'StoreController');
+
+
     Route::get('/home', 'HomeController@index');
     //galary routes
     Route::get('gallery/list','GalleryController@viewGalleryList');
@@ -161,12 +171,14 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::post('image/do-upload','GalleryController@doImageUpload');
 
 
+
     Route::get('temp_store','StoreController@index');
     Route::get('preorder/show/{id}', 'StoreControllerr@show');
     Route::resource('preorder', 'StoreController',
         [ 'except' => [ 'show' ] ]
     );
     Route::controller('preorder', 'StoreController');
+
 
     //sameera
     Route::get('/temp','Loaddemo_controller@index');
