@@ -14,6 +14,7 @@ Homestead.json
 
 # OS generated files #
 ######################
+._*.php
 */.DS_Store
 .DS_Store
 ._.DS_Store
