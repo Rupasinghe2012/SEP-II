@@ -22,6 +22,28 @@ class CreateTemplateTable extends Migration
             $table->text('name');
             $table->string('temp_pic');
         });
+
+        DB::table('templates')->insert(
+            array(
+                'description' => 'Indigo Themed',
+                'price' => '200',
+                'temp_source' => 'sasda-source.blade.php',
+                'colour' => 'indigo',
+                'name'=>'Dark-Forrest',
+                'temp_pic'=>'sasda-image.png'
+            )
+        );
+
+        DB::table('templates')->insert(
+            array(
+                'description' => 'Harry Potter Themed',
+                'price' => '500',
+                'temp_source' => 'refbzc-source.blade.php',
+                'colour' => 'Black',
+                'name'=>'Dark-Forrest',
+                'temp_pic'=>'refbzc-image.jpg'
+            )
+        );
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\preorder;
 use App\preorderItem;
 use App\Template;
+use App\mytemplate;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -90,13 +91,15 @@ class StoreController extends Controller
      */
     public function show($id)
     {
+
         $preorder = preorder::find($id);
         //$preorderItems = preorderItem::preorder($id)->get();
-        $preorderItems = DB::table('templates')
-            ->select('templates.*')
+        $preorderItems = DB::table('preorderItems')
+            ->leftJoin('templates', 'preorderItems.item_id', '=', 'templates.id')
+            ->select('preorderItems.*', 'templates.description', 'templates.price')
             ->get();
 
-        return view('store')->withPreorder($preorder)->withItems($preorderItems);
+        return view('one')->withPreorder($preorder)->withItems($preorderItems);
 
     }
 
@@ -132,16 +135,47 @@ class StoreController extends Controller
     public function destroy($id)
     {
         $preorder = preorder::find($id);
-        if (Session::get('role')=='Customer')
+        if (Auth::user()->type=='client')
             $preorder->status = 'cancelled';
         else
             $preorder->status = 'rejected';
 
         $preorder->save();
         Session::flash('message', 'Your order has been cancelled.');
-        return redirect('store');
+        return redirect('/preorder/pending');
     }
+    /**
+     *Buy the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function buy($id)
+    {
+        $preorder = preorder::find($id);
+        if (Auth::user()->type=='client') {
+            $preorder->status = 'Completed';
+            $preorder->paid = '1';
+        }
+        else{
+            $preorder->status = 'Completed';
+            $preorder->paid = '1';
+        }
+        $preorder->save();
+        $temp = DB::table('preorderitems')->where('preorder_id', $preorder->preorder_id)->get();
 
+        foreach ($temp as $tid){
+            $mytemplates= new mytemplate();
+            $mytemplates->userid=Auth::user()->id;
+            $mytemplates->templateid=$tid->item_id;
+            $mytemplates->save();
+        }
+
+
+        
+        Session::flash('message', 'You have Succesfully purchased this Template');
+        return redirect('/preorder/pending');
+    }
     /**
      * Display pending orders
      *
@@ -328,7 +362,7 @@ class StoreController extends Controller
     public function getReports(Request $request) {
 
 
-        return view('Praveen.reports');
+        return view('report');
     }
 
     public function getProcessreport(Request $request) {
@@ -342,7 +376,7 @@ class StoreController extends Controller
         switch ($choice) {
             case 'records':
                 $records = preorder::where('preorders.status', '=', 'rejected')
-                    ->leftJoin('crm_customer', 'crm_customer.cus_id', '=', 'preorders.customer_id')
+                    ->leftJoin('users', 'users.id', '=', 'preorders.customer_id')
                     ->whereBetween('updated_at', array($startDate, $endDate))
                     ->get();
                 return $records;

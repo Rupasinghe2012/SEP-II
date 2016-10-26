@@ -144,13 +144,7 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
 Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
 
-    Route::get('temp_store','StoreController@index');
 
-        Route::get('preorder/show/{id}', 'StoreController@show');
-        Route::resource('preorder', 'StoreController',
-            ['except' => ['show']]
-        );
-        Route::controller('preorder', 'StoreController');
 
 
     Route::get('/home', 'HomeController@index');
@@ -166,9 +160,11 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
 
     Route::get('temp_store','StoreController@index');
-    Route::get('preorder/show/{id}', 'StoreControllerr@show');
+
+    Route::get('preorder/show/{id}', 'StoreController@show');
+    Route::post('preorder/buy/{id}', 'StoreController@buy');
     Route::resource('preorder', 'StoreController',
-        [ 'except' => [ 'show' ] ]
+        ['except' => ['show']]
     );
     Route::controller('preorder', 'StoreController');
 
