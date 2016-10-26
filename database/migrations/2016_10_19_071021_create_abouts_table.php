@@ -14,12 +14,12 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sitename');
             $table->integer('userid');
             $table->string('name');
             $table->integer('age');
             $table->string('qualifications');
             $table->string('about');
+            $table->string('sitename');
             $table->timestamps();
 
         });
