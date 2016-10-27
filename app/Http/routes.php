@@ -129,12 +129,32 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
     Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
     Route::any('/calender/{event}/edit_event', 'AdminController@calender_edit_event');
-    Route::get('pdf',function()
-    {
-        $data = DB::table('post')->all();
-        $pdf = PDF::loadView('admin/pdf',['data'=>$data]);
-        return $pdf->download('pdf.pdf');
-    });
+    
+    Route::any('/reports', 'AdminController@view_report_page');
+    Route::any('/reports/user', 'PDFController@report_user');
+    Route::any('/getPDF/user', 'PDFController@getPDF_user');
+    Route::any('/reports/event', 'PDFController@report_event');
+    Route::any('/getPDF/event', 'PDFController@getPDF_event');
+    Route::any('/reports/event/search-download', 'PDFController@report_event_search');
+    Route::any('/reports/temp', 'PDFController@report_temp');
+    Route::any('/reports/temp/search-download', 'PDFController@report_temp_search');
+
+    
+//    Route::get('pdf/user',function()
+//    {
+//        $data = App\User::all();
+//        $pdf = PDF::loadView('admin/pdf_user',['data'=>$data]);
+//        return $pdf->stream('user.pdf');
+//    });
+//
+//    Route::get('pdf/event',function()
+//    {
+////        $s_date = Input::get('str_date');
+////        $e_date = Input::get('end_date');
+//        $data = App\calenderevent::all();
+//        $pdf = PDF::loadView('admin/pdf_event',['data'=>$data]);
+//        return $pdf->download('event.pdf');
+//    });
 
 
 });
