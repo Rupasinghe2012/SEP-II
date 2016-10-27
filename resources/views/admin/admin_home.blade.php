@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
@@ -18,7 +18,7 @@
             </div>
         </div><!-- ./col -->
 
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-blue">
                 <div class="inner">
@@ -36,7 +36,7 @@
 
     <div class="col-md-12">
         <h3>Visitor Mails</h3>
-        <a href={{url("/templates/mail/view")}}> <div class="col-lg-3 col-xs-6">
+        <a href={{url("/templates/mail/view")}}> <div class="col-lg-4 col-xs-6">
                 <div class="info-box bg-green">
                     <span class="info-box-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
 
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-xs-6">
+            <div class="col-lg-4 col-xs-6">
                 <div class="info-box bg-yellow">
                     <span class="info-box-icon"><i class="fa fa-envelope-square" aria-hidden="true"></i></span>
 

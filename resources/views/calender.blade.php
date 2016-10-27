@@ -6,7 +6,7 @@
     <h3 style="text-align: center">Event Calender</h3>
     <div class="col-md-12">
         <div class="col-md-1"></div>
-        <div class="col-md-8" style="align-items: center;">
+        <div class="col-md-11" style="align-items: center;">
             <form name="calender" action="{{ url('/calender/view')  }}" method="post">
                 {{csrf_field()}}
                 <input style="background-color: #ea716e" class="btn btn-default" align="center" type="submit" name="change" value="TODAY">
