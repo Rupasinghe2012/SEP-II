@@ -97,6 +97,7 @@ class StoreController extends Controller
         $preorderItems = DB::table('preorderItems')
             ->leftJoin('templates', 'preorderItems.item_id', '=', 'templates.id')
             ->select('preorderItems.*', 'templates.description', 'templates.price')
+            ->where('preorderItems.preorder_id', $id)
             ->get();
 
         return view('one')->withPreorder($preorder)->withItems($preorderItems);
