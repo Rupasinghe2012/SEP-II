@@ -4,9 +4,23 @@
 Homestead.yaml
 Homestead.json
 .env
+**/.idea/
+**/.idea/workspace.xml
 .idea/copyright/profiles_settings.xml
 .idea/vcs.xml
-.idea/workspace.xml
 .idea/blade.xml
 .idea/modules.xml
 .idea/SEP_II.iml
+
+# OS generated files #
+######################
+._*.php
+*/.DS_Store
+.DS_Store
+._.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
