@@ -4,6 +4,9 @@
 
 @section('content')
 
+@section('breadcrumbs')
+{!! Breadcrumbs::render('home') !!}
+@stop
 </br>
 </br>
 </br>

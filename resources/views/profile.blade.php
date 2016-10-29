@@ -4,7 +4,9 @@
 
 @section('content')
 
-
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('profile') !!}
+@stop
 
     <script language="javascript" type="text/javascript">
         function validation1(){
@@ -157,6 +159,7 @@
 
         }
     </script>
+</br></br>
 
     <div class="row">
 
