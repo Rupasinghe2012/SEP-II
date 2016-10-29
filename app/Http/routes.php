@@ -137,7 +137,7 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
     Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
     Route::any('/calender/{event}/edit_event', 'AdminController@calender_edit_event');
-    
+
     Route::any('/reports', 'AdminController@view_report_page');
     Route::any('/reports/user', 'PDFController@report_user');
     Route::any('/getPDF/user', 'PDFController@getPDF_user');
@@ -147,8 +147,11 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::any('/reports/temp', 'PDFController@report_temp');
     Route::any('/reports/temp/search-download', 'PDFController@report_temp_search');
 
+
     Route::get('/admin/logs/login', 'AdminController@viewLoginLog');
     Route::get('/admin/get-all-login', 'AdminController@getLoginLog');
+
+
 
 //    Route::get('pdf/user',function()
 //    {
@@ -204,7 +207,11 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('/demo','Loaddemo_controller@demo');
     Route::get('/edit/{id}','Loaddemo_controller@edit');
     Route::resource('site','SiteController');
-    Route::resource('post','PostController');
+
+    Route::resource('post','PostController');//insert,delete,create,view post routes
+    Route::get('updatepost/{post}','PostController@update');//updating post route
+
+
     Route::post('/store/{id}','SiteController@store');//sameera
     //comments
     Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
@@ -219,6 +226,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
     Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
     Route::get('showupdatedsites','SiteController@index');
+
 
 
 

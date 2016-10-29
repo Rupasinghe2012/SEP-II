@@ -4,23 +4,26 @@
 
 @section('content')
 
+
 @section('breadcrumbs')
 {!! Breadcrumbs::render('home') !!}
 @stop
+
+<!-- </br>
+>>>>>>> aabedabfad471d96620a96a0f57c5a4e30f0f4e7
 </br>
-</br>
-</br>
+</br> -->
 
 <!-- =========================================================== -->
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-4 col-xs-7">
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>0</h3>
-                <p>Messages</p>
+                <h3>{{$count['templates']}}</h3>
+                <p>Templates</p>
             </div>
             <div class="icon">
                 <i class="fa fa-envelope-o"></i>
@@ -30,11 +33,11 @@
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-4 col-xs-7">
         <!-- small box -->
-        <div class="small-box bg-green">
+        <div class="small-box bg-aqua">
             <div class="inner">
-                <h3><?php echo $count['not'] ?></h3>
+                <h3>{{$count['not']}}</h3>
                 <p>Notifications</p>
             </div>
             <div class="icon">
@@ -45,11 +48,11 @@
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-4 col-xs-7">
         <!-- small box -->
-        <div class="small-box bg-yellow">
+        <div class="small-box bg-aqua">
             <div class="inner">
-                <h3><?php echo $count['post'] ?></h3>
+                <h3>{{$count['post']}}</h3>
                 <p>Posts</p>
             </div>
             <div class="icon">
@@ -60,12 +63,27 @@
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-4 col-xs-7">
         <!-- small box -->
-        <div class="small-box bg-red">
+        <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>0</h3>
-                <p>Unique Visitors</p>
+                <h3>{{$count['comments']}}</h3>
+                <p>Comments</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-comment-o"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-7">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>{{$count['events']}}</h3>
+                <p>Events</p>
             </div>
             <div class="icon">
                 <i class="fa fa-user-plus"></i>
@@ -74,9 +92,78 @@
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
-    </div><!-- ./col -->
-</div><!-- /.row -->
+    </div>
+    <div class="col-lg-4 col-xs-7">
+        <!-- small box -->
+        <div class="small-box bg-aqua" >
+            <div class="inner">
+                <h3>{{$count['galery']}}</h3>
+                <p>Galary</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-7">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>{{$count['sites']}}</h3>
+                <p>Sites</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-7">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>{{$count['orders']}}</h3>
+                <p>MyOrders</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
 
+    <!-- <div id="w"></div>
+    <input type="button" value="Add" class="btn btn-primary" id="add"></input> -->
+
+    <!-- ./col -->
+</div><!-- /.row -->
+<script>
+    $(document).ready(function(){
+        var content;
+        $("#add").click(function(){
+            content='<div class="col-lg-4 col-xs-7">'+
+                '<div class="small-box bg-aqua">'+
+                    '<div class="inner">'+
+                        '<h3>{{$count['orders']}}</h3>'+
+                        '<p>MyOrders</p>'+
+                    '</div>'+
+                    '<div class="icon">'+
+                        '<i class="fa fa-user-plus"></i>'+
+                    '</div>'+
+                    '<a href="#" class="small-box-footer">'+
+                        'More info <i class="fa fa-arrow-circle-right"></i>'+
+                    '</a></div></div>';
+            $("#w").append(content);
+        });
+    });
+</script>
 
 
 @section('notifications')

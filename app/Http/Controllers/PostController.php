@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 use App\Post;
 use App\Site;
+use App\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use App\ExceptionsLog;
+use Carbon\Carbon;
 // include composer autoload
 // import the Intervention Image Manager Class
 use Intervention\Image\ImageManager;
@@ -22,6 +26,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     private $userId;
+     private $mail;
+
+    public function __construct()
+    {
+        $this->userId=Auth::user()->id;
+        $this->mail=Auth::user()->email;
+    }
+
     public function index()
     {
         //
@@ -34,8 +47,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $sites=Site::paginate(2);
-        $allpost=Post::paginate(2);
+        $sites=Site::paginate(5);
+        $allpost=Post::paginate(5);
         return view('posts.addpost')->with('test',$allpost)->with('site',$sites);
     }
 
@@ -47,26 +60,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        try {
 
-        $image = Input::file('image');
+            $post=new Post;
+            $post->userid=$this->userId;
+            $post->sitename=$request->s;
+            $post->description=$request->d;
+            if($post->save())
+            {
+                return "t";
+            }
 
-        $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
+        } catch (Exception $exceptionData) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
-        Image::make($image)->save('resources/assets/img/postimages/'.$filename);
-
-        Image::make($image)->resize(50, 50)->save('resources/assets/img/postpreviewimage/' . $filename);
-
-        $post=new Post;
-        $post->userid=2;
-        $post->sitename=$request->sitename;
-        $post->description=$request->description;
-        $post->image=$filename;
-
-        if($post->save())
-        {
-            $allpost=Post::paginate(2);
-            $sites=Site::paginate(2);
-            return view('posts.addpost')->with('test',$allpost)->with('site',$sites);
+            ExceptionsLog::create($exceptionData);
+            return "f";
         }
 
     }
@@ -104,27 +115,25 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-
-        $image = Input::file('image');
-
-        $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
-
-        Image::make($image)->save('resources/assets/img/postimages/'.$filename);
-
-        Image::make($image)->resize(50, 50)->save('resources/assets/img/postpreviewimage/' . $filename);
-
-        $siteid=$request->id;
-
-        DB::table('posts')
-            ->where('sitename',$siteid)
-            ->update(array('description' => $request->description,'image'=>$filename));
-
-        $allposts=Post::all();
-        $sites=Site::all();
-        $users=DB::table('posts')->where('sitename',$siteid)->first();
-        return view('posts.updatepost',compact('users'))->with('test',$allposts)->with('site',$sites);
+        try {
+            $siteid=$request->post;
+            $data=$request->d;
 
 
+            $post=Post::find($siteid);
+            $post->description=$data;
+            if($post->save())
+            {
+                    return "t";
+            }
+        } catch (Exception $exceptionData) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
+            return "f";
+        }
     }
 
 
@@ -136,11 +145,20 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        try {
+            if(DB::table('posts')->where('id', '=', $id)->delete())
+            {
+                return redirect()->route('post.create');
+            }
+        } catch (Exception $exceptionData) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
-        if(DB::table('posts')->where('id', '=', $id)->delete())
-        {
-            return redirect()->route('post.create');
+            ExceptionsLog::create($exceptionData);
         }
+
+
 
     }
 }

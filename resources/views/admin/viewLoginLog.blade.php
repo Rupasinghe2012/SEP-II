@@ -13,7 +13,7 @@
         <div class="alert alert-danger" id="view-log-errors" style="display: none">
 
         </div>
-        
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 View user login record
