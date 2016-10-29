@@ -18,7 +18,8 @@
     <script src="{{ asset('/js/alert.js')}}"></script>
 
     <script src="{{ asset('/js/notification.js')}}"></script>
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+    <script src="//cdn.muicss.com/mui-0.9.3/js/mui.min.js"></script>
     <script>
 
         $.ajaxSetup({

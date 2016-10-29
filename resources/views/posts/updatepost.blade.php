@@ -1,52 +1,47 @@
 @extends('app')
+
 @section('content')
 
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">Add Post</h3>
-        </div><!-- /.box-header -->
-        <!-- form start -->
-        <form class="form-horizontal" method="post" action="{{route('post.update',$users->id)}}" enctype="multipart/form-data">
-            {{csrf_field()}}
-            <input type="hidden" name="_method" value="PUT">
+<div class="container">
+
+    <div class="row">
+
+        <div class="box box-info">
+
+            <div class="box-header with-border">
+                <h3 class="box-title"><b>Update Post</b></h3>
+            </div>
+
             <div class="box-body">
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom:60px;">
                     <label for="inputPassword3" class="col-sm-2 control-label">SiteName</label>
-                    <div class="col-sm-10">
-                        <input type="text" required class="form-control" id="siteid" placeholder="SiteID" name="siteid" value={{$users->sitename}} disabled>
+                    <div class="col-sm-10" >
+                        <input type="text" style="width:100px;" class="form-control" id="siteid" placeholder="SiteID" name="siteid" value={{$users->sitename}} disabled>
                         <input type="hidden" name="id" value={{$users->sitename}}>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Post</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." name="description" style="resize:none;" required >{{$users->description}}</textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">ImageName</label>
-                    <div class="col-sm-10">
-                        <input type="text" required class="form-control" id="imgname" placeholder="Name.." name="name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <input type="file" required name="image" id="image">
-                    </div>
-                </div>
-            </div><!-- /.box-body -->
+
+                <div class="form-group" id="summernote">{!!$users->description!!}</div>
+
+            </div>
+
             <div class="box-footer">
-                <input type="submit" class="btn btn-info pull-right" style="margin-right:10px;">
-            </div><!-- /.box-footer -->
-        </form>
+                <input type="button" value="update" class="btn btn-info pull-right" style="margin-right:10px;" id="update">
+            </div>
+
+
     </div>
 
     <div class="col-md-12">
+
         <div class="box">
+
             <div class="box-header with-border">
                 <h3 class="box-title">All Posts</h3>
-            </div><!-- /.box-header -->
+            </div>
+
             <div class="box-body">
+
                 <table class="table table-bordered">
                     <tbody><tr>
                         <th style="width: 10px">SiteName</th>
@@ -61,27 +56,76 @@
                                 {{$value->sitename}}
                             </td>
                             <td>
-                                {{$value->description}}
-                            </td>
-                            <td>
-                                <img src="{{url('resources/assets/img/postpreviewimage/'.$value->image)}}">
+                                {!!$value->description!!}
                             </td>
                             <td>
                                 {{$value->created_at}}
                             </td>
                             <td>
-                              <form method="post" action="{{route('post.destroy',$value->id)}}">
+                              <form class="delpost" method="post" action="{{route('post.destroy',$value->id)}}">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="submit" class="btn btn-success" value="Delete" >
+                                <input type="submit" class="btn btn-success" value="Delete" id="postdel">
                               </form>
                             </td>
                         <tr>
                     @endforeach
 
-                    </tbody></table>
-            </div><!-- /.box-body -->
+                    </tbody>
+                </table>
 
-        </div><!-- /.box -->
+            </div>
 
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+        <script>
+          $(document).ready(function(){
+
+              //initilalizing summernote editor
+              $('#summernote').summernote({
+                  height:200,
+                  width:1100
+              });
+
+              //retrieving data when user clicks on add button
+              $("#update").click(function(){
+
+                  var data=$("#summernote").summernote('code');
+                  var url='{!!url('updatepost/'.$users->id)!!}';
+                  var site=$("#siteid").val();
+
+                  if(data=='<p><br></p>')
+                  {
+                      swal({
+                          title:"<h1>Warning</h1>",
+                          text: '<h3 style="color:red;">Post cannot be empty</h3>',
+                          html: true
+                      });
+                  }
+                  else if(data!='<p><br></p>')
+                  {
+                      $.ajax({
+                          type:'GET',
+                          url:url,
+                          data:{d:data,s:site},
+                          success:function(data){
+                              if(data=="t")
+                              {
+                                  window.location.href='{!!route('post.create')!!}'; //redirecting to post create view
+                              }
+                              else {
+                                  sweetAlert("Oops...", "Something went wrong!", "error");
+                              }
+
+                          }
+                      });
+                  }
+              });
+          });
+        </script>
 @endsection

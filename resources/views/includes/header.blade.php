@@ -19,12 +19,13 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/css/skins/_all-skins.min.css">
-
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
     <script type="text/javascript"> var baseUrl = "{{url('/')}}";</script>
     <link rel="stylesheet" type="text/css" href="{{ asset('/dist/sweetalert.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
     <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    @yield('links')
+    <link href="//cdn.muicss.com/mui-0.9.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+        @yield('links')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

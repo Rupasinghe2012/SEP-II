@@ -178,7 +178,11 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('/demo','Loaddemo_controller@demo');
     Route::get('/edit/{id}','Loaddemo_controller@edit');
     Route::resource('site','SiteController');
-    Route::resource('post','PostController');
+
+    Route::resource('post','PostController');//insert,delete,create,view post routes
+    Route::get('updatepost/{post}','PostController@update');//updating post route
+
+
     Route::post('/store/{id}','SiteController@store');//sameera
     //comments
     Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
@@ -193,6 +197,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
     Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
     Route::get('showupdatedsites','SiteController@index');
+
 
 
 
