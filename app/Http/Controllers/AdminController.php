@@ -587,7 +587,7 @@ class AdminController extends Controller
         $current_date = date("Y-m-d");
 
         if (strtotime($s_date) < strtotime($current_date) || strtotime($e_date) < strtotime($current_date) || strtotime($s_date) > strtotime($e_date)) {
-            echo "alert('".strtotime($s_date).strtotime($current_date).strtotime($e_date)."Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
+            echo "alert('Invalid date selection.(Both starting and ending dates must be greater than current date.Ending date must be greater than Starting date.)');";
 
         }
         elseif(strtotime($s_time) > strtotime($e_time)){
@@ -686,5 +686,65 @@ class AdminController extends Controller
         }
         return back();
     }
+
+    public function calender_edit_event(calenderevent $event){
+
+        echo "<script>";
+
+        $s_date = Input::get('str_date');
+        $s_time = Input::get('str_time');
+        $e_time = Input::get('end_time');
+        $venue = Input::get('venue');
+
+        $current_date = date("Y-m-d");
+
+        if (strtotime($s_date) < strtotime($current_date)) {
+            echo "alert('Invalid date selection.(Starting date must be greater than current date.)');";
+
+        }
+        elseif(strtotime($s_time) > strtotime($e_time)){
+            echo "alert('Invalid time(starting time can not be less than end time)');";
+        }
+        else
+        {
+            $event->event_start_date = $s_date;
+            $event->s_time = $s_time;
+            $event->e_time = $e_time;
+            $event->venue = $venue;
+
+            $event->update();
+//            echo "window.location.href='/calender/view'</script>";
+//           
+
+        }
+       echo "window.location.href='/calender/view'</script>";
+    }
+
+    public function view_report_page(){
+
+        return view('admin.report');
+    }
+
+
+
+    public function report_event_search(){
+
+        $s_date = Input::get('str_date');
+        $e_date = Input::get('end_date');
+        if($e_date==null || $s_date==null)
+        {
+            $data=null;
+        }
+        else
+        {
+            $data = DB::table('calenderevents')->whereBetween('event_start_date', array($s_date, $e_date))->get();
+            $date['s']=$s_date;
+            $date['e']=$e_date;
+        }
+//        $view = view::make('admin.pdf_view_event',compact('data','date'));
+        return view('admin.pdf_view_event',compact('data','date'));
+    }
+    
+    
 }
     

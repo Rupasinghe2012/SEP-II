@@ -26,6 +26,14 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with(['userData' => $this->userData]);
 
         });
+        view()->composer('one',function($view){
+
+            if(Auth::User()) {
+                $this->userData = Auth::User()->type;
+            }
+            $view->with(['userData' => $this->userData]);
+
+        });
     }
 
     /**
