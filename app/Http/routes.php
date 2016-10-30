@@ -175,6 +175,9 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
 
     Route::get('/home', 'HomeController@index');
+    Route::get('/home/store','HomeController@store');//dynamic content sameera
+    Route::get('/home/getdata','HomeController@getdata');//dynamic content sameera
+    Route::get('/home/delete','HomeController@deleteTab');
     //galary routes
     Route::get('gallery/list','GalleryController@viewGalleryList');
     Route::post('gallery/save','GalleryController@saveGallery');
@@ -220,6 +223,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
     Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
     Route::get('showupdatedsites','SiteController@index');
+
 
 
 

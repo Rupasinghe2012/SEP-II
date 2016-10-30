@@ -17,6 +17,7 @@ use App\calenderevent;
 use App\Gallery;
 use App\Site;
 use App\preorder;
+use App\Dynamic;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -41,4 +42,40 @@ class HomeController extends Controller
 
         return view('home',compact('count'));
     }
+    public function store(Request $request)
+      {
+          $category=$request->cat;
+          $content=$request->con;
+          $result=Dynamic::where('category',$category)->count();
+          if($result>0)
+          {
+              return "f";
+          }
+          else {
+              $obj=new Dynamic;
+              $obj->category=$category;
+              $obj->description=$content;
+              if($obj->save())
+              {
+                  $g=Dynamic::all();
+                  return json_encode($g);
+              }
+          }
+
+      }
+
+      public function getdata(){
+          $data=Dynamic::all();
+          return json_encode($data);
+      }
+
+      public function deleteTab(Request $request)
+      {
+          $result=Dynamic::where('category',$request->cat)->delete();
+          if($result)
+          {
+              return "t";
+          }
+          return "f";
+      }
 }
