@@ -744,7 +744,41 @@ class AdminController extends Controller
 //        $view = view::make('admin.pdf_view_event',compact('data','date'));
         return view('admin.pdf_view_event',compact('data','date'));
     }
-    
+
+
+
+    /**
+     * @description returns all the login records joined with the user records
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function getLoginLog() {
+        try {
+            $allLogs = DB::table('login_log')
+                ->join('users', 'users.id', '=', 'login_log.user_id')
+                ->orderBy('login_log.logged_in_datetime', 'asc')
+                ->get(array('login_log.*', 'users.*'));
+
+            return response($allLogs);
+        } catch(\Exception $exception){
+            $exceptionData['user_id'] = Auth::user()->id;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
+
+            return response()->json([
+                'responseText' => 'A database error occurred when creating the user.'
+            ], 500);
+        }
+    }
+
+    /**
+     * @description returns the login log view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function viewLoginLog() {
+        return view('admin.viewLoginLog');
+    }
     
 }
     

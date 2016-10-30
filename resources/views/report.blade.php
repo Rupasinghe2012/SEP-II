@@ -80,10 +80,11 @@
             </div>
         </div>
     </div>
-@endsection
 @section('notifications')
     @include('includes.notification')
 @stop
+@endsection
+
 @section('scripts')
     @parent
     <link rel="stylesheet" href="/charts/morris.css">

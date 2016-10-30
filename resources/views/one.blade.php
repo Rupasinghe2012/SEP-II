@@ -202,7 +202,7 @@
                                 {{ csrf_field() }}
                             <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-credit-card"></i> Submit Payment</button>
                             </form>
-                            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                            <a class="btn btn-primary pull-right" href="{{url('preorder/inovice/'.$preorder->preorder_id)}}" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</a>
                         </div>
                     </div>
                 </section><!-- /.content -->

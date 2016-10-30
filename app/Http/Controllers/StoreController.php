@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\preorder;
 use App\preorderItem;
 use App\Template;
+use App\User;
+use PDF;
 use App\mytemplate;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
@@ -173,7 +175,7 @@ class StoreController extends Controller
         }
 
 
-        
+
         Session::flash('message', 'You have Succesfully purchased this Template');
         return redirect('/preorder/pending');
     }
@@ -418,5 +420,21 @@ class StoreController extends Controller
         }
 
         return $request;
+    }
+
+    public function getInvoice($id)
+    {
+        $data = User::all();
+        $preorder = preorder::find($id);
+        //$preorderItems = preorderItem::preorder($id)->get();
+        $preorderItems = DB::table('preorderItems')
+            ->leftJoin('templates', 'preorderItems.item_id', '=', 'templates.id')
+            ->select('preorderItems.*', 'templates.description', 'templates.price')
+            ->where('preorderItems.preorder_id', $id)
+            ->get();
+        $pdf = PDF::loadView('invoice',['data'=>$data,'preorder'=>$preorder,'items'=>$preorderItems])->setPaper('a4', 'landscape');
+
+
+        return $pdf->download('Invoice.pdf');
     }
 }

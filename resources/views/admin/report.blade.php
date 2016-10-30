@@ -51,16 +51,16 @@
 
         <div class="col-lg-4 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-aqua">
                 <div class="inner">
 
-                    <p>User Registrations</p>
+                    <p>Template Order Details</p>
                     <br><br><br><br>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-shopping-cart"></i>
                 </div>
-                <a href="" class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
+                <a href={{url("preorder/reports")}} class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
 
@@ -69,13 +69,13 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
 
-                    <p>User Registrations</p>
+                    <p>User Login Log</p>
                     <br><br><br><br>
                 </div>
                 <div class="icon">
                     <i class="fa fa-user"></i>
                 </div>
-                <a href="" class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
+                <a href={{url("/admin/logs/login")}} class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
 

@@ -13,7 +13,6 @@
       </div>
       <div class="modal-body">
         <select id="category">
-
           <option value="post">Posts</option>
           <option value="comments">Comments</option>
           <option value="templates">Templates</option>
