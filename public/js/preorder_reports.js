@@ -114,7 +114,6 @@ function generateReport() {
                     data: [
                       { y: 'Completed', a : iData[0].a},
                       { y: 'Cancelled', a : iData[1].a},
-                      { y: 'Rejected', a : iData[2].a},
                       { y: 'Pending', a : iData[3].a}
                     ],
                     xkey: 'y',
@@ -127,7 +126,6 @@ function generateReport() {
                         data: [
                           {label: "Completed", value: iData[0].b},
                           {label: "Cancelled", value: iData[1].b},
-                          {label: "Rejected", value: iData[2].b},
                           {label: "Pending", value: iData[3].b}
                         ]
 });

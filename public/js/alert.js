@@ -50,7 +50,7 @@ $(document).on('click', '#postdel', function(e) { e.preventDefault();
     var self = $(this);
     swal({
             title: "Are you sure?",
-            text: "All of the sub categories will be deleted also!",
+            text: "Post Will Be Deleted!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -59,16 +59,17 @@ $(document).on('click', '#postdel', function(e) { e.preventDefault();
         },
         function(isConfirm){
             if(isConfirm){
-                swal("Deleted!","Your Album is Deleted", "success");
+                swal("Deleted!","Post Deleted", "success");
                 setTimeout(function() {
                     self.parents(".delpost").submit();
                 }, 2000);
             }
             else{
-                swal("Cancelled","Your Album is safe", "error");
+                swal("Cancelled","Your Post is safe", "error");
             }
         });
 });
+
 
 $(document).on('click', '#commentdel', function(e) { e.preventDefault();
     var self = $(this);

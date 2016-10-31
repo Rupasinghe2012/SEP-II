@@ -7,6 +7,11 @@
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content">
+            <section class="content-header">
+                <ol class="breadcrumb">
+                    @yield('breadcrumbs')
+                </ol>
+            </section>
 
             @yield('content')
 

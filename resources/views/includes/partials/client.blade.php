@@ -40,7 +40,16 @@
             <li><a href="{{url('/temp')}}"><i class="fa fa-television"></i> <span>My Templates</span></a></li>
             <li><a href="{{url('/profile')}}"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
             <li><a href="{{url('/gallery/list')}}"><i class="fa fa-photo"></i> <span>My galery</span></a></li>
-            <li><a href="{{url('/temp_store')}}"><i class="fa fa-shopping-cart"></i> <span>Template Store</span></a></li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-cart"></i> <span>Template Store</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu" style="display: block;">
+                     <li><a href="{{url('/temp_store')}}"><i class="fa fa-shopping-cart"></i>Profile.NET Store</a></li>
+                     <li><a href="{{url('/preorder/pending')}}"><i class="fa fa-circle-o"></i>My Orders</a></li>
+                 </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
