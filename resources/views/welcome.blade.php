@@ -259,7 +259,7 @@
                 <li>
 
                     @if (Auth::guest())
-                        <a class="page-scroll" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log In</a>
+                        <a class="page-scroll" href="{{ url('auth/login') }}" >Log In</a>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

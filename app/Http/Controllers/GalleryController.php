@@ -168,9 +168,11 @@ class GalleryController extends Controller
      */
     public function deleteGallery($id){
         try {
+
             //load the gallery
             $currentGallery = Gallery::findOrFail($id);
             //check owenership
+
             if ($currentGallery->created_by != Auth::user()->id) {
                 abort('483', 'You are not allowed to delete this Album');
             }
@@ -182,12 +184,13 @@ class GalleryController extends Controller
                 unlink(public_path($image->file_path));
                 unlink(public_path('gallery/images/thumbs/' . $image->file_name));
             }
+
             //delete the db record
-            if($currentGallery->images()->delete()) {
+            $currentGallery->images()->delete();
                 if($currentGallery->delete()){
                     $this->notification->addNotification($this->userId,'delete_album');
                 }
-            }
+            
             return redirect()->back();
         }
         catch (\Exception $exception){

@@ -25,9 +25,12 @@
     <link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
     <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <link href="//cdn.muicss.com/mui-0.9.3/css/mui.min.css" rel="stylesheet" type="text/css" />
-        @yield('links')
+    <!-- include the BotDetect layout stylesheet -->
+    <link href="{{ captcha_layout_stylesheet_url() }}" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+    @yield('links')
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -55,4 +58,13 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+
+@if($userData == "client")
+    <body class="hold-transition skin-black sidebar-mini">
+@elseif($userData == "moderator")
+    <body class="hold-transition skin-yellow sidebar-mini">
+@elseif($userData == "admin")
+    <body class="hold-transition skin-red sidebar-mini">
+@else
+    <body class="hold-transition skin-blue sidebar-mini">
+@endif

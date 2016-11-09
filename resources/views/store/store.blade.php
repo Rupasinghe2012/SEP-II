@@ -1,6 +1,14 @@
 @extends ('app')
 
 @section('content')
+
+@section('pageName')
+  Profiler.Net Store
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('store') !!}
+@stop
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="collapse navbar-collapse">

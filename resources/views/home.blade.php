@@ -1,22 +1,15 @@
 @extends('app')
+@section('pageName')
+    Home
+    @stop
+    @section('breadcrumbs')
+    {!! Breadcrumbs::render('home') !!}
+    @stop
+
+    @section('content')
 
 
-
-@section('content')
-
-
-@section('breadcrumbs')
-{!! Breadcrumbs::render('home') !!}
-@stop
-
-<!-- </br>
->>>>>>> aabedabfad471d96620a96a0f57c5a4e30f0f4e7
-</br>
-</br> -->
-
-<!-- =========================================================== -->
-
-<!-- Small boxes (Stat box) -->
+    <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-4 col-xs-7">
         <!-- small box -->

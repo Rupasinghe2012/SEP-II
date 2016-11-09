@@ -3,6 +3,13 @@
 
 
 @section('content')
+@section('pageName')
+    Admins Dashboard
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('admin-home') !!}
+@stop
     <div class="col-md-12">
         <div class="col-lg-4 col-xs-6">
             <!-- small box -->

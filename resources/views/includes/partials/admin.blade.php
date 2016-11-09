@@ -31,7 +31,7 @@
             <li><a href="{{url('/templates/mail/view')}}"><i class="fa fa-envelope-square" aria-hidden="true"></i> <span>Manage Mails</span></a></li>
             <li><a href="{{url('/admin/user/manage')}}"><i class="fa fa-users" aria-hidden="true"></i> <span>Manage Users</span></a></li>
             <li><a href="{{url('/reports')}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Get Reports</span></a></li>
-            <li><a href="{{url('/profile')}}"><i class="fa fa-user" aria-hidden="true"></i> <span>My Profile</span></a></li>
+            <li><a href="{{url('/my-profile/'.Auth::user()->id)}}"><i class="fa fa-user" aria-hidden="true"></i> <span>My Profile</span></a></li>
             <li><a href="{{url('/calender/view')}}"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Event calender</span></a></li>
         </ul>
     </section>

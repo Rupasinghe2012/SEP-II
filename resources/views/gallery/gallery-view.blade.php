@@ -12,6 +12,14 @@
 @stop
 
 @section('content')
+@section('pageName')
+   Album Photos
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+
+    {!! Breadcrumbs::render('album',$gallery->id) !!}
+@stop
     <style type="text/css">
         #gallery-images img{
             width: 240px;
@@ -53,7 +61,7 @@
                 <div class="panel-body">
                     <div id="gallery-images">
                         <ul>
-                            @foreach($gallery->images as $image)
+                            @forelse($gallery->images as $image)
                                 <li>
                                 <div class="panel panel-default">
                                     <div class="panel-body">
@@ -68,8 +76,12 @@
                                     </div>
                                 </div>
                                 </li>
+                            @empty
+                                <div class="alert alert-danger">
+                                    <i class="fa fa-2x fa-fw fa-exclamation-triangle"></i>No Images in the Album
+                                </div>
+                            @endforelse
 
-                            @endforeach
                         </ul>
                     </div>
 

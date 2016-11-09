@@ -20,13 +20,21 @@ class ViewComposerServiceProvider extends ServiceProvider
         //
         view()->composer('includes.sidebar',function($view){
 
+        if(Auth::User()) {
+            $this->userData = Auth::User()->type;
+        }
+        $view->with(['userData' => $this->userData]);
+
+    });
+        view()->composer('includes.header',function($view){
+
             if(Auth::User()) {
                 $this->userData = Auth::User()->type;
             }
             $view->with(['userData' => $this->userData]);
 
         });
-        view()->composer('one',function($view){
+        view()->composer('store.one',function($view){
 
             if(Auth::User()) {
                 $this->userData = Auth::User()->type;
