@@ -217,7 +217,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
     Route::post('/store/{id}','SiteController@store');//sameera
     //comments
-    Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
+    Route::get('comments',['uses'=>'CommentsController@store','as'=>'comments.store']);
     Route::get('comments/show/{post_id}',['uses'=>'CommentsController@show','as'=>'showcomments.show']);
     Route::get('comments/all',['uses'=>'CommentsController@index','as'=>'showallcomments.show']);
     Route::post('delete/{id}',['uses'=>'CommentsController@destroy','as'=>'delete.comment']);

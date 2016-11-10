@@ -39,22 +39,31 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$post_id)
+    public function store(Request $request)
     {
+        $postid=$request->p;
+        $email=$request->e;
+        $name=$request->n;
+        $sitename=$request->s;
+        $com=$request->c;
 
-        $post=Post::find($post_id);
+        $post=Post::find($postid);
+
         $comment=new Comment();
-        $comment->name=$request->name;
-        $comment->email=$request->email;
-        $comment->comment=$request->comment;
+        $comment->name=$name;
+        $comment->email=$email;
+        $comment->comment=$com;
         $comment->approved=false;
         $comment->post()->associate($post);
-        $comment->sitename=$request->sitename;
-        $comment->image=$request->image;
-        $comment->view=false;
-        $comment->save();
-        $com=Comment::where('post_id','=',$post_id);
-        return Redirect::back()->with('comments',$com);
+        $comment->sitename=$sitename;
+        if($comment->save())
+        {
+            // $com=Comment::where('post_id',$postid)->get();
+            return 1;
+        }
+
+        // return Redirect::back()->with('comments',$com);
+
 
     }
 
@@ -145,19 +154,26 @@ class CommentsController extends Controller
     public function getComments(Request $request)
     {
         $result=Comment::where('post_id',$request->pid)->Where('approved',true)->get();
+
         if($result->count())
         {
-            $com="<ul>";
+            $com=" ";
             foreach($result as $obj)
             {
-                $com=$com."<li style='margin-top:10px;list-style-type:none;' class='well'>".$obj->comment."</li>";
+                $com=$com."<div class='comment-text'>".
+                  "<span class='username'>".
+                    "<p><b>$obj->name</b></p>".
+                    "<span class='text-muted pull-right'>$obj->created_at</span></p>".
+                  "</span>$obj->comment</div>";
+
+
             }
-            $com=$com."</ul>";
             echo $com;
         }
         else {
             echo "<p >No Comments To Display</p>";
         }
+
 
     }
 
