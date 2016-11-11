@@ -3,7 +3,13 @@
 
 
     @section('content')
-
+@section('pageName')
+    Order Invoice
+    @stop
+    {{--breadcrumb--}}
+    @section('breadcrumbs')
+    {!! Breadcrumbs::render('recipt',$preorder->preorder_id) !!}
+    @stop
 
             <!-- Display any messages from Session Flash -->
     @if (Session::has('message'))

@@ -4,6 +4,16 @@
 
 
     @section('content')
+@section('pageName')
+    Template Order Details
+    @stop
+    {{--breadcrumb--}}
+    @section('breadcrumbs')
+    {!! Breadcrumbs::render('Temp-reports') !!}
+    @stop
+    @section('notifications')
+    @include('includes.notification')
+    @stop
             <!-- Display any messages from Session Flash -->
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -80,9 +90,7 @@
             </div>
         </div>
     </div>
-@section('notifications')
-    @include('includes.notification')
-@stop
+
 @endsection
 
 @section('scripts')

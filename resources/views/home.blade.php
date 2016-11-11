@@ -1,5 +1,10 @@
 @extends('app')
-
+@section('pageName')
+    Home
+    @stop
+    @section('breadcrumbs')
+    {!! Breadcrumbs::render('home') !!}
+    @stop
 
 
 @section('content')
@@ -53,6 +58,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id="delete">Delete</button>
       </div>
+
     </div>
   </div>
 </div>

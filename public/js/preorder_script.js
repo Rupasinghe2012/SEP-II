@@ -3,7 +3,7 @@ $(refresh());
 
 // ajax Loading indicator
 
-$('.ajax-loader').html('<a><img src="/images/ajax_loader.gif"></img>Loading</a>');
+$('.ajax-loader').html('<a><img src="/images/ajax_loader.gif">Loading</a>');
 
 $('.ajax-loader').bind('ajaxStart', function(){
     $(this).show();
@@ -251,7 +251,7 @@ $('#btnCheckout').click(function(){
 	success : function(data){
 		$('#checkoutModal').modal('hide');
 		$('#description').val('No remarks.');
-		location.reload();
+		window.location.href = '/preorder/pending';
 
 	}});
   }

@@ -38,7 +38,7 @@
                         </ul>
             </li>
             <li><a href="{{url('/temp')}}"><i class="fa fa-television"></i> <span>My Templates</span></a></li>
-            <li><a href="{{url('/profile')}}"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
+            <li><a href="{{url('/my-profile/'.Auth::user()->id)}}"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
             <li><a href="{{url('/gallery/list')}}"><i class="fa fa-photo"></i> <span>My galery</span></a></li>
             <li class="treeview">
                 <a href="#">

@@ -190,19 +190,19 @@ class CustomAuthenticationController extends Controller
                     $this->mailMethod('mail.reset-password',$data);
 
                     //error_log('success');
-                    return Redirect::back()
-                        ->with('message' ,'Your password has been reset check your email.');
+                    Session::flash('message', 'Your password has been reset check your email');
+                    return view('auth.login');
                 } else {
                    // error_log('else error..');
-                    return Redirect::back()
-                        ->with('error', 'There was a database error resetting your password.');
+                    Session::flash('error-message', 'There was a database error resetting your password.');
+                    return view('auth.rest-pass');
                 }
             }
             else {
                 error_log('user not found..');
                 //user with that email was not found
-                return Redirect::back()
-                    ->with('error' ,'There is no user in the system with that email address.');
+                Session::flash('error-message', 'There is no user in the system with that email address.');
+                return view('auth.rest-pass');
             }
         } catch(\Exception $exception){
 //            $exceptionData['user_id'] = Auth::user()->id;
