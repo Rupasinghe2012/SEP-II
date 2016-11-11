@@ -47,6 +47,7 @@ class CommentsController extends Controller
         $sitename=$request->s;
         $com=$request->c;
 
+
         $post=Post::find($postid);
 
         $comment=new Comment();

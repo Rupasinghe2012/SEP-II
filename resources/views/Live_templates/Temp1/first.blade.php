@@ -99,18 +99,18 @@
                     {{csrf_field()}} -->
                       <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name">
-                        <div id="valname"></div>
+                        <input type="text" class="form-control" id="name{{$value->id}}">
+                        <div id="valname{{$value->id}}"></div>
                       </div>
                       <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email">
-                        <div id="valemail"></div>
+                        <input type="email" class="form-control" id="email{{$value->id}}">
+                        <div id="valemail{{$value->id}}"></div>
                       </div>
                       <div class="form-group">
                         <label for="comment">Comment:</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                        <div id="valcomment"></div>
+                        <textarea class="form-control " rows="5" id="comment{{$value->id}}"></textarea>
+                        <div id="valcomment{{$value->id}}"></div>
                       </div>
                       <div>
                         <input type="hidden" id="hidsite" name="sitename" value="{{$value->sitename}}">
@@ -168,7 +168,7 @@
         function validateName(nameval)
         {
             var n=false;
-            var c=false;
+
             var namereg=new RegExp("^[a-zA-Z]{3,16}$");
             if(namereg.test(nameval))
             {
@@ -198,49 +198,73 @@
      	 * Detects change in email field and validate
          * by calling validateEmail() method
     	 */
-        $("#email").change(function(){
-
-            email=$('#email').val();
-            if(!validateEmail(email))
-            {
-                $("#valemail").html("<p style='color:red;'><b>Invalid Email Address</b></p>");
-            }
-            else {
-                $("#valemail").html(" ");
-            }
-
-        });
-
-        /**
-     	 * Detect changes in name field and validate
-         * by calling validateName() method
-    	 */
-        $("#name").change(function(){
-
-            name=$('#name').val();
-            if(!validateName(name))
-            {
-                $("#valname").html("<p style='color:red;'><b>Invalid Input</b></p>");
-            }
-            else {
-                $("#valname").html(" ");
-            }
-        });
+        // $("#email").change(function(){
+        //
+        //     email=$('#email').val();
+        //     if(!validateEmail(email))
+        //     {
+        //         $("#valemail").html("<p style='color:red;'><b>Invalid Email Address</b></p>");
+        //         email=null;
+        //     }
+        //     else {
+        //         $("#valemail").html(" ");
+        //     }
+        //
+        // });
+        //
+        // /**
+     // 	 * Detect changes in name field and validate
+        //  * by calling validateName() method
+    	//  */
+        // $("#name").change(function(){
+        //
+        //     name=$('#name').val();
+        //     if(!validateName(name))
+        //     {
+        //         $("#valname").html("<p style='color:red;'><b>Invalid Input</b></p>");
+        //         name=null;
+        //     }
+        //     else {
+        //         $("#valname").html(" ");
+        //     }
+        // });
 
         $(".submit").click(function(){
 
-            var comment=$("#comment").val();
+
+            var id=$(this).val();
+            var comment=$("#comment"+id).val();
+
+            name=$('#name'+id).val();
+            if(!validateName(name))
+            {
+                $("#valname"+id).html("<p style='color:red;'><b>Invalid Input</b></p>");
+                name=null;
+            }
+            else {
+                $("#valname"+id).html(" ");
+            }
+
+            email=$('#email'+id).val();
+            if(!validateEmail(email))
+            {
+                $("#valemail"+id).html("<p style='color:red;'><b>Invalid Email Address</b></p>");
+                email=null;
+            }
+            else {
+                $("#valemail"+id).html(" ");
+            }
+
 
             if((email != null) & (name != null) & (comment != ''))
             {
                 var sitename=$("#hidsite").val();
                 var url="{!!route('comments.store')!!}";
-                var postid=$(this).val();
 
                 $.ajax({
                     url:url,
                     type:'GET',
-                    data:{"e":email,"n":name,"c":comment,"s":sitename,"p":postid},
+                    data:{"e":email,"n":name,"c":comment,"s":sitename,"p":id},
                     success:function(data){
                         if(data==1)
                         {
@@ -260,6 +284,7 @@
 
                         }
 
+
                 });
 
             }
@@ -270,6 +295,7 @@
                     timer:2000
                     });
             }
+
 
         });
 
