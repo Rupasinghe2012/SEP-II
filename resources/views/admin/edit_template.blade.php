@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="Name" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                    <input required data-parsley-type="alphanum" data-parsley-maxlength="10" data-parsley-maxlength-message="Name should be less than 10 characters" type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $temp->name }}">
+                    <input readonly required data-parsley-type="alphanum" data-parsley-maxlength="10" data-parsley-maxlength-message="Name should be less than 10 characters" type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $temp->name }}">
                 </div>
             </div>
             <div class="form-group">

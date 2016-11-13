@@ -70,7 +70,7 @@ class AdminController extends Controller
                 $filename = Input::get('name') . '-image.' . $image->getClientOriginalExtension();
                 //$filename2 = Input::get('name') . '-source.' . $source->getClientOriginalExtension();
 
-                $destinationPath = 'C:/xampp/htdocs/SEP-II/resources/views/upload_temp/'; // upload path
+                $destinationPath = 'resources/views/upload_temp/';// upload path
 
                 $extension = $source->getClientOriginalExtension(); // getting image extension
                 $filename2 = Input::get('name') . '-source.blade.' . $extension; // renameing image
@@ -156,7 +156,7 @@ class AdminController extends Controller
                 }
 
                 if($source != null) {
-                    $destinationPath = 'C:/xampp/htdocs/SEP_II/resources/views/upload_temp/'; // upload path
+                    $destinationPath = 'resources/views/upload_temp/'; // upload path
                     $extension = $source->getClientOriginalExtension(); // getting image extension
                     $filename2 = Input::get('name') . '-source.blade.'.$extension; // renameing image
                     $source->move($destinationPath, $filename2);
