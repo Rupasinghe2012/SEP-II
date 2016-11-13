@@ -4,8 +4,7 @@
                    <thead>
                      <tr role="row">
                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 194px;">SiteName</th>
-                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 240px;">Post Description</th>
-                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 212px;">Image</th>
+                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 240px;">PostID</th>
                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 167px;">Name</th>
                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 121px;">Email</th>
                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 121px;">Comment</th>
@@ -21,10 +20,7 @@
                           {{$result->sitename}}
                         </td>
                         <td>
-                          {{$result->description}}
-                        </td>
-                        <td>
-                          <img src="{{url('resources/assets/img/postpreviewimage/'.$result->image)}}" >
+                          {{$result->post_id}}
                         </td>
                         <td>
                           {{$result->name}}

@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/product-backlog';
+    protected $redirectTo = '/';
     //when login attempt has failed, redirect to this path
     //protected $loginPath = '/login';
 
@@ -54,7 +54,9 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'CaptchaCode' => 'required|valid_captcha',
         ]);
+        
     }
 
     /**

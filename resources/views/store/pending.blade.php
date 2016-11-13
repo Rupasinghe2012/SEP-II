@@ -3,6 +3,13 @@
 
 
     @section('content')
+@section('pageName')
+    My Orders
+    @stop
+    {{--breadcrumb--}}
+    @section('breadcrumbs')
+    {!! Breadcrumbs::render('pending') !!}
+    @stop
 
             <!-- Display any messages from Session Flash -->
     @if (Session::has('message'))
@@ -11,7 +18,6 @@
     @if (Session::has('error-message'))
         <div class="alert alert-danger">{{ Session::get('error-message') }}</div>
     @endif
-<h1>My Orders</h1>
 <div class="row">
     <div class="col-xs-12">
         <div class="box">

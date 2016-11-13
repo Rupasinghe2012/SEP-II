@@ -10,6 +10,8 @@ use App\Post;
 use App\Site;
 use App\template;
 use Session;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -94,8 +96,10 @@ class SiteController extends Controller
       $post=DB::table('posts')->where('sitename',$id)->get();
        $aboutobj=(object)$about;
       $postobj=(object)$post;
-      return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj);
-      //
+      $user=Auth::user()->name;
+
+      return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj)->withUser($user);
+
 
 
     }

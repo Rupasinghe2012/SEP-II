@@ -1,7 +1,14 @@
 @extends('app')
 @section('content')
 
-    <h3 style="text-align: center">REPORTS</h3>
+@section('pageName')
+    Admins Reports
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('reports') !!}
+@stop
+
 
     <div class="col-md-12">
         <div class="col-lg-4 col-xs-6">

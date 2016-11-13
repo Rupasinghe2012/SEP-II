@@ -13,6 +13,13 @@
 @stop
 
 @section('content')
+@section('pageName')
+    My Gallery
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('gallery') !!}
+@stop
     <script language="javascript" type="text/javascript">
         function validation(){
 
@@ -92,8 +99,9 @@
         </br>
         </br>
         </br>
+        <div class="row">
 
-        <button   type="button"  class="btn pull-left btn-md btn-danger"  data-toggle="collapse" data-target="#demo" ><i class="fa fa-fw fa-plus"></i>Add a Album.</button>
+        <button   type="button"  class="btn pull-left btn-md btn-primary"  data-toggle="collapse" data-target="#demo" ><i class="fa fa-fw fa-plus"></i>Add a Album.</button>
 
 
         <div id="demo" class="collapse">
@@ -121,6 +129,7 @@
                 </div>
             </div>
         </div>
+            </div>
 
         <!-- Begin of rows -->
         @if($galleries->count() > 0)
@@ -162,7 +171,7 @@
                             {{url('gallery/view/' . $gallery->id)}}" ><i class="fa fa-fw fa-eye"></i> Show</a>
 
                                     <a class="btn pull-right btn btn-info" href="" data-toggle="modal" data-target="#edit" ><i class="fa fa-fw fa-pencil" ></i> Edit</a>
-                                    <form method="post" action="{{url('gallery/delete/' . $gallery->id)}}" class="delete_form">
+                                    <form method="post" action="{{url('gallery/delete/'.$gallery->id)}}" class="delete_form">
                                         {{ csrf_field() }}
                                         <a  id="delete-btn" class="btn  pull-right btn-danger delete" ><i class="fa fa-fw fa-trash"></i> Delete</a>
                                     </form>
@@ -173,6 +182,11 @@
 
                     </div>
                 @endforeach
+               @else
+                <hr>
+                        <div class="alert alert-danger">
+                            <i class="fa fa-2x fa-fw fa-exclamation-triangle"></i>No Albums Ceated
+                        </div>
                 @endif
 
                 <div class="col-md-4">

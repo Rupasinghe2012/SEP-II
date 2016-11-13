@@ -163,6 +163,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
     ],
 
     /*

@@ -24,6 +24,11 @@ class StoreController extends Controller
     {
         $this->userId = Auth::user()->id;
     }
+
+    /**
+     * @param null $category
+     * @return mixed
+     */
     public function index($category=NULL)
     {
 
@@ -41,7 +46,7 @@ class StoreController extends Controller
             $category='All';
             $items = DB::table('templates')->get();
 
-            return view('store')->withCategory($category)->withItems($items)->withOrderitems($orderItems);
+            return view('store.store')->withCategory($category)->withItems($items)->withOrderitems($orderItems);
         }
 
     }
@@ -82,7 +87,7 @@ class StoreController extends Controller
         $created = $preorder->create($request->all());
 
         Session::flash('message', 'Your order has been placed!');
-        return redirect('store');
+        return redirect('store.store');
     }
 
     /**
@@ -102,7 +107,7 @@ class StoreController extends Controller
             ->where('preorderItems.preorder_id', $id)
             ->get();
 
-        return view('one')->withPreorder($preorder)->withItems($preorderItems);
+        return view('store.one')->withPreorder($preorder)->withItems($preorderItems);
 
     }
 
@@ -190,7 +195,7 @@ class StoreController extends Controller
 
             $pending = preorder::pending()->where('customer_id', $id)->orderBy('updated_at', 'description')->get();
 
-        return view('pending')->with('preorders', $pending);
+        return view('store.pending')->with('preorders', $pending);
     }
 
     /**
@@ -209,7 +214,7 @@ class StoreController extends Controller
             $history = preorder::history()->where('customer_id', $cid)->orderBy('updated_at')->get();
         }
 
-        return view('store')->with('preorders', $history);
+        return view('store.store')->with('preorders', $history);
     }
 
     // Return search for items
@@ -365,7 +370,7 @@ class StoreController extends Controller
     public function getReports(Request $request) {
 
 
-        return view('report');
+        return view('store.report');
     }
 
     public function getProcessreport(Request $request) {
@@ -432,7 +437,7 @@ class StoreController extends Controller
             ->select('preorderItems.*', 'templates.description', 'templates.price')
             ->where('preorderItems.preorder_id', $id)
             ->get();
-        $pdf = PDF::loadView('invoice',['data'=>$data,'preorder'=>$preorder,'items'=>$preorderItems])->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf.invoice',['data'=>$data,'preorder'=>$preorder,'items'=>$preorderItems])->setPaper('a4', 'landscape');
 
 
         return $pdf->download('Invoice.pdf');

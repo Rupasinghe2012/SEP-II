@@ -1,4 +1,25 @@
 @include('includes.header')
+<!-- Main Header -->
+<header class="main-header">
+
+    <!-- Logo -->
+    <a href="{{ url('/') }}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>Prof</b>.net</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Profiler</b>.net</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        </div>
+    </nav>
+</header>
 <div class="row" style="margin-top: 10%; text-align: center;">
         <h1 class=""> Profiler.NET</h1>
         <h4 class=""> (Prof.NET)</h4>

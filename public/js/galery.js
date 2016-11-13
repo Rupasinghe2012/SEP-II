@@ -7,6 +7,7 @@ $(function() {
         success:function(file, response){
             if(file.status == 'success'){
                 handleDropzoneFileUpload.handleSuccess(response);
+                location.reload();
             }else {
                 handleDropzoneFileUpload.handleError(response);
             }

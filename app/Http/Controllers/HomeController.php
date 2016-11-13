@@ -57,7 +57,7 @@ class HomeController extends Controller
               $obj->description=$content;
               if($obj->save())
               {
-                  $g=Dynamic::all();
+                  $g=Dynamic::where('category',$category)->get();
                   return json_encode($g);
               }
           }

@@ -61,15 +61,18 @@ Route::group(['middleware' => 'web'], function() {
 Route::group(['middleware' => ['web', 'requireAuth']], function() {
 
     //user profile routes
-    Route::get ('profile', 'ProfileController@index');
-
-    Route::post('user', 'ProfileController@update');
+    Route::get('/my-profile/{id}', 'ProfileController@index')
+        ->where(['id' => '[0-9]+']);
+    Route::get('/my-profile/{id}/edit', 'ProfileController@edit')
+        ->where(['id' => '[0-9]+']);
+    Route::put('/my-profile/{id}/edit', 'ProfileController@update')
+        ->where(['id' => '[0-9]+']);
+    Route::put('my-profile/{id}/edit/password', 'ProfileController@updatePass')
+        ->where(['id' => '[0-9]+']);
     Route::post('userLINK', 'ProfileController@link');
-
     Route::post('user/{pic}', 'ProfileController@picture');
-
-    Route::post('userpw', 'ProfileController@changePwd');
     Route::post('/twitter', 'ProfileController@widget');
+    
 
     //notification routes
     Route::get('/notifications','NotificationController@show');
@@ -77,7 +80,7 @@ Route::group(['middleware' => ['web', 'requireAuth']], function() {
     Route::patch('/notifications','NotificationController@update');
     Route::get('/notificationsView','NotificationController@index');
 
-    Route::get('temp_store','StoreController@index');
+    Route::get('/temp_store','StoreController@index');
 
     Route::get('preorder/show/{id}', 'StoreController@show');
     Route::post('preorder/buy/{id}', 'StoreController@buy');
@@ -217,7 +220,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
 
     Route::post('/store/{id}','SiteController@store');//sameera
     //comments
-    Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
+    Route::get('comments',['uses'=>'CommentsController@store','as'=>'comments.store']);
     Route::get('comments/show/{post_id}',['uses'=>'CommentsController@show','as'=>'showcomments.show']);
     Route::get('comments/all',['uses'=>'CommentsController@index','as'=>'showallcomments.show']);
     Route::post('delete/{id}',['uses'=>'CommentsController@destroy','as'=>'delete.comment']);
