@@ -31,7 +31,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle"  href="#" onclick="return show('section2','section1','section3','section4');">Posts</a>
                 </li>
-                <li><a href="#section3" onclick="return show('section3','section1','section2','section4');">Event Calender</a></li>
+                <li><a href="{{url('/calender/view_site')}}" onclick="return show('section3','section1','section2','section4');">Event Calender</a></li>
                 <li><a href="#" onclick="return show('section4','section1','section2','section3');">Contacts</a></li>
             </ul>
 

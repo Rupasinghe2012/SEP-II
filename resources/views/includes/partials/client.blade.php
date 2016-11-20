@@ -50,6 +50,7 @@
                      <li><a href="{{url('/preorder/pending')}}"><i class="fa fa-circle-o"></i>My Orders</a></li>
                  </ul>
             </li>
+            <li><a href="{{url('/calender/view')}}"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Event calender</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -89,6 +89,13 @@ Route::group(['middleware' => ['web', 'requireAuth']], function() {
         ['except' => ['show']]
     );
     Route::controller('preorder', 'StoreController');
+
+    //tharindu
+    Route::any('/calender/view', 'AdminController@calender_view');
+    Route::any('/calender/add_event', 'AdminController@calender_add_event');
+    Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
+    Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
+    Route::any('/calender/{event}/edit_event', 'AdminController@calender_edit_event');
 });
 /*
 |--------------------------------------------------------------------------
@@ -135,11 +142,11 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::post('user/{user}/kick-out' , 'AdminController@kickout');
     Route::get('/admin/user/removed', 'AdminController@re_user_view');
 
-    Route::any('/calender/view', 'AdminController@calender_view');
-    Route::any('/calender/add_event', 'AdminController@calender_add_event');
-    Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
-    Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
-    Route::any('/calender/{event}/edit_event', 'AdminController@calender_edit_event');
+//    Route::any('/calender/view', 'AdminController@calender_view');
+//    Route::any('/calender/add_event', 'AdminController@calender_add_event');
+//    Route::any('/calender/{event}/delete', 'AdminController@calender_delete_event');
+//    Route::any('/calender/{event}/delete_all', 'AdminController@calender_delete_full_event');
+//    Route::any('/calender/{event}/edit_event', 'AdminController@calender_edit_event');
 
     Route::any('/reports', 'AdminController@view_report_page');
     Route::any('/reports/user', 'PDFController@report_user');
@@ -203,11 +210,6 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
     Route::post('image/do-upload','GalleryController@doImageUpload');
 
-
-
-
-
-
     //sameera
     Route::get('/temp','Loaddemo_controller@index');
     Route::get('/demo','Loaddemo_controller@demo');
@@ -217,7 +219,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::resource('post','PostController');//insert,delete,create,view post routes
     Route::get('updatepost/{post}','PostController@update');//updating post route
 
-
+    Route::any('/calender/view_site', 'AdminController@calender_view_site');//tharindu
     Route::post('/store/{id}','SiteController@store');//sameera
     //comments
     Route::get('comments',['uses'=>'CommentsController@store','as'=>'comments.store']);
@@ -232,10 +234,5 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
     Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
     Route::get('showupdatedsites','SiteController@index');
-
-
-
-
-
 
 });
