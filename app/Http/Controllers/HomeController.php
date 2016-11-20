@@ -46,7 +46,9 @@ class HomeController extends Controller
       {
           $category=$request->cat;
           $content=$request->con;
+
           $result=Dynamic::where('category',$category)->count();
+
           if($result>0)
           {
               return "f";
@@ -57,9 +59,10 @@ class HomeController extends Controller
               $obj->description=$content;
               if($obj->save())
               {
-                  $g=Dynamic::where('category',$category)->get();
+                  $g=Dynamic::where('category','=',$category)->get();
                   return json_encode($g);
               }
+
           }
 
       }
@@ -67,6 +70,7 @@ class HomeController extends Controller
       public function getdata(){
           $data=Dynamic::all();
           return json_encode($data);
+
       }
 
       public function deleteTab(Request $request)

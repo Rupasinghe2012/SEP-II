@@ -70,7 +70,7 @@
 <br>
 <br>
 
-<div class="row">
+<div id="row">
 
 </div>
 
@@ -106,7 +106,8 @@ $(document).ready(function(){
             window.location.reload();
           }
           else {
-            swal("Entry not exists");
+
+            sweetAlert("Oops...", "No entry to delete!", "error");
           }
         }
       });
@@ -143,13 +144,13 @@ $(document).ready(function(){
             success:function(d){
               if(d=="f")
               {
-                swal("You have already added!!");
+                sweetAlert("Oops...", "You have already added!", "error");
               }
               else {
 
                 var obj=$.parseJSON(d);
                 $.each(obj,function(key,val){
-                $(".row").append(val.description);
+                $("#row").append(val.description);
 
             });
           }
@@ -184,14 +185,17 @@ $(document).ready(function(){
 
           if(d=="f")
           {
-              swal("You have already added!!");
+            sweetAlert("Oops...", "You have already added!", "error");
           }
           else {
             var obj=$.parseJSON(d);
             $.each(obj,function(key,val){
-            $(".row").append(val.description);
+            $("#row").append(val.description);
+
             });
+
           }
+
         }
       });
         break;
@@ -223,12 +227,12 @@ $(document).ready(function(){
 
           if(d=="f")
           {
-            swal("You have already added!!");
+            sweetAlert("Oops...", "You have already added!", "error");
           }
           else {
             var obj=$.parseJSON(d);
             $.each(obj,function(key,val){
-            $(".row").append(val.description);
+            $("#row").append(val.description);
           });
           }
 
@@ -263,13 +267,13 @@ $(document).ready(function(){
 
           if(d=="f")
           {
-            swal("You have already added!!");
+            sweetAlert("Oops...", "You have already added!", "error");
           }
           else {
 
             var obj=$.parseJSON(d);
             $.each(obj,function(key,val){
-            $(".row").append(val.description);
+            $("#row").append(val.description);
           });
           }
 
@@ -304,12 +308,12 @@ $(document).ready(function(){
 
           if(d=="f")
           {
-            swal("You have already added!!");
+            sweetAlert("Oops...", "You have already added!", "error");
           }
           else {
             var obj=$.parseJSON(d);
             $.each(obj,function(key,val){
-            $(".row").append(val.description);
+            $("#row").append(val.description);
           });
           }
 
@@ -344,12 +348,12 @@ $(document).ready(function(){
 
           if(d=="f")
           {
-            swal("You have already added!!");
+            sweetAlert("Oops...", "You have already added!", "error");
           }
           else {
             var obj=$.parseJSON(d);
             $.each(obj,function(key,val){
-            $(".row").append(val.description);
+            $("#row").append(val.description);
           });
           }
 
@@ -384,12 +388,12 @@ $(document).ready(function(){
 
           if(d=="f")
           {
-            swal("You have already added!!");
+            sweetAlert("Oops...", "You have already added!", "error");
           }
           else {
             var obj=$.parseJSON(d);
             $.each(obj,function(key,val){
-            $(".row").append(val.description);
+            $("#row").append(val.description);
           });
           }
 
@@ -414,13 +418,15 @@ $(document).ready(function(){
       {
         if(d=="f")
         {
-          swal("You have already added!!");
+          sweetAlert("Oops...", "You have already added!", "error");
         }
         else {
           var d=$.parseJSON(d);
           $.each(d,function(key,val){
-          $(".row").append(val.description);
+          $("#row").append(val.description);
           });
+
+
         }
 
 
