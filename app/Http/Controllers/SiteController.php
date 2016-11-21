@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
@@ -15,10 +14,6 @@ use App\User;
 use App\Widget;
 use App\Gallery;
 use App\Images;
-
-
-
-
 class SiteController extends Controller
 {
     /**
@@ -76,15 +71,12 @@ class SiteController extends Controller
         $template=template::paginate(2);
 
         Session::flash('success','New Site Created Successfull');
-
-        // return view('sites.mysite')->with('sites',$sites)->with('temp',$template);
         return redirect()->route('site.index');
 
     }
     public function getAlbum(Request $request) {
 
         $album=Gallery::find($request);
-        //$result = DB::table('item_details')->where('item_album','like',$album)->get();
         return '$result';
     }
     public function getItems(Request $request) {
@@ -92,8 +84,7 @@ class SiteController extends Controller
         if ($request) {
             $album = $request->input('album');
         }
-
-
+        
         if ($album) {
 
             $album_id = DB::table('gallery')->where('name', $album)->pluck('id');
@@ -103,8 +94,6 @@ class SiteController extends Controller
                 ->get();
             return $items;
         }
-
-
     }
 
     /**
@@ -124,19 +113,18 @@ class SiteController extends Controller
       {
         $color=$key->colour;
       }
-      $about=DB::table('abouts')->where('sitename',$id)->get();
-      $post=DB::table('posts')->where('sitename',$id)->get();
-       $aboutobj=(object)$about;
-      $postobj=(object)$post;
+        $about=DB::table('abouts')->where('sitename',$id)->get();
+        $post=DB::table('posts')->where('sitename',$id)->get();
+        $aboutobj=(object)$about;
+        $postobj=(object)$post;
 
         $twiter=Widget::where('user_id',Auth::user()->id)->get();
 
         $albums=Gallery::where('created_by',Auth::user()->id)->get();
 
-      $user=Auth::user()->name;
+        $user=Auth::user()->name;
         
         return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj)->withTwitter($twiter)->withAlbums($albums)->withUser($user);
-
     }
 
     /**
@@ -157,8 +145,6 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
     public function update(Request $request)
     {
         //
@@ -169,10 +155,7 @@ class SiteController extends Controller
         $site->templatename=$newtemp;
         $site->save();
         return redirect('/showupdatedsites');
-
-
-
-
+        
     }
 
     /**

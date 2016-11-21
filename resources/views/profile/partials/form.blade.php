@@ -96,15 +96,15 @@
             </div>
         </div>
         @if( $formType == 'edit')
-            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#passwordModal">
+            <button type="button" class="btn bg-maroon btn-flat margin" data-toggle="modal" data-target="#passwordModal">
                 Change Password
             </button>
             <br/><br/>
             <div>
                 <a href="/{{ $type }}/my-profile/{{ $userDetails[0]->id }}">
-                    <button type="button" class="btn btn-default">Cancel</button>
+                    <button type="button" class="btn btn-default-">Cancel</button>
                 </a>
-                <button id="profileSubmit" type="button" class="btn btn-primary pull-right">Update</button>
+                <button id="profileSubmit" type="button" class="btn btn-danger pull-right">Update</button>
             </div>
         @endif
         <input id="type" type="hidden" value={{ $type }}>

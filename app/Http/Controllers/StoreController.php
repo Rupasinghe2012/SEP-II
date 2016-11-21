@@ -27,20 +27,15 @@ class StoreController extends Controller
 
     /**
      * @param null $category
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function index($category=NULL)
     {
-
-
-            $orderItems = DB::table('session_preorder')
-                ->where('customer_id', Auth::user()->id)
-                ->count();
-
+        $orderItems = DB::table('session_preorder')
+            ->where('customer_id', Auth::user()->id)
+            ->count();
 
         if ($category) {
-
-
         }
         else {
             $category='All';
@@ -48,14 +43,13 @@ class StoreController extends Controller
 
             return view('store.store')->withCategory($category)->withItems($items)->withOrderitems($orderItems);
         }
-
     }
 
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function create()
     {
@@ -63,20 +57,13 @@ class StoreController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @descriptionStore a newly created resource in storage.
      *
-     * @param  Request  $request
-     * @return Response
+     * @param  \Illuminate\Http\Request|Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function store(Request $request)
     {
-        /*
-        if ($request->input('description')=='') {
-            Session::flash('error-message', 'Order was not placed. If the problem persists, please contact staff.');
-            return redirect('preorder/pending');
-        }
-        */
-
         $validate_preorder = Validator::make(
             [],
             []
@@ -91,14 +78,13 @@ class StoreController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @description Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function show($id)
     {
-
         $preorder = preorder::find($id);
         //$preorderItems = preorderItem::preorder($id)->get();
         $preorderItems = DB::table('preorderItems')
@@ -106,13 +92,11 @@ class StoreController extends Controller
             ->select('preorderItems.*', 'templates.description', 'templates.price')
             ->where('preorderItems.preorder_id', $id)
             ->get();
-
         return view('store.one')->withPreorder($preorder)->withItems($preorderItems);
-
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @description Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return Response
@@ -123,8 +107,7 @@ class StoreController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
+     * @description Update the specified resource in storage
      * @param  Request  $request
      * @param  int  $id
      * @return Response
@@ -135,13 +118,12 @@ class StoreController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
+     * @description Removing Templates
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function destroy($id)
     {
+        try{
         $preorder = preorder::find($id);
         if (Auth::user()->type=='client')
             $preorder->status = 'cancelled';
@@ -151,43 +133,54 @@ class StoreController extends Controller
         $preorder->save();
         Session::flash('message', 'Your order has been cancelled.');
         return redirect('/preorder/pending');
+    }catch (\Exception $exception) {
+        $exceptionData['user_id'] = $this->userId;
+        $exceptionData['exception'] = $exception->getMessage();
+        $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+        ExceptionsLog::create($exceptionData);
+        }
     }
+
     /**
-     *Buy the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function buy($id)
+     * @description Buying Templates
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     */ 
+    function buy($id)
     {
-        $preorder = preorder::find($id);
-        if (Auth::user()->type=='client') {
-            $preorder->status = 'Completed';
-            $preorder->paid = '1';
+        try {
+            $preorder = preorder::find($id);
+            if (Auth::user()->type == 'client') {
+                $preorder->status = 'Completed';
+                $preorder->paid = '1';
+            } else {
+                $preorder->status = 'Completed';
+                $preorder->paid = '1';
+            }
+            $preorder->save();
+            $temp = DB::table('preorderitems')->where('preorder_id', $preorder->preorder_id)->get();
+
+            foreach ($temp as $tid) {
+                $mytemplates = new mytemplate();
+                $mytemplates->userid = Auth::user()->id;
+                $mytemplates->templateid = $tid->item_id;
+                $mytemplates->save();
+            }
+            Session::flash('message', 'You have Succesfully purchased this Template');
+            return redirect('/preorder/pending');
+
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
         }
-        else{
-            $preorder->status = 'Completed';
-            $preorder->paid = '1';
-        }
-        $preorder->save();
-        $temp = DB::table('preorderitems')->where('preorder_id', $preorder->preorder_id)->get();
-
-        foreach ($temp as $tid){
-            $mytemplates= new mytemplate();
-            $mytemplates->userid=Auth::user()->id;
-            $mytemplates->templateid=$tid->item_id;
-            $mytemplates->save();
-        }
-
-
-
-        Session::flash('message', 'You have Succesfully purchased this Template');
-        return redirect('/preorder/pending');
     }
+    
     /**
-     * Display pending orders
-     *
-     * @return Response
+     * @description Get Pending Orders
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function getPending()
     {
@@ -199,83 +192,117 @@ class StoreController extends Controller
     }
 
     /**
-     * Display order history
-     *
-     * @return Response
+     * @description Get History
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function getHistory()
     {
         $cid = Auth::user()->id;
         $role = Session::get('role');
-
         if ($role == 'Admin' || $role == 'Manager' || $role == 'Salesperson') {
             $history = preorder::history()->get();
         } else {
             $history = preorder::history()->where('customer_id', $cid)->orderBy('updated_at')->get();
         }
-
         return view('store.store')->with('preorders', $history);
     }
 
-    // Return search for items
-
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Search Items
+     * @return  $result
+     */
     public function getSearch(Request $request){
         if ($request) {
             $search=$request->input('search');
             $result=DB::table('templates')
                 ->where('name','like',$search.'%')
                 ->get();
-            //return array($search, 'Item2', 'Item3', 'Item4', 'Item5');
             return $result;
         } else {
             return $result;
         }
     }
-    
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Getting All Categories
+     * @return $result
+     */
     public function getCategory(Request $request) {
+        try{
         $category = $request->input('category');
-        //$result = DB::table('item_details')->where('item_category','like',$category)->get();
         return '$result';
-    }
+        }catch (\Exception $exception) {
+        $exceptionData['user_id'] = $this->userId;
+        $exceptionData['exception'] = $exception->getMessage();
+        $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
+        ExceptionsLog::create($exceptionData);
+        }
+    }
+    
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Getting Items
+     */
     public function getItems(Request $request) {
-        if ($request) {
-            $category = $request->input('category');
-        }
-
-
-        if ($category) {
-
-            if ($category === 'All') {
-                
-                $items = DB::table('templates')
-                    ->select('templates.*')
-                    ->get();
-                return $items;
+        try {
+            if ($request) {
+                $category = $request->input('category');
             }
 
-            else {
-                $items = DB::table('templates')
-                    ->select('templates.*')
-                    ->get();
-                return $items;
+            if ($category) {
+                if ($category === 'All') {
+
+                    $items = DB::table('templates')
+                        ->select('templates.*')
+                        ->get();
+                    return $items;
+                } else {
+                    $items = DB::table('templates')
+                        ->select('templates.*')
+                        ->get();
+                    return $items;
+                }
             }
-        }
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
+            }
     }
-
+    
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Getting the Item info
+     */
     public function getIteminfo(Request $request) {
         $item_id = $request->input('id');
+        try {
+            $item = DB::table('templates')
+                ->where('templates.id', $item_id)
+                ->get();
 
-        $item = DB::table('templates')
-            ->where('templates.id', $item_id)
-            ->get();
+            return $item;
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
-        return $item;
+            ExceptionsLog::create($exceptionData);
+        }
     }
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Getting Added Items
+     * @return string
+     */
     public function getAdditem(Request $request) {
-
+        try{
         $cid = Auth::user()->id;
         $id = $request->input('id');
         $qty = $request->input('qty');
@@ -296,13 +323,23 @@ class StoreController extends Controller
                 'qty' => $qty
             ]);
         }
-
         Session::flash('message', 'Item added to order');
-
         return 'success';
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
+        }
     }
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Getting Session Items
+     */
     public function getSessionitems(Request $request) {
+        try{
         $sessionItems = DB::table('session_preorder')
             ->join('templates', 'session_preorder.item_id', '=', 'templates.id')
             ->select('description', 'qty', 'price')
@@ -310,10 +347,22 @@ class StoreController extends Controller
             ->get();
 
         return $sessionItems;
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
+        }
     }
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @return string
+     * @description Empty the Cart
+     */
     public function getCheckout(Request $request) {
-
+    try{
         $description = $request->input('description', 'No remarks.');
         $sessionPreorderItems = DB::table('session_preorder')->where('customer_id', Auth::user()->id)->get();
 
@@ -351,10 +400,21 @@ class StoreController extends Controller
         Session::flash('message', 'Your order has been placed');
 
         return 'success';
+    }catch (\Exception $exception) {
+        $exceptionData['user_id'] = $this->userId;
+        $exceptionData['exception'] = $exception->getMessage();
+        $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
+        ExceptionsLog::create($exceptionData);
+    }
     }
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @description Empty the Cart
+     */
     public function getEmptycart(Request $request) {
+        try{
         $cid = Auth::user()->id;
 
         $sessionItems = DB::table('session_preorder')->where('customer_id', $cid)->get();
@@ -366,15 +426,31 @@ class StoreController extends Controller
         DB::table('session_preorder')->where('customer_id', $cid)->delete();
 
         Session::flash('message', 'Cart has been cleared');
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+
+            ExceptionsLog::create($exceptionData);
+        }
     }
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     * @description Generate Report
+     */
     public function getReports(Request $request) {
-
-
         return view('store.report');
     }
 
+    /**
+     * @param \Illuminate\Http\Request|Request $request
+     * @return $c
+     * @description Generate Report
+     */
     public function getProcessreport(Request $request) {
+        try{
         $cid = Auth::user()->id;
 
         $choice = $request->input('choice');
@@ -426,21 +502,38 @@ class StoreController extends Controller
         }
 
         return $request;
-    }
+        }catch (\Exception $exception) {
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
 
+            ExceptionsLog::create($exceptionData);
+        }
+    }
+    /**
+     * @param $id
+     * @return
+     * @description Generate PDF report
+     */
     public function getInvoice($id)
     {
-        $data = User::all();
-        $preorder = preorder::find($id);
-        //$preorderItems = preorderItem::preorder($id)->get();
-        $preorderItems = DB::table('preorderItems')
-            ->leftJoin('templates', 'preorderItems.item_id', '=', 'templates.id')
-            ->select('preorderItems.*', 'templates.description', 'templates.price')
-            ->where('preorderItems.preorder_id', $id)
-            ->get();
-        $pdf = PDF::loadView('pdf.invoice',['data'=>$data,'preorder'=>$preorder,'items'=>$preorderItems])->setPaper('a4', 'landscape');
+        try {
+            $data = User::all();
+            $preorder = preorder::find($id);
+            //$preorderItems = preorderItem::preorder($id)->get();
+            $preorderItems = DB::table('preorderItems')
+                ->leftJoin('templates', 'preorderItems.item_id', '=', 'templates.id')
+                ->select('preorderItems.*', 'templates.description', 'templates.price')
+                ->where('preorderItems.preorder_id', $id)
+                ->get();
+            $pdf = PDF::loadView('pdf.invoice', ['data' => $data, 'preorder' => $preorder, 'items' => $preorderItems])->setPaper('a4', 'landscape');
 
-
-        return $pdf->download('Invoice.pdf');
+            return $pdf->download('Invoice.pdf');
+        }catch (\Exception $exception){
+            $exceptionData['user_id'] = $this->userId;
+            $exceptionData['exception'] = $exception->getMessage();
+            $exceptionData['time'] = Carbon::now()->toDateTimeString();
+            ExceptionsLog::create($exceptionData);
+        }
     }
 }

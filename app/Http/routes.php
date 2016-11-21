@@ -69,7 +69,7 @@ Route::group(['middleware' => ['web', 'requireAuth']], function() {
         ->where(['id' => '[0-9]+']);
     Route::put('my-profile/{id}/edit/password', 'ProfileController@updatePass')
         ->where(['id' => '[0-9]+']);
-    Route::post('userLINK', 'ProfileController@link');
+    Route::post('/userLINK', 'ProfileController@link');
     Route::post('user/{pic}', 'ProfileController@picture');
     Route::post('/twitter', 'ProfileController@widget');
     
@@ -161,25 +161,6 @@ Route::group(['middleware' => ['web', 'requireAuthAdmin']], function() {
     Route::get('/admin/logs/login', 'AdminController@viewLoginLog');
     Route::get('/admin/get-all-login', 'AdminController@getLoginLog');
 
-
-
-//    Route::get('pdf/user',function()
-//    {
-//        $data = App\User::all();
-//        $pdf = PDF::loadView('admin/pdf_user',['data'=>$data]);
-//        return $pdf->stream('user.pdf');
-//    });
-//
-//    Route::get('pdf/event',function()
-//    {
-////        $s_date = Input::get('str_date');
-////        $e_date = Input::get('end_date');
-//        $data = App\calenderevent::all();
-//        $pdf = PDF::loadView('admin/pdf_event',['data'=>$data]);
-//        return $pdf->download('event.pdf');
-//    });
-
-
 });
 
 /*
@@ -201,7 +182,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('/home/store','HomeController@store');//dynamic content sameera
     Route::get('/home/getdata','HomeController@getdata');//dynamic content sameera
     Route::get('/home/delete','HomeController@deleteTab');
-    //galary routes
+    //gallery routes
     Route::get('gallery/list','GalleryController@viewGalleryList');
     Route::post('gallery/save','GalleryController@saveGallery');
     Route::post('gallery/edit/{id}','GalleryController@editGallery');
