@@ -1,8 +1,19 @@
 @extends('app')
 
 
-
+@section('pageName')
+    <h3 style="text-align: center"><b>EDIT TEMPLATE</b></h3>
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
+        <a class="breadcrumb-item" href="{{url('/templates/edit')}}">Temp Details /</a>
+        <span class="breadcrumb-item active">Edit Temp</span>
+    </nav>
+@stop
 @section('content')
+
     <script language="javascript" type="text/javascript">
         function validation(){
 
@@ -37,7 +48,7 @@
 
     <div class="tab-pane" id="settings">
 
-        <h3 style="text-align: center">Edit template</h3>
+
 
         <form data-parsley-validate="" class="form-horizontal" name="reg" action="{{url("templates/". $temp->id ."/update") }}" method="post" enctype="multipart/form-data" onsubmit="return validation()">
 
@@ -47,7 +58,7 @@
             <div class="form-group">
                 <label for="Name" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                    <input required data-parsley-type="alphanum" data-parsley-maxlength="10" data-parsley-maxlength-message="Name should be less than 10 characters" type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $temp->name }}">
+                    <input readonly required data-parsley-type="alphanum" data-parsley-maxlength="10" data-parsley-maxlength-message="Name should be less than 10 characters" type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $temp->name }}">
                 </div>
             </div>
             <div class="form-group">
@@ -63,7 +74,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Price" class="col-sm-2 control-label">Price</label>
+                <label for="Price" class="col-sm-2 control-label">Price Rs:</label>
                 <div class="col-sm-10">
                     <input required data-parsley-maxlength="10" data-parsley-type="digits" type="text" class="form-control" id="price" name="price" placeholder="price" value="{{ $temp->price }}">
                 </div>

@@ -1,8 +1,19 @@
 @extends('app')
 
 
+@section('pageName')
+    <h3 style="text-align: center"><b>ADD TEMPLATES</b></h3>
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
+        <span class="breadcrumb-item active">Add Temp</span>
+    </nav>
+@stop
 
 @section('content')
+
 
     <div class="tab-pane" id="settings">
 
@@ -37,8 +48,8 @@
                         return confirm("Are you sure to INSERT this record?");
             }
         </script>
-        <h3 style="text-align: center">Add template</h3>
-
+        {{--<h3 style="text-align: center"><b>ADD TEMPLATES</b></h3>--}}
+{{----}}
         <form data-parsley-validate="" class="form-horizontal" name="reg" action="{{ url('templates/store')  }}" method="post" enctype="multipart/form-data" onsubmit="return validation()">
 
 
@@ -96,4 +107,7 @@
 @section('notifications')
     @include('includes.notification')
 @stop
+{{--@section('breadcrumbs')--}}
+    {{--{!! Breadcrumbs::render('Add template') !!}--}}
+{{--@stop--}}
 @endsection

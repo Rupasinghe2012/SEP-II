@@ -1,18 +1,9 @@
 @extends('app')
 
 
-@section('pageName')
-    <h3 style="text-align: center"><b>EVENT CALENDAR</b></h3>
-@stop
-{{--breadcrumb--}}
-@section('breadcrumbs')
-    <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
-        <span class="breadcrumb-item active">Event Calendar</span>
-    </nav>
-@stop
-@section('content')
 
+@section('content')
+    <h3 style="text-align: center"><b>EVENT CALENDAR</b></h3>
     <div class="col-md-12">
         <div class="col-md-1"></div>
         <div class="col-md-11" style="align-items: center;">
@@ -48,7 +39,7 @@
                         @endif
                         <?php $count=0;if($i<10){$i="0".$i;} ?>
 
-                    @foreach($event_list as $event)
+                        @foreach($event_list as $event)
                             @if($event->event_start_date == $year."-".$month."-".$i && $i==$c_day&&$year==$c_year&&$month==$c_month)
                                 <div id="replyModal{{$year."-".$month."-".$i}}" class="modal fade" role="dialog" style="z-index: 1400;">
                                     <div class="modal-dialog modal-lg">
@@ -80,41 +71,14 @@
                                                         <div style="background-color:#42dca3">
                                                             Event ID          :<b>{{$eventid = $event->id}}</b><br>
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
-                                                            <a href={{url("/calender/". $event->id ."/delete_all") }}><button onclick="return confirm('Are you sure to DELETE complete event of this selected event?');" type="button" style="float: right" class="btn btn-danger" ><i class="fa fa-list-ol" aria-hidden="true"></i><i class="fa fa-times-circle" aria-hidden="true"></i></button></a>
-                                                            <a href={{url("/calender/". $event->id ."/delete") }}><button onclick="return confirm('Are you sure to DELETE this selected event?');" type="button" style="float: right" class="btn btn-warning"><i class="fa fa-times" aria-hidden="true"></i></button></a>
-                                                            <button type="button" style="float: right" class="btn btn-default"  data-toggle="modal" data-target="#test4{{$event->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             Event Title       : <b style="font-size: large;text-transform: capitalize">{{$event->title}}</b> <br>
                                                             Event Description : <b style="word-wrap: break-word">{{$event->description}}</b><br>
                                                             Event Time :  <b style="word-wrap: break-word">{{$event->s_time}}H - {{$event->e_time}}H</b><br>
                                                             Event Venue : <b style="word-wrap: break-word">{{$event->venue}}</b><br>
                                                         </div>
                                                         <br>
-                                                        <div id="test4{{$event->id}}" class="modal fade" role="dialog" style="z-index: 1600;">
-                                                            <div class="modal-dialog">
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><b>EDIT MY EVENTS - Event ID - </b>{{$event->id}}</h4>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form data-parsley-validate="" class="form-horizontal" action="{{ url("/calender/". $event->id ."/edit_event")  }}" method="post" enctype="multipart/form-data">
-                                                                            {{ csrf_field() }}
-
-                                                                            Event Title : <input value="{{$event->title}}" readonly type="text" name="title" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                                                            Event Start Date : <input value="{{$event->event_start_date}}" type="date" name="str_date" required ><span> </span> <br><br>
-                                                                            Event Start Time : <input value="{{$event->s_time}}" type="time" name="str_time" required><span> </span>Event End Time : <input value="{{$event->e_time}}" type="time" name="end_time" required><br><br>
-                                                                            Event Venue : <input value="{{$event->venue}}" type="text" name="venue" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                                                            <input title="click here to edit event" type="submit" class="btn btn-warning" value="Edit Event" onclick="return confirm('Are you sure to Edit this event?');">
-
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     @endif
                                                 @endforeach
-                                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                             </div>
                                         </div>
                                     </div>
@@ -181,41 +145,14 @@
                                                         <div style="background-color:#42dca3">
                                                             Event ID          :<b>{{$event->id}}</b><br>
                                                             Event Owner       : <b style="font-size: small;text-transform: uppercase">{{$event->user_name}}</b><br>
-                                                            <a href={{url("/calender/". $event->id ."/delete_all") }}><button onclick="return confirm('Are you sure to DELETE complete event of this selected event?');" type="button" style="float: right" class="btn btn-danger" ><i class="fa fa-list-ol" aria-hidden="true"></i><i class="fa fa-times-circle" aria-hidden="true"></i></button></a>
-                                                            <a href={{url("/calender/". $event->id ."/delete") }}><button onclick="return confirm('Are you sure to DELETE this selected event?');" type="button" style="float: right" class="btn btn-warning"><i class="fa fa-times" aria-hidden="true"></i></button></a>
-                                                            <button type="button" style="float: right" class="btn btn-default" data-toggle="modal" data-target="#test4{{$event->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             Event Title       : <b style="font-size: large;text-transform: capitalize">{{$event->title}}</b> <br>
                                                             Event Description : <b style="word-wrap: break-word">{{$event->description}}</b><br>
                                                             Event Time :  <b style="word-wrap: break-word">{{$event->s_time}}H - {{$event->e_time}}H</b><br>
                                                             Event Venue : <b style="word-wrap: break-word">{{$event->venue}}</b><br>
                                                         </div>
                                                         <br>
-                                                        <div id="test4{{$event->id}}" class="modal fade" role="dialog" style="z-index: 1600;">
-                                                            <div class="modal-dialog">
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><b>EDIT MY EVENTS - Event ID - </b>{{$event->id}}</h4>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form data-parsley-validate="" class="form-horizontal" action="{{ url("/calender/". $event->id ."/edit_event")  }}" method="post" enctype="multipart/form-data">
-                                                                            {{ csrf_field() }}
-
-                                                                            Event Title : <input value="{{$event->title}}" readonly type="text" name="title" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                                                            Event Start Date : <input value="{{$event->event_start_date}}" type="date" name="str_date" required ><span> </span> <br><br>
-                                                                            Event Start Time : <input value="{{$event->s_time}}" type="time" name="str_time" required><span> </span>Event End Time : <input value="{{$event->e_time}}" type="time" name="end_time" required><br><br>
-                                                                            Event Venue : <input value="{{$event->venue}}" type="text" name="venue" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                                                            <input title="click here to edit event" type="submit" class="btn btn-warning" value="Edit Event" onclick="return confirm('Are you sure to Edit this event?');">
-
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     @endif
                                                 @endforeach
-                                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                             </div>
                                         </div>
                                     </div>
@@ -264,44 +201,8 @@
                 </table>
             </form>
             <br><br>
-            <form>
-                <div>
-                    <input style="width: 200px" type="button" value="Add event" class="btn btn-success" data-toggle="modal" data-target="#addeventModal">
-                </div>
-            </form>
-            <!-- Modal -->
-            <div class="modal fade" id="addeventModal" role="dialog">
-                <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Add Event</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form data-parsley-validate="" class="form-horizontal" action="{{ url("/calender/add_event")  }}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                Event Title : <input type="text" name="title" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                Event Details : <textarea name="details" id="details" class="form-control" rows="3" cols="20" placeholder="Enter your event details" required data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="75" data-parsley-minlength-message="description should be atleast 20 characters"  data-parsley-maxlength-message="description should be less than 75 characters"></textarea><br><br>
-                                Event Start Date : <input type="date" name="str_date" required ><span> </span> Event End Date : <input type="date" name="end_date" required ><br><br>
-                                Event Start Time : <input type="time" name="str_time" required><span> </span>Event End Time : <input type="time" name="end_time" required><br><br>
-                                Event Venue : <input type="text" name="venue" required data-parsley-maxlength="20" data-parsley-maxlength-message="Name should be less than 20 characters"><br><br>
-                                Event Type : <select name="type">
-                                    <option value="Once">Once</option>
-                                    <option value="Weekly">Weekly</option>
-                                    <option value="Monthly">Monthly</option>
-                                </select><br><br>
-                                <input title="click here to add event" type="submit" class="btn btn-warning" value="Add Event" onclick="return confirm('Are you sure to Add this event?');">
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-                        </div>
-                    </div>
 
-                </div>
-            </div>
         </div>
         <div class="col-md-2"></div>
     </div>

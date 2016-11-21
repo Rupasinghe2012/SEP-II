@@ -1,14 +1,26 @@
 @extends('app')
+
+@section('pageName')
+    <h3 style="text-align: center"><b>TEMPLATE USAGE REPORT</b></h3>
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
+        <a class="breadcrumb-item" href="{{url('/reports')}}">Reports /</a>
+        <span class="breadcrumb-item active">Temp Usage</span>
+    </nav>
+@stop
+
 @section('content')
 
-    <H1>TEMPLATE USAGE REPORT</H1>
     <form data-parsley-validate="" class="form-horizontal" action="{{ url("/reports/temp/search-download")  }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         Search Option : <select name="option">
             <option value=""></option>
             <option value="All templates">All templates</option>
-            <option value="Leastly used template">Leastly used template</option>
-            <option value="Mostly used template">Mostly used template</option>
+            {{--<option value="Leastly used template">Leastly used template</option>--}}
+            {{--<option value="Mostly used template">Mostly used template</option>--}}
         </select><br><br>
         <button title="click here to add event" name="select" type="submit" class="btn btn-success" value="Search Template Details"><i class="fa fa-search" aria-hidden="true"></i><span> </span>Search Template Details</button>
         <button title="click here to add event" name="select" type="submit" class="btn btn-danger" value="Download Report"><i class="fa fa-download" aria-hidden="true"></i><span> </span>Download Report</button>

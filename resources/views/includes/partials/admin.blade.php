@@ -24,15 +24,15 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li ><a href="{{url('/admin/home')}}"><i class="fa fa-home"></i><span>Home</span></a></li>
-            <li><a href="{{url('/templates/new')}}"><i class="fa fa-plus-square" aria-hidden="true"></i> <span>Add Template</span></a></li>
-            <li><a href="{{url('/templates/edit')}}"><i class="fa fa-pencil-square" aria-hidden="true"></i><span>Edit Template</span></a></li>
-            <li><a href="{{url('/templates/slide')}}"><i class="fa fa-picture-o" aria-hidden="true"></i> <span>Slide Show</span></a></li>
-            <li><a href="{{url('/templates/mail/view')}}"><i class="fa fa-envelope-square" aria-hidden="true"></i> <span>Manage Mails</span></a></li>
-            <li><a href="{{url('/admin/user/manage')}}"><i class="fa fa-users" aria-hidden="true"></i> <span>Manage Users</span></a></li>
-            <li><a href="{{url('/reports')}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Get Reports</span></a></li>
-            <li><a href="{{url('/my-profile/'.Auth::user()->id)}}"><i class="fa fa-user" aria-hidden="true"></i> <span>My Profile</span></a></li>
-            <li><a href="{{url('/calender/view')}}"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Event calender</span></a></li>
+            <li ><a href="{{url('/admin/home')}}"><i class="fa fa-home"></i><span>HOME</span></a></li>
+            <li><a href="{{url('/templates/new')}}"><i class="fa fa-plus-square" aria-hidden="true"></i> <span>ADD TEMPLATE</span></a></li>
+            <li><a href="{{url('/templates/edit')}}"><i class="fa fa-pencil-square" aria-hidden="true"></i><span>EDIT TEMPLATE</span></a></li>
+            <li><a href="{{url('/templates/slide')}}"><i class="fa fa-picture-o" aria-hidden="true"></i> <span>SLIDE-SHOW</span></a></li>
+            <li><a href="{{url('/templates/mail/view')}}"><i class="fa fa-envelope-square" aria-hidden="true"></i> <span>MANAGE MAILS</span></a></li>
+            <li><a href="{{url('/admin/user/manage')}}"><i class="fa fa-users" aria-hidden="true"></i> <span>MANAGE USERS</span></a></li>
+            <li><a href="{{url('/reports')}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>REPORTS</span></a></li>
+            <li><a href="{{url('/my-profile/'.Auth::user()->id)}}"><i class="fa fa-user" aria-hidden="true"></i> <span>MY PROFILE</span></a></li>
+            <li><a href="{{url('/calender/view')}}"><i class="fa fa-calendar" aria-hidden="true"></i> <span>EVENT CALENDAR</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

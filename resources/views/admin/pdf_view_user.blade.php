@@ -1,7 +1,16 @@
 @extends('app')
+@section('pageName')
+    <h3 style="text-align: center"><b>USER DETAILS</b></h3>
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
+        <a class="breadcrumb-item" href="{{url('/reports')}}">Reports /</a>
+        <span class="breadcrumb-item active">User Details</span>
+    </nav>
+@stop
 @section('content')
-
-<H1>USER REPORT</H1>
 
 <br><br><table border="2px" style="text-align: center" width="100%">
     <tr bgcolor="#f5f5dc">

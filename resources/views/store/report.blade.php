@@ -5,7 +5,7 @@
 
     @section('content')
 @section('pageName')
-    Template Order Details
+    <h3 style="text-align: center"><b>TEMPLATE ORDER DETAILS</b></h3>
     @stop
     {{--breadcrumb--}}
     @section('breadcrumbs')

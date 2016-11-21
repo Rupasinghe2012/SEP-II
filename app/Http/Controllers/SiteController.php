@@ -15,6 +15,10 @@ use App\User;
 use App\Widget;
 use App\Gallery;
 use App\Images;
+
+
+
+
 class SiteController extends Controller
 {
     /**
@@ -124,12 +128,14 @@ class SiteController extends Controller
       $post=DB::table('posts')->where('sitename',$id)->get();
        $aboutobj=(object)$about;
       $postobj=(object)$post;
+
         $twiter=Widget::where('user_id',Auth::user()->id)->get();
 
         $albums=Gallery::where('created_by',Auth::user()->id)->get();
 
-
-        return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj)->withTwitter($twiter)->withAlbums($albums);
+      $user=Auth::user()->name;
+        
+        return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj)->withTwitter($twiter)->withAlbums($albums)->withUser($user);
 
     }
 
