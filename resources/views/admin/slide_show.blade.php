@@ -1,7 +1,16 @@
 @extends('app')
 
 
-
+@section('pageName')
+    <h3 style="text-align: center"><b>ADD SLIDE-SHOW IMAGES</b></h3>
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
+        <span class="breadcrumb-item active">Add Slide-show Images</span>
+    </nav>
+@stop
 @section('content')
 
     <script language="javascript" type="text/javascript">
@@ -39,7 +48,7 @@
             <form data-parsley-validate="" class="form-horizontal" name="reg" action="{{ url('templates/slide/new')  }}" method="post" enctype="multipart/form-data" onsubmit="return validation()">
 
 
-                <h3 style="text-align: center">Add Slide show images</h3>
+
 
                 {{ csrf_field() }}
 
@@ -70,14 +79,14 @@
             </form>
         </div><!-- /.tab-pane -->
 
-        <h3 style="text-align: center">Select Slide show images</h3>
+        <h3 style="text-align: center"><b>SELECT SLIDE-SHOW IMAGES</b></h3>
         {{ csrf_field() }}
         <div class="col-xs-12">
 
 
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Slide show image Table</h3>
+                    <h4 class="box-title"><b>CURRENT SLIDE-SHOW</b></h4>
                     <br>
                     <!-- /.box-header -->
                 </div>
@@ -141,7 +150,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                                <h4 class="modal-title">Current Slide Show Album</h4>
+                                <h4 class="modal-title"><b>SLIDE-SHOW IMAGE ALBUM</b></h4>
                                 <input hidden="hidden" required="required" data-parsley-required-message="There are no selected images" data-parsley-maxcheck="{{8-$slide_album_count}}" title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="" >
 
 
@@ -158,7 +167,9 @@
                                         <input  title="select image for slide show" style="zoom:2" type="checkbox" name="image_album[]" value="{{$slideimage->id}}">
                                     </div>
                                 @endforeach
-
+                                {{--<div>--}}
+                                  {{--{{$slideimages->render()}}--}}
+                                {{--</div>--}}
 
                             </div>
                             <div class="modal-footer">

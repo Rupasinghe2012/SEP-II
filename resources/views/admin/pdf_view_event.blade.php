@@ -1,7 +1,20 @@
 @extends('app')
+
+@section('pageName')
+    <h3 style="text-align: center"><b>EVENT REPORT</b></h3>
+@stop
+{{--breadcrumb--}}
+@section('breadcrumbs')
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{url('/admin/home')}}">Home /</a>
+        <a class="breadcrumb-item" href="{{url('/reports')}}">Reports /</a>
+        <span class="breadcrumb-item active">Event</span>
+    </nav>
+@stop
+
 @section('content')
 
-    <H1>EVENT REPORT</H1>
+    <H1></H1>
     <form data-parsley-validate="" class="form-horizontal" action="{{ url("/reports/event/search-download")  }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
     Event Start Date : <input type="date" name="str_date"><span> </span> Event End Date : <input type="date" name="end_date"><br><br>

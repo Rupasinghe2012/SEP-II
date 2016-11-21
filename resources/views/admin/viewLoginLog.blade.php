@@ -6,7 +6,7 @@
 
 @section('content')
 @section('pageName')
-    Login Log
+    <h3 style="text-align: center"><b>ACTIVE LOG</b></h3>
 @stop
 {{--breadcrumb--}}
 @section('breadcrumbs')

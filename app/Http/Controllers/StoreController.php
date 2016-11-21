@@ -223,7 +223,7 @@ class StoreController extends Controller
         if ($request) {
             $search=$request->input('search');
             $result=DB::table('templates')
-                ->select('templates.*')
+                ->where('name','like',$search.'%')
                 ->get();
             //return array($search, 'Item2', 'Item3', 'Item4', 'Item5');
             return $result;
@@ -231,6 +231,7 @@ class StoreController extends Controller
             return $result;
         }
     }
+    
 
     public function getCategory(Request $request) {
         $category = $request->input('category');
@@ -383,7 +384,7 @@ class StoreController extends Controller
 
         switch ($choice) {
             case 'records':
-                $records = preorder::where('preorders.status', '=', 'rejected')
+                $records = preorder::where('preorders.status', '=', 'cancelled')
                     ->leftJoin('users', 'users.id', '=', 'preorders.customer_id')
                     ->whereBetween('updated_at', array($startDate, $endDate))
                     ->get();

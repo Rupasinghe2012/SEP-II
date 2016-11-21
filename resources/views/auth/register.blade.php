@@ -43,7 +43,7 @@
         <label class="col-md-4 control-label">Name</label>
 
         <div class="col-md-6">
-            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter your Name">
+            <input type="text" class="form-control" name="name" id="Name" value="{{ old('name') }}" placeholder="Enter your Name">
 
             @if ($errors->has('name'))
                 <span class="help-block">
@@ -71,7 +71,7 @@
         <label class="col-md-4 control-label">Password</label>
 
         <div class="col-md-6">
-            <input type="password" class="form-control" name="password" placeholder="Enter a Password">
+            <input type="password" class="form-control" id="newPassword" name="password" placeholder="Enter a Password">
 
             @if ($errors->has('password'))
                 <span class="help-block">
@@ -85,7 +85,7 @@
         <label class="col-md-4 control-label">Confirm Password</label>
 
         <div class="col-md-6">
-            <input type="password" class="form-control" name="password_confirmation" placeholder="Re-Type Password">
+            <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" placeholder="Re-Type Password">
 
             @if ($errors->has('password_confirmation'))
                 <span class="help-block">

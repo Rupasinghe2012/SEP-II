@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Mail;
 use Mockery\Generator\StringManipulation\Pass\RemoveUnserializeForInternalSerializableClassesPass;
 use Carbon\Carbon;
 use App\ExceptionsLog;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class AdminController extends Controller
@@ -118,8 +119,7 @@ class AdminController extends Controller
     public function view(){
 
 
-        $templates = Template::all();
-
+        $templates = DB::table('templates')->paginate(5);
         return view('admin.temp_update' , compact('templates'));
 
     }
@@ -371,7 +371,7 @@ class AdminController extends Controller
     }
 
     public function user_view(){
-        $users = User::where('id','<>',Auth::user()->id)->get();
+        $users = User::where('id','<>',Auth::user()->id)->paginate(5);
         $loged_user = Auth::user();
         return view('admin.user_manage' , compact('users','loged_user'));
 
@@ -568,6 +568,66 @@ class AdminController extends Controller
         $event_list = calenderevent::all();
 
         return view('calender',compact('data','day','month','year','c_day','c_year','c_month','event_list','loged_user'));
+
+    }
+
+    public function calender_view_site(){
+
+        $loged_user = Auth::user();
+
+        $c_day = date("j");//31
+        $c_month = date("n");//8
+        $c_year = date("Y");//2016
+
+        $day = date("j");
+        $month = date("n");
+        $year = date("Y");
+
+        $button = Input::get('change');
+        if($button!=null) {
+            $v_month = Input::get('month_num');
+            $v_year = Input::get('year');
+        }
+        if($button=="PREVIOUS")
+        {
+            if($v_month==1)
+            {
+                $month = 12;
+                $year = $v_year-1;
+            }
+            else
+            {
+                $month = $v_month-1;
+                $year = $v_year;
+            }
+        }
+
+        if($button=="NEXT")
+        {
+            if($v_month==12)
+            {
+                $month = 1;
+                $year = $v_year+1;
+            }
+            else
+            {
+                $month = $v_month+1;
+                $year =$v_year;
+            }
+        }
+
+        $data['day'] = $day;
+        $data['month'] = $month;
+        $data['year'] = $year;
+
+        $data['current_time_stamp'] = strtotime("$year-$month-$day");
+        $data['month_name'] = date("F", mktime(0, 0, 0, $month, 10));
+        $data['num_days'] = date("t",$data['current_time_stamp']);
+        $data['count'] = 0;
+        if($month<10){$month="0".$month;}
+        $event_list = calenderevent::all();
+
+        return view('calender_site',compact('data','day','month','year','c_day','c_year','c_month','event_list','loged_user'));
 
     }
 

@@ -2,7 +2,7 @@
 @section('content')
 
 @section('pageName')
-    Admins Reports
+    <h3 style="text-align: center"><b>REPORTS</b></h3>
 @stop
 {{--breadcrumb--}}
 @section('breadcrumbs')
@@ -55,13 +55,13 @@
                 <a href={{url("/reports/temp")}} class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
-
+        <div class="col-lg-2 col-xs-6"></div>
         <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
 
-                    <p>Template Order Details</p>
+                    <p>TEMPLATE ORDER DETAILS</p>
                     <br><br><br><br>
                 </div>
                 <div class="icon">
@@ -76,28 +76,13 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
 
-                    <p>User Login Log</p>
+                    <p>USER ACTIVE LOG</p>
                     <br><br><br><br>
                 </div>
                 <div class="icon">
                     <i class="fa fa-user"></i>
                 </div>
                 <a href={{url("/admin/logs/login")}} class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div><!-- ./col -->
-
-        <div class="col-lg-4 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-                <div class="inner">
-
-                    <p>User Registrations</p>
-                    <br><br><br><br>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-user"></i>
-                </div>
-                <a href="" class="small-box-footer">View Report <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
     </div>

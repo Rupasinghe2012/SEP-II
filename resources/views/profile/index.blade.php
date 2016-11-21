@@ -61,7 +61,7 @@
 
     <div class="container-fluid">
         @section('pageName')
-            My Profile Details
+            <h3 style="text-align: center"><b>MY PROFILE</b></h3>
             @stop
         {{--breadcrumb--}}
         @section('breadcrumbs')

@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\ExceptionsLog;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 class MainController extends Controller
 {
     private $notification;
@@ -45,13 +47,13 @@ class MainController extends Controller
     public function view_mail()
     {
 //        $visitormails = visitormail::where('reply', 'not yet reply')->orderby('id','desc')->groupby('sender_email')->get();
-        $allmail=visitormail::wherein('id',function($query){ $query->selectRaw('max(id)')->from('visitormails')->groupby('sender_email');})->orderby('id','desc')->get();
+        $allmail=visitormail::wherein('id',function($query){ $query->selectRaw('max(id)')->from('visitormails')->groupby('sender_email');})->orderby('id','desc')->paginate(5);
         return view('admin.mail_view' , compact('visitormails'),compact('allmail'));
     }
 
     public function show_mail(visitormail $mail)
     {
-        $visitormails = visitormail::where('sender_email', $mail->sender_email)->orderby('id', 'desc')->get();
+        $visitormails = visitormail::where('sender_email', $mail->sender_email)->orderby('id', 'desc')->paginate(2);
         $usermail = visitormail::where('sender_email', $mail->sender_email)->groupBy('sender_email')->get();
         foreach ($visitormails as $mails)
         {
