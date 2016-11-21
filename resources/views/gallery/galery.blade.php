@@ -42,8 +42,6 @@
 
             else {
                 return swal("Succesfull!!!!", "Album has Created", "success")
-
-
             }
 
         }
@@ -108,7 +106,8 @@
             <div class="col-md-6">
                 <div class="panel">
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="{{url('gallery/save')}}" name="album" onsubmit="return validation()">
+                        <form class="form-horizontal" method="post" action="{{url('gallery/save')}}" name="album">
+
                             <input type ="hidden" name="_token" value="{{csrf_token()}}">
 
                             <div class="form-group">
@@ -185,7 +184,7 @@
                @else
                 <hr>
                         <div class="alert alert-danger">
-                            <i class="fa fa-2x fa-fw fa-exclamation-triangle"></i>No Albums Ceated
+                            <i class="fa fa-2x fa-fw fa-exclamation-triangle"></i>No Albums Created
                         </div>
                 @endif
 

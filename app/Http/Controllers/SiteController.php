@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use App\About;
 use App\Post;
 use App\Site;
 use App\template;
 use Session;
-
+use App\User;
+use App\Widget;
+use App\Gallery;
+use App\Images;
 class SiteController extends Controller
 {
     /**
@@ -73,6 +77,31 @@ class SiteController extends Controller
         return redirect()->route('site.index');
 
     }
+    public function getAlbum(Request $request) {
+
+        $album=Gallery::find($request);
+        //$result = DB::table('item_details')->where('item_album','like',$album)->get();
+        return '$result';
+    }
+    public function getItems(Request $request) {
+
+        if ($request) {
+            $album = $request->input('album');
+        }
+
+
+        if ($album) {
+
+            $album_id = DB::table('gallery')->where('name', $album)->pluck('id');
+            $items = DB::table('images')
+                ->leftJoin('gallery', 'images.gallery_id', '=', 'gallery.id')
+                ->where('gallery.id', $album_id)
+                ->get();
+            return $items;
+        }
+
+
+    }
 
     /**
      * Display the specified resource.
@@ -82,6 +111,7 @@ class SiteController extends Controller
      */
     public function show($id)
     {
+
       $site=DB::table('sites')->where('sitename',$id)->first();
       $templateid=$site->templatename;
       $data=template::all()->where('name',$templateid);
@@ -94,9 +124,12 @@ class SiteController extends Controller
       $post=DB::table('posts')->where('sitename',$id)->get();
        $aboutobj=(object)$about;
       $postobj=(object)$post;
-      return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj);
-      //
+        $twiter=Widget::where('user_id',Auth::user()->id)->get();
 
+        $albums=Gallery::where('created_by',Auth::user()->id)->get();
+
+
+        return view('Live_templates.Temp1.first',compact('color'))->withAbout($aboutobj)->withSite($site)->withPost($postobj)->withTwitter($twiter)->withAlbums($albums);
 
     }
 

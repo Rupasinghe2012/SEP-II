@@ -26,6 +26,14 @@ class ViewComposerServiceProvider extends ServiceProvider
         $view->with(['userData' => $this->userData]);
 
     });
+        view()->composer('admin.admin_home',function($view){
+
+            if(Auth::User()) {
+                $this->userData = Auth::User()->type;
+            }
+            $view->with(['userData' => $this->userData]);
+
+        });
         view()->composer('includes.header',function($view){
 
             if(Auth::User()) {

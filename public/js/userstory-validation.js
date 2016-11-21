@@ -78,6 +78,13 @@ $(document).ready(function() {
                 required : true,
                 minlength : 5
             },
+            Name : {
+                required : true,
+                checkName : /^[A-z\s]*$/,
+                minlength : 5,
+                allWhiteSpaces : true
+            },
+            
             CaptchaCode:{
                 required : true,
             }

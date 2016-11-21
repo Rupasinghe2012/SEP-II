@@ -23,6 +23,8 @@
                             {{--@endforeach--}}
 
                             <li><a onClick="changeCategory('All')">All</a></li>
+                            <li><a onClick="changeCategory('Owned')">Owned</a></li>
+                            <li><a onClick="changeCategory('NotOwned')">Not Owned</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -89,7 +91,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="thumbnail">
-                                <img id="productImg" onerror="if (this.src != '/images/img_placeholder.png') this.src = '/images/img_placeholder.png';">
+                                <img id="productImg" src ="/images/T1.png">
                             </div>
                         </div>
                     </div>

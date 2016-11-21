@@ -45,12 +45,14 @@ class GalleryController extends Controller
      */
     public function saveGallery(Request $request)
     {
+        
         //validate the request
         $validator=Validator::make($request->all(),[
             'gallery_name'=>'required|min:3',
             'details'=>'required|min:3'
         ]);
         //take actions when the validation has failed
+
         if($validator->fails()){
             return redirect('gallery/list')
                 ->withErrors($validator)
@@ -63,6 +65,7 @@ class GalleryController extends Controller
             $gallery->details = $request->input('details');
             $gallery->created_by = Auth::user()->id;
             $gallery->published = 1;
+
             if($gallery->save()){
                 $this->notification->addNotification($this->userId,'add_album');
             }

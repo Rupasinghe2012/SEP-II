@@ -55,9 +55,9 @@
 
                 </div>
                 <div class="col-lg-3 col-lg-offset-1">
-                    <div class="radio">
-                        <label><input type="radio" name="choice" value="records">Rejected preorders</label>
-                    </div>
+                    {{--<div class="radio">--}}
+                        {{--<label><input type="radio" name="choice" value="records">Rejected preorders</label>--}}
+                    {{--</div>--}}
                     <div class="radio">
                         <label><input type="radio" name="choice" value="means">Average time to complete preorder</label>
                     </div>

@@ -4,7 +4,11 @@
 
 @section('content')
 @section('pageName')
-    Admins Dashboard
+    @if($userData == "admin")
+        Admins Dashboard
+    @elseif($userData == "moderator")
+        Moderators Dashboard
+    @endif
 @stop
 {{--breadcrumb--}}
 @section('breadcrumbs')

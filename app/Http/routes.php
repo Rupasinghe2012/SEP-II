@@ -212,6 +212,7 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('/temp','Loaddemo_controller@index');
     Route::get('/demo','Loaddemo_controller@demo');
     Route::get('/edit/{id}','Loaddemo_controller@edit');
+    Route::get('/site/album','SiteController@getItems');
     Route::resource('site','SiteController');
 
     Route::resource('post','PostController');//insert,delete,create,view post routes
