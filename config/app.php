@@ -164,6 +164,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class
     ],
 
     /*

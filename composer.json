@@ -15,7 +15,8 @@
         "barryvdh/laravel-dompdf": "^0.7.0",
         "laravel/socialite": "^2.0",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "captcha-com/laravel-captcha": "4.*"
+        "captcha-com/laravel-captcha": "4.*",
+        "khill/lavacharts": "~3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

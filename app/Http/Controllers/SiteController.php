@@ -22,6 +22,7 @@ class SiteController extends Controller
      */
     public function index()
     {
+
       $template=template::paginate(2);
       $sites=Site::paginate(2);
       return view('sites.mysite')->with('sites',$sites)->with('temp',$template);

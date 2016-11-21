@@ -81,7 +81,7 @@
                  </div>
 
                  <div class="box-footer box-comments">
-                  <div class="box-comment">
+                  <div id="box-comment{{$value->id}}">
                     <!-- User-->
                     <!-- /.comment-text -->
                   </div><!-- /.box-comment -->
@@ -307,11 +307,12 @@
                 type:'GET',
                 data:{pid:postID},
                 success:function(data){
-                    $(".box-comment").html(data);
+                    $("#box-comment"+postID).html(data);
 
 
                 }
             });
+
 
         });
 
