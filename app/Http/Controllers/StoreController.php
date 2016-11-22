@@ -231,7 +231,7 @@ class StoreController extends Controller
             return $result;
         }
     }
-    
+
 
     public function getCategory(Request $request) {
         $category = $request->input('category');
@@ -248,7 +248,7 @@ class StoreController extends Controller
         if ($category) {
 
             if ($category === 'All') {
-                
+
                 $items = DB::table('templates')
                     ->select('templates.*')
                     ->get();

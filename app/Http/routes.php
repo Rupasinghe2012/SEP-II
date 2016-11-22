@@ -72,7 +72,7 @@ Route::group(['middleware' => ['web', 'requireAuth']], function() {
     Route::post('userLINK', 'ProfileController@link');
     Route::post('user/{pic}', 'ProfileController@picture');
     Route::post('/twitter', 'ProfileController@widget');
-    
+
 
     //notification routes
     Route::get('/notifications','NotificationController@show');
@@ -235,5 +235,9 @@ Route::group(['middleware' => ['web', 'requireAuthClient']], function() {
     Route::get('ViewTemplateChange/{tempname}/{siteid}',['uses'=>'SiteController@ViewChangeTemp','as'=>'viewtempchange.temp']);
     Route::get('ChangeTemplate/{old}/{new}/{siteid}',['uses'=>'SiteController@update','as'=>'changeTemplate.change']);
     Route::get('showupdatedsites','SiteController@index');
+
+    Route::get('next','SiteController@nextmethod');
+    Route::get('previous','SiteController@previousmethod');
+
 
 });

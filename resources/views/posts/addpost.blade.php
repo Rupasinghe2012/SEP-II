@@ -17,8 +17,9 @@
                          <div class="form-group">
                             <label for="siteid" class="col-sm-2 control-label">SiteName</label>
                             <select name="sitename"  style="margin-left:19px;margin-bottom:30px;" id="op" required>
+                                <option></option>
                                 @foreach($site as $value)
-                                    <option></option>
+
                                     <option  value="{{$value->sitename}}">{{$value->sitename}}</option>
                                 @endforeach
                             </select>

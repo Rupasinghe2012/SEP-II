@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\template;
 use App\Http\Requests;
 use App\Site;
+use Illuminate\Support\Facades\DB;
 
 class Loaddemo_controller extends Controller
 {
@@ -23,6 +24,11 @@ class Loaddemo_controller extends Controller
      */
     public function index()
     {
+    //   $template = DB::table('mytemplates')
+    //           ->leftJoin('templates', 'mytemplates.templateid', '=', 'templates.id')
+    //           ->select('templates.*')
+    //           ->get();
+
         $template=template::all()->toArray();
         return view('templates.temp',compact('template'));
     }
@@ -49,15 +55,10 @@ class Loaddemo_controller extends Controller
     }
     public function edit($id)
     {
-//        return view('Edit_form.form');
-////        return view('sites.mysite');
           return view('sitecreation.createsite')->with('id',$id);
 
     }
-    /**
-    return the view with all Sites table data
-    and post table data
-    **/
+
     public function editpost()
     {
         $sites=Site::all();
