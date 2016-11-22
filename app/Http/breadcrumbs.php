@@ -95,3 +95,23 @@ Breadcrumbs::register('login-log', function($breadcrumbs)
     $breadcrumbs->parent('reports');
     $breadcrumbs->push('Login Log ', '/admin/logs/login');
 });
+
+////aDmin Home  >Reports> Template Report
+//Breadcrumbs::register('temp-usage', function($breadcrumbs)
+//{
+//    $breadcrumbs->parent('reports');
+//    $breadcrumbs->push('Template Usage Report ', '/reports/temp');
+//});
+//
+////aDmin Home  >Reports> User Details Report
+//Breadcrumbs::register('user-details', function($breadcrumbs)
+//{
+//    $breadcrumbs->parent('reports');
+//    $breadcrumbs->push('User Details Report', '/reports/user');
+//});
+////aDmin Home  >Reports> Event Report
+//Breadcrumbs::register('event-details', function($breadcrumbs)
+//{
+//    $breadcrumbs->parent('reports');
+//    $breadcrumbs->push('Event Details Report ', '/reports/event');
+//});

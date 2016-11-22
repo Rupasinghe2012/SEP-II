@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +11,7 @@ use Session;
 use App\Widget;
 use App\Gallery;
 use App\Images;
+
 use App\calenderevent;
 use App\removeduser;
 use App\Template;
@@ -29,9 +29,6 @@ use Mockery\Generator\StringManipulation\Pass\RemoveUnserializeForInternalSerial
 use Carbon\Carbon;
 use App\ExceptionsLog;
 use Illuminate\Pagination\LengthAwarePaginator;
-
-
-
 
 class SiteController extends Controller
 {
@@ -84,7 +81,6 @@ class SiteController extends Controller
 
         Session::flash('success','New Site Created Successfull');
 
-
         return redirect()->route('site.index');
 
     }
@@ -101,7 +97,6 @@ class SiteController extends Controller
             $album = $request->input('album');
         }
 
-
         if ($album) {
 
             $album_id = DB::table('gallery')->where('name', $album)->pluck('id');
@@ -111,8 +106,6 @@ class SiteController extends Controller
                 ->get();
             return $items;
         }
-
-
     }
 
     /**
@@ -187,10 +180,12 @@ class SiteController extends Controller
       {
         $color=$key->colour;
       }
-      $about=DB::table('abouts')->where('sitename',$id)->get();
-      $post=DB::table('posts')->where('sitename',$id)->get();
-      $aboutobj=(object)$about;
-      $postobj=(object)$post;
+
+        $about=DB::table('abouts')->where('sitename',$id)->get();
+        $post=DB::table('posts')->where('sitename',$id)->get();
+        $aboutobj=(object)$about;
+        $postobj=(object)$post;
+
 
       $twiter=Widget::where('user_id',Auth::user()->id)->get();
 
@@ -199,6 +194,7 @@ class SiteController extends Controller
       $user=Auth::user()->name;
 
       return view('Live_templates.Temp1.first')->withSite($site)->withAbout($aboutobj)->withPost($postobj)->withUser($user)->withAlbums($albums)->withTwitter($twiter)->withDay($day)->withMonth($month)->withYear($year)->withC_day($c_day)->withC_year($c_year)->withC_month($c_month)->withEvent_list($event_list)->withLoged_user($loged_user)->withColor($color)->withCurrent_time_stamp($current_time_stamp)->withMonth_name($month_name)->withNum_days($num_days)->withCount($count);
+
 
     }
 

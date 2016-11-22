@@ -219,7 +219,7 @@
                                 <h3 class="box-title">Add Your Twiter Widget Here</h3>
                             </div>
                             <div class="box-body">
-                                <a class="btn btn-block btn-default" data-toggle="modal" data-target="#twiter">
+                                <a class="btn bg-purple btn-flat margin" data-toggle="modal" data-target="#twiter">
                                     <i class="fa fa-twitter"></i> Enter your Profile Links
                                 </a>
                             </div>
@@ -270,7 +270,7 @@
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 222px; max-height: 205px;"> </div>
                                                 <div>
                                                                             <span class="btn default btn-file">
-                                                                                <button class="btn btn-dark" for="profile_pic">Choose an Image</button>
+                                                                                <button class="btn btn-block btn-warning" for="profile_pic">Choose an Image</button>
                                                                                 <input id="profile_pic" name="profile_pic" type="file" accept="image/*" >
                                                                             </span>
                                                 </div>
@@ -280,7 +280,7 @@
                                         <div class="margin-top-10">
 
                                                 <span>
-                                                    <button type="submit" class="btn green" id="btnSubmitPro">Upload Profile Picture
+                                                    <button type="submit" class="btn bg-navy btn-flat margin" id="btnSubmitPro">Upload Profile Picture
                                                     </button>
                                                 </span>
 

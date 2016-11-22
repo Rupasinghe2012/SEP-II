@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\ExceptionsLog;
 use Carbon\Carbon;
 use App\User;
